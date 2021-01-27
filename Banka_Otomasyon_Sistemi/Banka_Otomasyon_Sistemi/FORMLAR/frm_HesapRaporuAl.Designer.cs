@@ -140,6 +140,7 @@
             this.dtp_Baslangic.Size = new System.Drawing.Size(102, 20);
             this.dtp_Baslangic.TabIndex = 55;
             this.dtp_Baslangic.Value = new System.DateTime(2021, 1, 20, 0, 0, 0, 0);
+            this.dtp_Baslangic.ValueChanged += new System.EventHandler(this.dtp_Baslangic_ValueChanged);
             // 
             // dtp_Bitis
             // 
@@ -148,6 +149,7 @@
             this.dtp_Bitis.Name = "dtp_Bitis";
             this.dtp_Bitis.Size = new System.Drawing.Size(102, 20);
             this.dtp_Bitis.TabIndex = 56;
+            this.dtp_Bitis.ValueChanged += new System.EventHandler(this.dtp_Bitis_ValueChanged);
             // 
             // label3
             // 

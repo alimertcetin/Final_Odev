@@ -34,7 +34,7 @@
     <Property Name="HesapNo" Type="nchar" MaxLength="15" Nullable="false" />
     <Property Name="islemTutari" Type="money" Nullable="false" />
     <Property Name="islemAciklama" Type="nvarchar" MaxLength="100" />
-    <Property Name="islemKategori_id" Type="int" />
+    <Property Name="islemKategori_id" Type="int" Nullable="false" />
     <Property Name="islemTarihi" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="islemler_KrediHesaplari">
@@ -45,7 +45,7 @@
     <Property Name="HesapNo" Type="nchar" MaxLength="15" Nullable="false" />
     <Property Name="islemTutari" Type="money" Nullable="false" />
     <Property Name="islemAciklama" Type="nvarchar" MaxLength="100" />
-    <Property Name="islemKategori_id" Type="int" />
+    <Property Name="islemKategori_id" Type="int" Nullable="false" />
     <Property Name="islemTarihi" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Kategoriler">
@@ -63,7 +63,7 @@
     <Property Name="KkartHesapNo" Type="nchar" MaxLength="15" Nullable="false" />
     <Property Name="KkartIban" Type="nchar" MaxLength="26" Nullable="false" />
     <Property Name="Kkart_Limit" Type="money" Nullable="false" />
-    <Property Name="Kkart_Borc" Type="money" />
+    <Property Name="Kkart_Borc" Type="money" Nullable="false" />
     <Property Name="HesapKesimGunu" Type="int" Nullable="false" />
     <Property Name="SonOdemeGunu" Type="int" Nullable="false" />
     <Property Name="HesapSahipTcno" Type="char" MaxLength="11" Nullable="false" />
@@ -98,6 +98,19 @@
     <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BankDb.dbo.Vislemler_Banka' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Vislemler_Banka">
+    <Key>
+      <PropertyRef Name="islemTutari" />
+      <PropertyRef Name="islemTarihi" />
+      <PropertyRef Name="KategoriAd" />
+    </Key>
+    <Property Name="islemTutari" Type="money" Nullable="false" />
+    <Property Name="islemAciklama" Type="nvarchar" MaxLength="100" />
+    <Property Name="islemTarihi" Type="datetime" Nullable="false" />
+    <Property Name="KategoriAd" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <Association Name="FK_Banka_Hesap_Musteriler">
     <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="1" />
@@ -136,7 +149,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_islemler_BankaHesaplari_Kategoriler">
-    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="0..1" />
+    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
     <End Role="islemler_BankaHesaplari" Type="Self.islemler_BankaHesaplari" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Kategoriler">
@@ -160,7 +173,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_islemler_KrediHesaplari_Kategoriler">
-    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="0..1" />
+    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
     <End Role="islemler_KrediHesaplari" Type="Self.islemler_KrediHesaplari" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Kategoriler">
@@ -224,6 +237,14 @@
     <EntitySet Name="Musteriler" EntityType="Self.Musteriler" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roller" EntityType="Self.Roller" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vislemler_Banka" EntityType="Self.Vislemler_Banka" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Vislemler_Banka].[islemTutari] AS [islemTutari], 
+    [Vislemler_Banka].[islemAciklama] AS [islemAciklama], 
+    [Vislemler_Banka].[islemTarihi] AS [islemTarihi], 
+    [Vislemler_Banka].[KategoriAd] AS [KategoriAd]
+    FROM [dbo].[Vislemler_Banka] AS [Vislemler_Banka]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_Banka_Hesap_Musteriler" Association="Self.FK_Banka_Hesap_Musteriler">
       <End Role="Musteriler" EntitySet="Musteriler" />
       <End Role="Banka_Hesaplari" EntitySet="Banka_Hesaplari" />

@@ -9,8 +9,8 @@
     <Property Name="BankIban" Type="String" MaxLength="26" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Hesap_Bakiye" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="HesapSahipTcno" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Musteriler" Relationship="Self.FK_Banka_Hesap_Musteriler" FromRole="Banka_Hesaplari" ToRole="Musteriler" />
-    <NavigationProperty Name="islemler_BankaHesaplari" Relationship="Self.FK_islemler_BankaHesap_Banka_Hesap" FromRole="Banka_Hesaplari" ToRole="islemler_BankaHesaplari" />
+    <NavigationProperty Name="Musteriler" Relationship="BankDbModel.FK_Banka_Hesap_Musteriler" FromRole="Banka_Hesaplari" ToRole="Musteriler" />
+    <NavigationProperty Name="islemler_BankaHesaplari" Relationship="BankDbModel.FK_islemler_BankaHesap_Banka_Hesap" FromRole="Banka_Hesaplari" ToRole="islemler_BankaHesaplari" />
   </EntityType>
   <EntityType Name="Calisanlar">
     <Key>
@@ -27,7 +27,7 @@
     <Property Name="c_Prim" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="c_Rolid" Type="Int32" Nullable="false" />
     <Property Name="c_Sifre" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Roller" Relationship="Self.FK_Calisanlar_Roller" FromRole="Calisanlar" ToRole="Roller" />
+    <NavigationProperty Name="Roller" Relationship="BankDbModel.FK_Calisanlar_Roller" FromRole="Calisanlar" ToRole="Roller" />
   </EntityType>
   <EntityType Name="islemler_BankaHesaplari">
     <Key>
@@ -37,10 +37,10 @@
     <Property Name="HesapNo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="islemTutari" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="islemKategori_id" Type="Int32" />
+    <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
     <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Banka_Hesaplari" Relationship="Self.FK_islemler_BankaHesap_Banka_Hesap" FromRole="islemler_BankaHesaplari" ToRole="Banka_Hesaplari" />
-    <NavigationProperty Name="Kategoriler" Relationship="Self.FK_islemler_BankaHesaplari_Kategoriler" FromRole="islemler_BankaHesaplari" ToRole="Kategoriler" />
+    <NavigationProperty Name="Banka_Hesaplari" Relationship="BankDbModel.FK_islemler_BankaHesap_Banka_Hesap" FromRole="islemler_BankaHesaplari" ToRole="Banka_Hesaplari" />
+    <NavigationProperty Name="Kategoriler" Relationship="BankDbModel.FK_islemler_BankaHesaplari_Kategoriler" FromRole="islemler_BankaHesaplari" ToRole="Kategoriler" />
   </EntityType>
   <EntityType Name="islemler_KrediHesaplari">
     <Key>
@@ -50,10 +50,10 @@
     <Property Name="HesapNo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="islemTutari" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="islemKategori_id" Type="Int32" />
+    <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
     <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Kkart_Hesaplari" Relationship="Self.FK_islemler_KrediHesap_Kkredi_Hesap" FromRole="islemler_KrediHesaplari" ToRole="Kkart_Hesaplari" />
-    <NavigationProperty Name="Kategoriler" Relationship="Self.FK_islemler_KrediHesaplari_Kategoriler" FromRole="islemler_KrediHesaplari" ToRole="Kategoriler" />
+    <NavigationProperty Name="Kkart_Hesaplari" Relationship="BankDbModel.FK_islemler_KrediHesap_Kkredi_Hesap" FromRole="islemler_KrediHesaplari" ToRole="Kkart_Hesaplari" />
+    <NavigationProperty Name="Kategoriler" Relationship="BankDbModel.FK_islemler_KrediHesaplari_Kategoriler" FromRole="islemler_KrediHesaplari" ToRole="Kategoriler" />
   </EntityType>
   <EntityType Name="Kategoriler">
     <Key>
@@ -61,8 +61,8 @@
     </Key>
     <Property Name="KategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="KategoriAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="islemler_BankaHesaplari" Relationship="Self.FK_islemler_BankaHesaplari_Kategoriler" FromRole="Kategoriler" ToRole="islemler_BankaHesaplari" />
-    <NavigationProperty Name="islemler_KrediHesaplari" Relationship="Self.FK_islemler_KrediHesaplari_Kategoriler" FromRole="Kategoriler" ToRole="islemler_KrediHesaplari" />
+    <NavigationProperty Name="islemler_BankaHesaplari" Relationship="BankDbModel.FK_islemler_BankaHesaplari_Kategoriler" FromRole="Kategoriler" ToRole="islemler_BankaHesaplari" />
+    <NavigationProperty Name="islemler_KrediHesaplari" Relationship="BankDbModel.FK_islemler_KrediHesaplari_Kategoriler" FromRole="Kategoriler" ToRole="islemler_KrediHesaplari" />
   </EntityType>
   <EntityType Name="Kkart_Hesaplari">
     <Key>
@@ -72,11 +72,11 @@
     <Property Name="KkartHesapNo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="KkartIban" Type="String" MaxLength="26" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Kkart_Limit" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="Kkart_Borc" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Kkart_Borc" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="HesapKesimGunu" Type="Int32" Nullable="false" />
     <Property Name="SonOdemeGunu" Type="Int32" Nullable="false" />
     <Property Name="HesapSahipTcno" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="islemler_KrediHesaplari" Relationship="Self.FK_islemler_KrediHesap_Kkredi_Hesap" FromRole="Kkart_Hesaplari" ToRole="islemler_KrediHesaplari" />
+    <NavigationProperty Name="islemler_KrediHesaplari" Relationship="BankDbModel.FK_islemler_KrediHesap_Kkredi_Hesap" FromRole="Kkart_Hesaplari" ToRole="islemler_KrediHesaplari" />
   </EntityType>
   <EntityType Name="Musteriler">
     <Key>
@@ -91,8 +91,8 @@
     <Property Name="m_DogumYeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="m_Rolid" Type="Int32" Nullable="false" />
     <Property Name="m_Sifre" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Banka_Hesaplari" Relationship="Self.FK_Banka_Hesap_Musteriler" FromRole="Musteriler" ToRole="Banka_Hesaplari" />
-    <NavigationProperty Name="Roller" Relationship="Self.FK_Musteriler_Roller" FromRole="Musteriler" ToRole="Roller" />
+    <NavigationProperty Name="Banka_Hesaplari" Relationship="BankDbModel.FK_Banka_Hesap_Musteriler" FromRole="Musteriler" ToRole="Banka_Hesaplari" />
+    <NavigationProperty Name="Roller" Relationship="BankDbModel.FK_Musteriler_Roller" FromRole="Musteriler" ToRole="Roller" />
   </EntityType>
   <EntityType Name="Roller">
     <Key>
@@ -100,8 +100,8 @@
     </Key>
     <Property Name="RolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="RolAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Calisanlar" Relationship="Self.FK_Calisanlar_Roller" FromRole="Roller" ToRole="Calisanlar" />
-    <NavigationProperty Name="Musteriler" Relationship="Self.FK_Musteriler_Roller" FromRole="Roller" ToRole="Musteriler" />
+    <NavigationProperty Name="Calisanlar" Relationship="BankDbModel.FK_Calisanlar_Roller" FromRole="Roller" ToRole="Calisanlar" />
+    <NavigationProperty Name="Musteriler" Relationship="BankDbModel.FK_Musteriler_Roller" FromRole="Roller" ToRole="Musteriler" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -113,90 +113,6 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <Association Name="FK_Banka_Hesap_Musteriler">
-    <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="1" />
-    <End Role="Banka_Hesaplari" Type="Self.Banka_Hesaplari" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Musteriler">
-        <PropertyRef Name="m_TcNo" />
-      </Principal>
-      <Dependent Role="Banka_Hesaplari">
-        <PropertyRef Name="HesapSahipTcno" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_islemler_BankaHesap_Banka_Hesap">
-    <End Role="Banka_Hesaplari" Type="Self.Banka_Hesaplari" Multiplicity="1" />
-    <End Role="islemler_BankaHesaplari" Type="Self.islemler_BankaHesaplari" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Banka_Hesaplari">
-        <PropertyRef Name="BankaHesapNo" />
-      </Principal>
-      <Dependent Role="islemler_BankaHesaplari">
-        <PropertyRef Name="HesapNo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Calisanlar_Roller">
-    <End Role="Roller" Type="Self.Roller" Multiplicity="1" />
-    <End Role="Calisanlar" Type="Self.Calisanlar" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Roller">
-        <PropertyRef Name="RolID" />
-      </Principal>
-      <Dependent Role="Calisanlar">
-        <PropertyRef Name="c_Rolid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_islemler_BankaHesaplari_Kategoriler">
-    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="0..1" />
-    <End Role="islemler_BankaHesaplari" Type="Self.islemler_BankaHesaplari" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Kategoriler">
-        <PropertyRef Name="KategoriID" />
-      </Principal>
-      <Dependent Role="islemler_BankaHesaplari">
-        <PropertyRef Name="islemKategori_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_islemler_KrediHesap_Kkredi_Hesap">
-    <End Role="Kkart_Hesaplari" Type="Self.Kkart_Hesaplari" Multiplicity="1" />
-    <End Role="islemler_KrediHesaplari" Type="Self.islemler_KrediHesaplari" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Kkart_Hesaplari">
-        <PropertyRef Name="KkartHesapNo" />
-      </Principal>
-      <Dependent Role="islemler_KrediHesaplari">
-        <PropertyRef Name="HesapNo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_islemler_KrediHesaplari_Kategoriler">
-    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="0..1" />
-    <End Role="islemler_KrediHesaplari" Type="Self.islemler_KrediHesaplari" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Kategoriler">
-        <PropertyRef Name="KategoriID" />
-      </Principal>
-      <Dependent Role="islemler_KrediHesaplari">
-        <PropertyRef Name="islemKategori_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Musteriler_Roller">
-    <End Role="Roller" Type="Self.Roller" Multiplicity="1" />
-    <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Roller">
-        <PropertyRef Name="RolID" />
-      </Principal>
-      <Dependent Role="Musteriler">
-        <PropertyRef Name="m_Rolid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="BankDbEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Banka_Hesaplari" EntityType="Self.Banka_Hesaplari" />
     <EntitySet Name="Calisanlar" EntityType="Self.Calisanlar" />
@@ -207,34 +123,6 @@
     <EntitySet Name="Musteriler" EntityType="Self.Musteriler" />
     <EntitySet Name="Roller" EntityType="Self.Roller" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-    <AssociationSet Name="FK_Banka_Hesap_Musteriler" Association="Self.FK_Banka_Hesap_Musteriler">
-      <End Role="Musteriler" EntitySet="Musteriler" />
-      <End Role="Banka_Hesaplari" EntitySet="Banka_Hesaplari" />
-    </AssociationSet>
-    <AssociationSet Name="FK_islemler_BankaHesap_Banka_Hesap" Association="Self.FK_islemler_BankaHesap_Banka_Hesap">
-      <End Role="Banka_Hesaplari" EntitySet="Banka_Hesaplari" />
-      <End Role="islemler_BankaHesaplari" EntitySet="islemler_BankaHesaplari" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Calisanlar_Roller" Association="Self.FK_Calisanlar_Roller">
-      <End Role="Roller" EntitySet="Roller" />
-      <End Role="Calisanlar" EntitySet="Calisanlar" />
-    </AssociationSet>
-    <AssociationSet Name="FK_islemler_BankaHesaplari_Kategoriler" Association="Self.FK_islemler_BankaHesaplari_Kategoriler">
-      <End Role="Kategoriler" EntitySet="Kategoriler" />
-      <End Role="islemler_BankaHesaplari" EntitySet="islemler_BankaHesaplari" />
-    </AssociationSet>
-    <AssociationSet Name="FK_islemler_KrediHesap_Kkredi_Hesap" Association="Self.FK_islemler_KrediHesap_Kkredi_Hesap">
-      <End Role="Kkart_Hesaplari" EntitySet="Kkart_Hesaplari" />
-      <End Role="islemler_KrediHesaplari" EntitySet="islemler_KrediHesaplari" />
-    </AssociationSet>
-    <AssociationSet Name="FK_islemler_KrediHesaplari_Kategoriler" Association="Self.FK_islemler_KrediHesaplari_Kategoriler">
-      <End Role="Kategoriler" EntitySet="Kategoriler" />
-      <End Role="islemler_KrediHesaplari" EntitySet="islemler_KrediHesaplari" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Musteriler_Roller" Association="Self.FK_Musteriler_Roller">
-      <End Role="Roller" EntitySet="Roller" />
-      <End Role="Musteriler" EntitySet="Musteriler" />
-    </AssociationSet>
     <FunctionImport Name="sp_alterdiagram">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -265,6 +153,35 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Vislemler_Banka" EntityType="BankDbModel.Vislemler_Banka" />
+    <AssociationSet Name="FK_Banka_Hesap_Musteriler" Association="BankDbModel.FK_Banka_Hesap_Musteriler">
+      <End Role="Musteriler" EntitySet="Musteriler" />
+      <End Role="Banka_Hesaplari" EntitySet="Banka_Hesaplari" />
+    </AssociationSet>
+    <AssociationSet Name="FK_islemler_BankaHesap_Banka_Hesap" Association="BankDbModel.FK_islemler_BankaHesap_Banka_Hesap">
+      <End Role="Banka_Hesaplari" EntitySet="Banka_Hesaplari" />
+      <End Role="islemler_BankaHesaplari" EntitySet="islemler_BankaHesaplari" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Calisanlar_Roller" Association="BankDbModel.FK_Calisanlar_Roller">
+      <End Role="Roller" EntitySet="Roller" />
+      <End Role="Calisanlar" EntitySet="Calisanlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_islemler_BankaHesaplari_Kategoriler" Association="BankDbModel.FK_islemler_BankaHesaplari_Kategoriler">
+      <End Role="Kategoriler" EntitySet="Kategoriler" />
+      <End Role="islemler_BankaHesaplari" EntitySet="islemler_BankaHesaplari" />
+    </AssociationSet>
+    <AssociationSet Name="FK_islemler_KrediHesap_Kkredi_Hesap" Association="BankDbModel.FK_islemler_KrediHesap_Kkredi_Hesap">
+      <End Role="Kkart_Hesaplari" EntitySet="Kkart_Hesaplari" />
+      <End Role="islemler_KrediHesaplari" EntitySet="islemler_KrediHesaplari" />
+    </AssociationSet>
+    <AssociationSet Name="FK_islemler_KrediHesaplari_Kategoriler" Association="BankDbModel.FK_islemler_KrediHesaplari_Kategoriler">
+      <End Role="Kategoriler" EntitySet="Kategoriler" />
+      <End Role="islemler_KrediHesaplari" EntitySet="islemler_KrediHesaplari" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Musteriler_Roller" Association="BankDbModel.FK_Musteriler_Roller">
+      <End Role="Roller" EntitySet="Roller" />
+      <End Role="Musteriler" EntitySet="Musteriler" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -277,4 +194,99 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
+  <EntityType Name="Vislemler_Banka">
+    <Key>
+      <PropertyRef Name="islemTutari" />
+      <PropertyRef Name="islemTarihi" />
+      <PropertyRef Name="KategoriAd" />
+    </Key>
+    <Property Name="islemTutari" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="KategoriAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Banka_Hesap_Musteriler">
+    <End Type="BankDbModel.Musteriler" Role="Musteriler" Multiplicity="1" />
+    <End Type="BankDbModel.Banka_Hesaplari" Role="Banka_Hesaplari" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteriler">
+        <PropertyRef Name="m_TcNo" />
+      </Principal>
+      <Dependent Role="Banka_Hesaplari">
+        <PropertyRef Name="HesapSahipTcno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_islemler_BankaHesap_Banka_Hesap">
+    <End Type="BankDbModel.Banka_Hesaplari" Role="Banka_Hesaplari" Multiplicity="1" />
+    <End Type="BankDbModel.islemler_BankaHesaplari" Role="islemler_BankaHesaplari" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Banka_Hesaplari">
+        <PropertyRef Name="BankaHesapNo" />
+      </Principal>
+      <Dependent Role="islemler_BankaHesaplari">
+        <PropertyRef Name="HesapNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Calisanlar_Roller">
+    <End Type="BankDbModel.Roller" Role="Roller" Multiplicity="1" />
+    <End Type="BankDbModel.Calisanlar" Role="Calisanlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roller">
+        <PropertyRef Name="RolID" />
+      </Principal>
+      <Dependent Role="Calisanlar">
+        <PropertyRef Name="c_Rolid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_islemler_BankaHesaplari_Kategoriler">
+    <End Type="BankDbModel.Kategoriler" Role="Kategoriler" Multiplicity="1" />
+    <End Type="BankDbModel.islemler_BankaHesaplari" Role="islemler_BankaHesaplari" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoriler">
+        <PropertyRef Name="KategoriID" />
+      </Principal>
+      <Dependent Role="islemler_BankaHesaplari">
+        <PropertyRef Name="islemKategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_islemler_KrediHesap_Kkredi_Hesap">
+    <End Type="BankDbModel.Kkart_Hesaplari" Role="Kkart_Hesaplari" Multiplicity="1" />
+    <End Type="BankDbModel.islemler_KrediHesaplari" Role="islemler_KrediHesaplari" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kkart_Hesaplari">
+        <PropertyRef Name="KkartHesapNo" />
+      </Principal>
+      <Dependent Role="islemler_KrediHesaplari">
+        <PropertyRef Name="HesapNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_islemler_KrediHesaplari_Kategoriler">
+    <End Type="BankDbModel.Kategoriler" Role="Kategoriler" Multiplicity="1" />
+    <End Type="BankDbModel.islemler_KrediHesaplari" Role="islemler_KrediHesaplari" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoriler">
+        <PropertyRef Name="KategoriID" />
+      </Principal>
+      <Dependent Role="islemler_KrediHesaplari">
+        <PropertyRef Name="islemKategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Musteriler_Roller">
+    <End Type="BankDbModel.Roller" Role="Roller" Multiplicity="1" />
+    <End Type="BankDbModel.Musteriler" Role="Musteriler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roller">
+        <PropertyRef Name="RolID" />
+      </Principal>
+      <Dependent Role="Musteriler">
+        <PropertyRef Name="m_Rolid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

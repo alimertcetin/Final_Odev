@@ -21,11 +21,16 @@ namespace Banka_Otomasyon_Sistemi
         private void frm_HesapRaporuAl_Load(object sender, EventArgs e)
         {
             dtg_HesapGoruntule.AutoGenerateColumns = false;
+            HesapHareketleriniAl();
+        }
+
+        private void HesapHareketleriniAl()
+        {
             BankDbEntities vt = new BankDbEntities();
             var BBh = HesapIslemleri.Hesap_HesapGetirBank(vt, txt_HesapNo.Text);
             if (BBh != null)
             {
-                var islemListesi =
+                var sorgu =
                     from i in vt.islemler_BankaHesaplari
                     join k in vt.Kategoriler on i.islemKategori_id equals k.KategoriID
                     select new
@@ -35,7 +40,6 @@ namespace Banka_Otomasyon_Sistemi
                         KategoriAd = k.KategoriAd,
                         islemTarihi = i.islemTarihi
                     };
-
                 dtg_HesapGoruntule.Columns.Clear();
                 dtg_HesapGoruntule.DataSource = null;
 
@@ -43,14 +47,28 @@ namespace Banka_Otomasyon_Sistemi
                 DataGridViewColumn Aciklama = FormYonetimi.ColumnOlustur("islemAciklama", "Açıklama");
                 DataGridViewColumn Kategori = FormYonetimi.ColumnOlustur("KategoriAd", "Kategori");
                 DataGridViewColumn islemTarihi = FormYonetimi.ColumnOlustur("islemTarihi", "Tarih");
-                
 
                 dtg_HesapGoruntule.Columns.Add(islemTutari);
                 dtg_HesapGoruntule.Columns.Add(Aciklama);
                 dtg_HesapGoruntule.Columns.Add(Kategori);
                 dtg_HesapGoruntule.Columns.Add(islemTarihi);
 
-                dtg_HesapGoruntule.DataSource = islemListesi.ToList();
+                dtg_HesapGoruntule.DataSource = sorgu.ToList();
+
+                for (int i = 0; i < dtg_HesapGoruntule.Rows.Count; i++)
+                {
+                    var item = dtg_HesapGoruntule.Rows[i];
+                    foreach (DataGridViewCell cell in item.Cells)
+                    {
+                        if (decimal.TryParse(cell.Value.ToString(), out decimal cellValue))
+                        {
+                            if (cellValue > 0)
+                            {
+                                cell.Value = "+" + cell.Value;
+                            }
+                        }
+                    }
+                }
 
             }
             else
@@ -58,7 +76,16 @@ namespace Banka_Otomasyon_Sistemi
                 var KKh = HesapIslemleri.Hesap_HesapGetirKkart(vt, txt_HesapNo.Text);
                 if (KKh != null)
                 {
-                    var islemListesi = vt.Kkart_Hesaplari.Where(p => p.KkartHesapNo == txt_HesapNo.Text).ToList();
+                    var sorgu =
+                        from i in vt.islemler_BankaHesaplari
+                        join k in vt.Kategoriler on i.islemKategori_id equals k.KategoriID
+                        select new
+                        {
+                            islemTutari = i.islemTutari.ToString(),
+                            islemAciklama = i.islemAciklama,
+                            KategoriAd = k.KategoriAd,
+                            islemTarihi = i.islemTarihi
+                        };
 
                     dtg_HesapGoruntule.Columns.Clear();
                     dtg_HesapGoruntule.DataSource = null;
@@ -73,9 +100,25 @@ namespace Banka_Otomasyon_Sistemi
                     dtg_HesapGoruntule.Columns.Add(Kategori);
                     dtg_HesapGoruntule.Columns.Add(islemTarihi);
 
-                    dtg_HesapGoruntule.DataSource = islemListesi;
+                    dtg_HesapGoruntule.DataSource = sorgu.ToList();
+
+                    for (int i = 0; i < dtg_HesapGoruntule.Rows.Count; i++)
+                    {
+                        var item = dtg_HesapGoruntule.Rows[i];
+                        foreach (DataGridViewCell cell in item.Cells)
+                        {
+                            if(decimal.TryParse(cell.Value.ToString(),out decimal cellValue))
+                            {
+                                if(cellValue > 0)
+                                {
+                                    cell.Value = "+" + cell.Value;
+                                }
+                            }
+                        }
+                    }
+
                 }
-                else MessageBox.Show("Bir hata oluştu. Formu kapatıp tekrar deneyin.", "HATA",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                else MessageBox.Show("Bir hata oluştu. Formu kapatıp tekrar deneyin.", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

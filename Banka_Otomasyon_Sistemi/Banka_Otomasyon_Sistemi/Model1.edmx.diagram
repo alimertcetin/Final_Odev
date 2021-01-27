@@ -4,23 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b96f4b6bd25947f9a5304c8a8e654c18" Name="Diagram1">
+      <Diagram DiagramId="b96f4b6bd25947f9a5304c8a8e654c18" Name="Diagram1" ZoomLevel="55">
         <EntityTypeShape EntityType="BankDbModel.Banka_Hesaplari" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BankDbModel.Calisanlar" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BankDbModel.islemler_BankaHesaplari" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BankDbModel.islemler_KrediHesaplari" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BankDbModel.Kategoriler" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankDbModel.Kategoriler" Width="1.5" PointX="5.125" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BankDbModel.Kkart_Hesaplari" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BankDbModel.Musteriler" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BankDbModel.Roller" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BankDbModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="BankDbModel.FK_Banka_Hesap_Musteriler" ManuallyRouted="false" />
-        <AssociationConnector Association="BankDbModel.FK_islemler_BankaHesap_Banka_Hesap" ManuallyRouted="false" />
-        <AssociationConnector Association="BankDbModel.FK_Calisanlar_Roller" ManuallyRouted="false" />
-        <AssociationConnector Association="BankDbModel.FK_islemler_BankaHesaplari_Kategoriler" ManuallyRouted="false" />
-        <AssociationConnector Association="BankDbModel.FK_islemler_KrediHesap_Kkredi_Hesap" ManuallyRouted="false" />
-        <AssociationConnector Association="BankDbModel.FK_islemler_KrediHesaplari_Kategoriler" ManuallyRouted="false" />
-        <AssociationConnector Association="BankDbModel.FK_Musteriler_Roller" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BankDbModel.Vislemler_Banka" Width="1.5" PointX="0.75" PointY="9.75" />
+        <AssociationConnector Association="BankDbModel.FK_Banka_Hesap_Musteriler" />
+        <AssociationConnector Association="BankDbModel.FK_islemler_BankaHesap_Banka_Hesap" />
+        <AssociationConnector Association="BankDbModel.FK_Calisanlar_Roller" />
+        <AssociationConnector Association="BankDbModel.FK_islemler_BankaHesaplari_Kategoriler" />
+        <AssociationConnector Association="BankDbModel.FK_islemler_KrediHesap_Kkredi_Hesap" />
+        <AssociationConnector Association="BankDbModel.FK_islemler_KrediHesaplari_Kategoriler" />
+        <AssociationConnector Association="BankDbModel.FK_Musteriler_Roller" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

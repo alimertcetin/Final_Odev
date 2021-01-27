@@ -221,6 +221,9 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Vislemler_Banka.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FORMLAR\frm_HesapGoruntule.resx">
       <DependentUpon>frm_HesapGoruntule.cs</DependentUpon>
     </EmbeddedResource>

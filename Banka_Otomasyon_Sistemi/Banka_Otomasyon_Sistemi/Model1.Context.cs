@@ -36,6 +36,7 @@ namespace Banka_Otomasyon_Sistemi
         public virtual DbSet<Musteriler> Musteriler { get; set; }
         public virtual DbSet<Roller> Roller { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Vislemler_Banka> Vislemler_Banka { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

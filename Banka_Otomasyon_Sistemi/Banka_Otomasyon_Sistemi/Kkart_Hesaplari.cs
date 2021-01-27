@@ -24,7 +24,7 @@ namespace Banka_Otomasyon_Sistemi
         public string KkartHesapNo { get; set; }
         public string KkartIban { get; set; }
         public decimal Kkart_Limit { get; set; }
-        public Nullable<decimal> Kkart_Borc { get; set; }
+        public decimal Kkart_Borc { get; set; }
         public int HesapKesimGunu { get; set; }
         public int SonOdemeGunu { get; set; }
         public string HesapSahipTcno { get; set; }

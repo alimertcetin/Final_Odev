@@ -16,8 +16,9 @@ namespace Banka_Otomasyon_Sistemi
     {
         public int islemID { get; set; }
         public string HesapNo { get; set; }
+        public decimal islemTutari { get; set; }
         public string islemAciklama { get; set; }
-        public int islemKategori_id { get; set; }
+        public Nullable<int> islemKategori_id { get; set; }
         public System.DateTime islemTarihi { get; set; }
     
         public virtual Kkart_Hesaplari Kkart_Hesaplari { get; set; }

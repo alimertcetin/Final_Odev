@@ -18,7 +18,6 @@ namespace Banka_Otomasyon_Sistemi
         public Musteriler()
         {
             this.Banka_Hesaplari = new HashSet<Banka_Hesaplari>();
-            this.Kkart_Hesaplari = new HashSet<Kkart_Hesaplari>();
         }
     
         public int müsteriID { get; set; }
@@ -33,8 +32,6 @@ namespace Banka_Otomasyon_Sistemi
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Banka_Hesaplari> Banka_Hesaplari { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kkart_Hesaplari> Kkart_Hesaplari { get; set; }
         public virtual Roller Roller { get; set; }
     }
 }

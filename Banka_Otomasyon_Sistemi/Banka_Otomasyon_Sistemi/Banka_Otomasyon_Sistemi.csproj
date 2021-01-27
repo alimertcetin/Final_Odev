@@ -39,8 +39,26 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1427.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1427.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1427.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1427.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1427.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -70,73 +88,92 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="FormYonetimi.cs" />
-    <Compile Include="frm_HesapGoruntule.cs">
+    <Compile Include="CUSTOM_CLASSES\FormYonetimi.cs" />
+    <Compile Include="FORMLAR\frm_HesapGoruntule.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_HesapGoruntule.Designer.cs">
+    <Compile Include="FORMLAR\frm_HesapGoruntule.Designer.cs">
       <DependentUpon>frm_HesapGoruntule.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_GecisHesapOlustur.cs">
+    <Compile Include="FORMLAR\frm_GecisHesapOlustur.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_GecisHesapOlustur.Designer.cs">
+    <Compile Include="FORMLAR\frm_GecisHesapOlustur.Designer.cs">
       <DependentUpon>frm_GecisHesapOlustur.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_GirisSecimi.cs">
+    <Compile Include="FORMLAR\frm_GirisSecimi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_GirisSecimi.Designer.cs">
+    <Compile Include="FORMLAR\frm_GirisSecimi.Designer.cs">
       <DependentUpon>frm_GirisSecimi.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_AnaSayfa.cs">
+    <Compile Include="FORMLAR\frm_AnaSayfa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_AnaSayfa.Designer.cs">
+    <Compile Include="FORMLAR\frm_AnaSayfa.Designer.cs">
       <DependentUpon>frm_AnaSayfa.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_HesapOlustur.cs">
+    <Compile Include="FORMLAR\frm_HesapOlustur.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_HesapOlustur.Designer.cs">
+    <Compile Include="FORMLAR\frm_HesapOlustur.Designer.cs">
       <DependentUpon>frm_HesapOlustur.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_HesapSil.cs">
+    <Compile Include="FORMLAR\frm_HesapRaporuAl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_HesapSil.Designer.cs">
+    <Compile Include="FORMLAR\frm_HesapRaporuAl.Designer.cs">
+      <DependentUpon>frm_HesapRaporuAl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMLAR\frm_HesapSil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMLAR\frm_HesapSil.Designer.cs">
       <DependentUpon>frm_HesapSil.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_KkartConfig.cs">
+    <Compile Include="FORMLAR\frm_KkartConfig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_KkartConfig.Designer.cs">
+    <Compile Include="FORMLAR\frm_KkartConfig.Designer.cs">
       <DependentUpon>frm_KkartConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_MusteriGiris.cs">
+    <Compile Include="FORMLAR\frm_MusteriBilgileriniGoruntuleDuzenle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_MusteriGiris.Designer.cs">
+    <Compile Include="FORMLAR\frm_MusteriBilgileriniGoruntuleDuzenle.Designer.cs">
+      <DependentUpon>frm_MusteriBilgileriniGoruntuleDuzenle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMLAR\frm_MusteriGiris.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMLAR\frm_MusteriGiris.Designer.cs">
       <DependentUpon>frm_MusteriGiris.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_ParaCekYatir.cs">
+    <Compile Include="FORMLAR\frm_MusteriNoOgren.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_ParaCekYatir.Designer.cs">
+    <Compile Include="FORMLAR\frm_MusteriNoOgren.Designer.cs">
+      <DependentUpon>frm_MusteriNoOgren.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMLAR\frm_ParaCekYatir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMLAR\frm_ParaCekYatir.Designer.cs">
       <DependentUpon>frm_ParaCekYatir.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_PersonelGiris.cs">
+    <Compile Include="FORMLAR\frm_PersonelGiris.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_PersonelGiris.Designer.cs">
+    <Compile Include="FORMLAR\frm_PersonelGiris.Designer.cs">
       <DependentUpon>frm_PersonelGiris.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_YeniHesapOlustur.cs">
+    <Compile Include="FORMLAR\frm_YeniHesapOlustur.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_YeniHesapOlustur.Designer.cs">
+    <Compile Include="FORMLAR\frm_YeniHesapOlustur.Designer.cs">
       <DependentUpon>frm_YeniHesapOlustur.cs</DependentUpon>
     </Compile>
+    <Compile Include="CUSTOM_CLASSES\HesapIslemleri.cs" />
     <Compile Include="islemler_BankaHesaplari.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -149,7 +186,7 @@
     <Compile Include="Kkart_Hesaplari.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="HesapIslemleri.cs" />
+    <Compile Include="CUSTOM_CLASSES\LogIslemleri.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -165,6 +202,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="CUSTOM_CLASSES\MusteriIslemleri.cs" />
     <Compile Include="Musteriler.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -179,40 +217,50 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frm_HesapGoruntule.resx">
+    <EmbeddedResource Include="FORMLAR\frm_HesapGoruntule.resx">
       <DependentUpon>frm_HesapGoruntule.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_GecisHesapOlustur.resx">
+    <EmbeddedResource Include="FORMLAR\frm_GecisHesapOlustur.resx">
       <DependentUpon>frm_GecisHesapOlustur.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_GirisSecimi.resx">
+    <EmbeddedResource Include="FORMLAR\frm_GirisSecimi.resx">
       <DependentUpon>frm_GirisSecimi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_AnaSayfa.resx">
+    <EmbeddedResource Include="FORMLAR\frm_AnaSayfa.resx">
       <DependentUpon>frm_AnaSayfa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_HesapOlustur.resx">
+    <EmbeddedResource Include="FORMLAR\frm_HesapOlustur.resx">
       <DependentUpon>frm_HesapOlustur.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_HesapSil.resx">
+    <EmbeddedResource Include="FORMLAR\frm_HesapRaporuAl.resx">
+      <DependentUpon>frm_HesapRaporuAl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMLAR\frm_HesapSil.resx">
       <DependentUpon>frm_HesapSil.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_KkartConfig.resx">
+    <EmbeddedResource Include="FORMLAR\frm_KkartConfig.resx">
       <DependentUpon>frm_KkartConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_MusteriGiris.resx">
+    <EmbeddedResource Include="FORMLAR\frm_MusteriBilgileriniGoruntuleDuzenle.resx">
+      <DependentUpon>frm_MusteriBilgileriniGoruntuleDuzenle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMLAR\frm_MusteriGiris.resx">
       <DependentUpon>frm_MusteriGiris.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_ParaCekYatir.resx">
+    <EmbeddedResource Include="FORMLAR\frm_MusteriNoOgren.resx">
+      <DependentUpon>frm_MusteriNoOgren.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMLAR\frm_ParaCekYatir.resx">
       <DependentUpon>frm_ParaCekYatir.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_PersonelGiris.resx">
+    <EmbeddedResource Include="FORMLAR\frm_PersonelGiris.resx">
       <DependentUpon>frm_PersonelGiris.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_YeniHesapOlustur.resx">
+    <EmbeddedResource Include="FORMLAR\frm_YeniHesapOlustur.resx">
       <DependentUpon>frm_YeniHesapOlustur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -276,6 +324,19 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

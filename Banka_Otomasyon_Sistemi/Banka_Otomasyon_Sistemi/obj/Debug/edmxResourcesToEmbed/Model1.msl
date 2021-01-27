@@ -32,22 +32,24 @@
     <EntitySetMapping Name="islemler_BankaHesaplari">
       <EntityTypeMapping TypeName="BankDbModel.islemler_BankaHesaplari">
         <MappingFragment StoreEntitySet="islemler_BankaHesaplari">
-          <ScalarProperty Name="islemTarihi" ColumnName="islemTarihi" />
           <ScalarProperty Name="islemID" ColumnName="islemID" />
           <ScalarProperty Name="HesapNo" ColumnName="HesapNo" />
+          <ScalarProperty Name="islemTutari" ColumnName="islemTutari" />
           <ScalarProperty Name="islemAciklama" ColumnName="islemAciklama" />
           <ScalarProperty Name="islemKategori_id" ColumnName="islemKategori_id" />
+          <ScalarProperty Name="islemTarihi" ColumnName="islemTarihi" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="islemler_KrediHesaplari">
       <EntityTypeMapping TypeName="BankDbModel.islemler_KrediHesaplari">
         <MappingFragment StoreEntitySet="islemler_KrediHesaplari">
-          <ScalarProperty Name="islemTarihi" ColumnName="islemTarihi" />
           <ScalarProperty Name="islemID" ColumnName="islemID" />
           <ScalarProperty Name="HesapNo" ColumnName="HesapNo" />
+          <ScalarProperty Name="islemTutari" ColumnName="islemTutari" />
           <ScalarProperty Name="islemAciklama" ColumnName="islemAciklama" />
           <ScalarProperty Name="islemKategori_id" ColumnName="islemKategori_id" />
+          <ScalarProperty Name="islemTarihi" ColumnName="islemTarihi" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -62,13 +64,13 @@
     <EntitySetMapping Name="Kkart_Hesaplari">
       <EntityTypeMapping TypeName="BankDbModel.Kkart_Hesaplari">
         <MappingFragment StoreEntitySet="Kkart_Hesaplari">
-          <ScalarProperty Name="SonOdemeGunu" ColumnName="SonOdemeGunu" />
-          <ScalarProperty Name="HesapKesimGunu" ColumnName="HesapKesimGunu" />
           <ScalarProperty Name="KkartID" ColumnName="KkartID" />
           <ScalarProperty Name="KkartHesapNo" ColumnName="KkartHesapNo" />
           <ScalarProperty Name="KkartIban" ColumnName="KkartIban" />
           <ScalarProperty Name="Kkart_Limit" ColumnName="Kkart_Limit" />
           <ScalarProperty Name="Kkart_Borc" ColumnName="Kkart_Borc" />
+          <ScalarProperty Name="HesapKesimGunu" ColumnName="HesapKesimGunu" />
+          <ScalarProperty Name="SonOdemeGunu" ColumnName="SonOdemeGunu" />
           <ScalarProperty Name="HesapSahipTcno" ColumnName="HesapSahipTcno" />
         </MappingFragment>
       </EntityTypeMapping>

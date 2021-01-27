@@ -1,0 +1,161 @@
+﻿namespace Banka_Otomasyon_Sistemi
+{
+    partial class frm_HesapRaporuAl
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.btn_RaporAl = new System.Windows.Forms.Button();
+            this.txt_HesapNo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtg_HesapGoruntule = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.islemTutari = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.islemAciklama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.islemKategoriID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.islemTarihi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_HesapGoruntule)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // btn_RaporAl
+            // 
+            this.btn_RaporAl.BackColor = System.Drawing.Color.LightGreen;
+            this.btn_RaporAl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_RaporAl.Location = new System.Drawing.Point(495, 72);
+            this.btn_RaporAl.Name = "btn_RaporAl";
+            this.btn_RaporAl.Size = new System.Drawing.Size(99, 41);
+            this.btn_RaporAl.TabIndex = 52;
+            this.btn_RaporAl.Text = "Rapor Al";
+            this.btn_RaporAl.UseVisualStyleBackColor = false;
+            // 
+            // txt_HesapNo
+            // 
+            this.txt_HesapNo.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.txt_HesapNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txt_HesapNo.Location = new System.Drawing.Point(16, 39);
+            this.txt_HesapNo.MaxLength = 11;
+            this.txt_HesapNo.Name = "txt_HesapNo";
+            this.txt_HesapNo.ReadOnly = true;
+            this.txt_HesapNo.Size = new System.Drawing.Size(168, 26);
+            this.txt_HesapNo.TabIndex = 50;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 24);
+            this.label1.TabIndex = 49;
+            this.label1.Text = "Hesap No";
+            // 
+            // dtg_HesapGoruntule
+            // 
+            this.dtg_HesapGoruntule.AllowUserToAddRows = false;
+            this.dtg_HesapGoruntule.AllowUserToDeleteRows = false;
+            this.dtg_HesapGoruntule.AllowUserToResizeRows = false;
+            this.dtg_HesapGoruntule.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtg_HesapGoruntule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_HesapGoruntule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.islemTutari,
+            this.islemAciklama,
+            this.islemKategoriID,
+            this.islemTarihi});
+            this.dtg_HesapGoruntule.Location = new System.Drawing.Point(16, 119);
+            this.dtg_HesapGoruntule.Name = "dtg_HesapGoruntule";
+            this.dtg_HesapGoruntule.ReadOnly = true;
+            this.dtg_HesapGoruntule.Size = new System.Drawing.Size(578, 331);
+            this.dtg_HesapGoruntule.TabIndex = 53;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Location = new System.Drawing.Point(12, 92);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(177, 24);
+            this.label2.TabIndex = 54;
+            this.label2.Text = "Hesap Hareketleri";
+            // 
+            // islemTutari
+            // 
+            this.islemTutari.DataPropertyName = "islemTutari";
+            this.islemTutari.HeaderText = "İşlem Tutarı";
+            this.islemTutari.Name = "islemTutari";
+            this.islemTutari.ReadOnly = true;
+            // 
+            // islemAciklama
+            // 
+            this.islemAciklama.DataPropertyName = "islemAciklama";
+            this.islemAciklama.HeaderText = "Açıklama";
+            this.islemAciklama.Name = "islemAciklama";
+            this.islemAciklama.ReadOnly = true;
+            // 
+            // islemKategoriID
+            // 
+            this.islemKategoriID.DataPropertyName = "islemKategoriID";
+            this.islemKategoriID.HeaderText = "Kategori";
+            this.islemKategoriID.Name = "islemKategoriID";
+            this.islemKategoriID.ReadOnly = true;
+            // 
+            // islemTarihi
+            // 
+            this.islemTarihi.DataPropertyName = "islemTarihi";
+            this.islemTarihi.HeaderText = "İşlem Tarihi";
+            this.islemTarihi.Name = "islemTarihi";
+            this.islemTarihi.ReadOnly = true;
+            // 
+            // frm_HesapRaporuAl
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(610, 461);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dtg_HesapGoruntule);
+            this.Controls.Add(this.btn_RaporAl);
+            this.Controls.Add(this.txt_HesapNo);
+            this.Controls.Add(this.label1);
+            this.Name = "frm_HesapRaporuAl";
+            this.Text = "frm_HesapRaporuAl";
+            this.Load += new System.EventHandler(this.frm_HesapRaporuAl_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_HesapGoruntule)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+        private System.Windows.Forms.Button btn_RaporAl;
+        private System.Windows.Forms.TextBox txt_HesapNo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dtg_HesapGoruntule;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn islemTutari;
+        private System.Windows.Forms.DataGridViewTextBoxColumn islemAciklama;
+        private System.Windows.Forms.DataGridViewTextBoxColumn islemKategoriID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn islemTarihi;
+    }
+}

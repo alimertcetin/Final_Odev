@@ -35,11 +35,12 @@
     </Key>
     <Property Name="islemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="HesapNo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="islemTutari" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
+    <Property Name="islemKategori_id" Type="Int32" />
+    <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Banka_Hesaplari" Relationship="Self.FK_islemler_BankaHesap_Banka_Hesap" FromRole="islemler_BankaHesaplari" ToRole="Banka_Hesaplari" />
     <NavigationProperty Name="Kategoriler" Relationship="Self.FK_islemler_BankaHesaplari_Kategoriler" FromRole="islemler_BankaHesaplari" ToRole="Kategoriler" />
-    <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="islemler_KrediHesaplari">
     <Key>
@@ -47,11 +48,12 @@
     </Key>
     <Property Name="islemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="HesapNo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="islemTutari" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
+    <Property Name="islemKategori_id" Type="Int32" />
+    <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Kkart_Hesaplari" Relationship="Self.FK_islemler_KrediHesap_Kkredi_Hesap" FromRole="islemler_KrediHesaplari" ToRole="Kkart_Hesaplari" />
     <NavigationProperty Name="Kategoriler" Relationship="Self.FK_islemler_KrediHesaplari_Kategoriler" FromRole="islemler_KrediHesaplari" ToRole="Kategoriler" />
-    <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="Kategoriler">
     <Key>
@@ -71,11 +73,10 @@
     <Property Name="KkartIban" Type="String" MaxLength="26" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Kkart_Limit" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="Kkart_Borc" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="HesapSahipTcno" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="islemler_KrediHesaplari" Relationship="Self.FK_islemler_KrediHesap_Kkredi_Hesap" FromRole="Kkart_Hesaplari" ToRole="islemler_KrediHesaplari" />
-    <NavigationProperty Name="Musteriler" Relationship="Self.FK_Kkredi_Hesap_Musteriler" FromRole="Kkart_Hesaplari" ToRole="Musteriler" />
     <Property Name="HesapKesimGunu" Type="Int32" Nullable="false" />
     <Property Name="SonOdemeGunu" Type="Int32" Nullable="false" />
+    <Property Name="HesapSahipTcno" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="islemler_KrediHesaplari" Relationship="Self.FK_islemler_KrediHesap_Kkredi_Hesap" FromRole="Kkart_Hesaplari" ToRole="islemler_KrediHesaplari" />
   </EntityType>
   <EntityType Name="Musteriler">
     <Key>
@@ -91,7 +92,6 @@
     <Property Name="m_Rolid" Type="Int32" Nullable="false" />
     <Property Name="m_Sifre" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Banka_Hesaplari" Relationship="Self.FK_Banka_Hesap_Musteriler" FromRole="Musteriler" ToRole="Banka_Hesaplari" />
-    <NavigationProperty Name="Kkart_Hesaplari" Relationship="Self.FK_Kkredi_Hesap_Musteriler" FromRole="Musteriler" ToRole="Kkart_Hesaplari" />
     <NavigationProperty Name="Roller" Relationship="Self.FK_Musteriler_Roller" FromRole="Musteriler" ToRole="Roller" />
   </EntityType>
   <EntityType Name="Roller">
@@ -150,7 +150,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_islemler_BankaHesaplari_Kategoriler">
-    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
+    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="0..1" />
     <End Role="islemler_BankaHesaplari" Type="Self.islemler_BankaHesaplari" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Kategoriler">
@@ -174,7 +174,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_islemler_KrediHesaplari_Kategoriler">
-    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
+    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="0..1" />
     <End Role="islemler_KrediHesaplari" Type="Self.islemler_KrediHesaplari" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Kategoriler">
@@ -182,18 +182,6 @@
       </Principal>
       <Dependent Role="islemler_KrediHesaplari">
         <PropertyRef Name="islemKategori_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Kkredi_Hesap_Musteriler">
-    <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="1" />
-    <End Role="Kkart_Hesaplari" Type="Self.Kkart_Hesaplari" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Musteriler">
-        <PropertyRef Name="m_TcNo" />
-      </Principal>
-      <Dependent Role="Kkart_Hesaplari">
-        <PropertyRef Name="HesapSahipTcno" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -242,10 +230,6 @@
     <AssociationSet Name="FK_islemler_KrediHesaplari_Kategoriler" Association="Self.FK_islemler_KrediHesaplari_Kategoriler">
       <End Role="Kategoriler" EntitySet="Kategoriler" />
       <End Role="islemler_KrediHesaplari" EntitySet="islemler_KrediHesaplari" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Kkredi_Hesap_Musteriler" Association="Self.FK_Kkredi_Hesap_Musteriler">
-      <End Role="Musteriler" EntitySet="Musteriler" />
-      <End Role="Kkart_Hesaplari" EntitySet="Kkart_Hesaplari" />
     </AssociationSet>
     <AssociationSet Name="FK_Musteriler_Roller" Association="Self.FK_Musteriler_Roller">
       <End Role="Roller" EntitySet="Roller" />

@@ -25,12 +25,11 @@ namespace Banka_Otomasyon_Sistemi
         public string KkartIban { get; set; }
         public decimal Kkart_Limit { get; set; }
         public Nullable<decimal> Kkart_Borc { get; set; }
-        public string HesapSahipTcno { get; set; }
         public int HesapKesimGunu { get; set; }
         public int SonOdemeGunu { get; set; }
+        public string HesapSahipTcno { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<islemler_KrediHesaplari> islemler_KrediHesaplari { get; set; }
-        public virtual Musteriler Musteriler { get; set; }
     }
 }

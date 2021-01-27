@@ -32,8 +32,9 @@
     </Key>
     <Property Name="islemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="HesapNo" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="islemTutari" Type="money" Nullable="false" />
     <Property Name="islemAciklama" Type="nvarchar" MaxLength="100" />
-    <Property Name="islemKategori_id" Type="int" Nullable="false" />
+    <Property Name="islemKategori_id" Type="int" />
     <Property Name="islemTarihi" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="islemler_KrediHesaplari">
@@ -42,8 +43,9 @@
     </Key>
     <Property Name="islemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="HesapNo" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="islemTutari" Type="money" Nullable="false" />
     <Property Name="islemAciklama" Type="nvarchar" MaxLength="100" />
-    <Property Name="islemKategori_id" Type="int" Nullable="false" />
+    <Property Name="islemKategori_id" Type="int" />
     <Property Name="islemTarihi" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Kategoriler">
@@ -134,7 +136,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_islemler_BankaHesaplari_Kategoriler">
-    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
+    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="0..1" />
     <End Role="islemler_BankaHesaplari" Type="Self.islemler_BankaHesaplari" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Kategoriler">
@@ -158,7 +160,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_islemler_KrediHesaplari_Kategoriler">
-    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
+    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="0..1" />
     <End Role="islemler_KrediHesaplari" Type="Self.islemler_KrediHesaplari" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Kategoriler">

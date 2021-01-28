@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_HesapRaporuAl));
             this.btn_RaporAl = new System.Windows.Forms.Button();
             this.txt_HesapNo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,6 +42,8 @@
             this.dtp_Bitis = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_HesapGoruntule)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,6 +57,7 @@
             this.btn_RaporAl.TabIndex = 52;
             this.btn_RaporAl.Text = "Rapor Al";
             this.btn_RaporAl.UseVisualStyleBackColor = false;
+            this.btn_RaporAl.Click += new System.EventHandler(this.btn_RaporAl_Click);
             // 
             // txt_HesapNo
             // 
@@ -171,6 +175,21 @@
             this.label4.TabIndex = 58;
             this.label4.Text = "Bitiş";
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
             // frm_HesapRaporuAl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,5 +227,7 @@
         private System.Windows.Forms.DateTimePicker dtp_Bitis;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

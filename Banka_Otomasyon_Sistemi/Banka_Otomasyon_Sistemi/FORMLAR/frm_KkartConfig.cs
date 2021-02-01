@@ -8,7 +8,7 @@ namespace Banka_Otomasyon_Sistemi
         Musteriler musteri;
         BankDbEntities vt;
         bool KisiKayitEdilecek;
-        public frm_KkartConfig(BankDbEntities _vt, Musteriler _musteri,bool KisiyiKaydet) //musterinin kontrolleri yapıldı. Kayıt edilmeye hazır.
+        public frm_KkartConfig(BankDbEntities _vt, Musteriler _musteri,bool KisiyiKaydet)
         {
             InitializeComponent();
 
@@ -34,7 +34,10 @@ namespace Banka_Otomasyon_Sistemi
             vt.Kkart_Hesaplari.Add(kh);
             var savedChanges = vt.SaveChanges();
             if (savedChanges > 0)
+            {
                 MessageBox.Show("İşlem başarıyla tamamlandı. ", "Tebrikler!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
             else MessageBox.Show("Bir sorun oluştu.", "HATA!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 

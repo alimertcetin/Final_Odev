@@ -63,6 +63,13 @@ namespace Banka_Otomasyon_Sistemi
 
         private void btn_Onayla_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txt_Ad.Text))
+            {
+                MessageBox.Show("Doğru bir müşteri numarası girdiğinizden emin olun ve " +
+                       "Giriş(Enter) tuşuna basın.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             BankDbEntities vt = new BankDbEntities();
             var musteri = vt.Musteriler.FirstOrDefault(p => p.MusteriNo == txt_MusteriNo.Text);
             if (musteri == null)
@@ -95,7 +102,7 @@ namespace Banka_Otomasyon_Sistemi
             var musteri = vt.Musteriler.FirstOrDefault(p => p.MusteriNo == txt_MusteriNo.Text);
             if (musteri == null || string.IsNullOrEmpty(txt_Ad.Text))
                 MessageBox.Show("Doğru bir müşteri numarası girdiğinizden emin olun ve " +
-                    "Enter tuşuna basın.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    "Giriş(Enter) tuşuna basın.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
                 var result = MessageBox.Show("Bu müşteriyi ve açık olan tüm hesaplarını silmek istediğinizden emin misiniz?",
@@ -182,6 +189,9 @@ namespace Banka_Otomasyon_Sistemi
                     }
                 }
             }
+
+            AlanlarıTemizle();
+
         }
     }
 }

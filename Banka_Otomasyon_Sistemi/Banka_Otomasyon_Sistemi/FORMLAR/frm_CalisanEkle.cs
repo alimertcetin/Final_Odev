@@ -30,12 +30,20 @@ namespace Banka_Otomasyon_Sistemi
         {
             if (!decimal.TryParse(txt_Maas.Text, out decimal maas))
             {
-                MessageBox.Show("Geçerisz maaş girişi", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (string.IsNullOrEmpty(txt_Maas.Text))
+                    MessageBox.Show("Geçerisz maaş alanı boş bırakılamaz!", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("Geçerisz maaş girişi", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return;
             }
             if (!decimal.TryParse(txt_Prim.Text, out decimal prim))
             {
-                MessageBox.Show("Geçerisz maaş girişi", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (string.IsNullOrEmpty(txt_Prim.Text))
+                    MessageBox.Show("Geçerisz prim alanı boş bırakılamaz!", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("Geçerisz prim girişi", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return;
             }
 

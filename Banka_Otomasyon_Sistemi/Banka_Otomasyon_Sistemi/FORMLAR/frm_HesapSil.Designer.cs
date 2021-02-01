@@ -28,14 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label7 = new System.Windows.Forms.Label();
-            this.txt_SifreTekrar = new System.Windows.Forms.TextBox();
             this.btn_sil = new System.Windows.Forms.Button();
-            this.txt_Sifre = new System.Windows.Forms.TextBox();
             this.txt_Soyad = new System.Windows.Forms.TextBox();
             this.txt_Ad = new System.Windows.Forms.TextBox();
             this.txt_MusteriNo = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,45 +42,17 @@
             this.lbl_Enter = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label7.Location = new System.Drawing.Point(49, 219);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(130, 24);
-            this.label7.TabIndex = 31;
-            this.label7.Text = "Şifre Tekrar :";
-            // 
-            // txt_SifreTekrar
-            // 
-            this.txt_SifreTekrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txt_SifreTekrar.Location = new System.Drawing.Point(190, 219);
-            this.txt_SifreTekrar.Name = "txt_SifreTekrar";
-            this.txt_SifreTekrar.PasswordChar = '*';
-            this.txt_SifreTekrar.Size = new System.Drawing.Size(200, 26);
-            this.txt_SifreTekrar.TabIndex = 32;
-            // 
             // btn_sil
             // 
             this.btn_sil.BackColor = System.Drawing.Color.Brown;
             this.btn_sil.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_sil.Location = new System.Drawing.Point(11, 254);
+            this.btn_sil.Location = new System.Drawing.Point(289, 183);
             this.btn_sil.Name = "btn_sil";
             this.btn_sil.Size = new System.Drawing.Size(99, 41);
             this.btn_sil.TabIndex = 30;
             this.btn_sil.Text = "SİL";
             this.btn_sil.UseVisualStyleBackColor = false;
             this.btn_sil.Click += new System.EventHandler(this.btn_sil_Click);
-            // 
-            // txt_Sifre
-            // 
-            this.txt_Sifre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txt_Sifre.Location = new System.Drawing.Point(190, 187);
-            this.txt_Sifre.Name = "txt_Sifre";
-            this.txt_Sifre.PasswordChar = '*';
-            this.txt_Sifre.Size = new System.Drawing.Size(200, 26);
-            this.txt_Sifre.TabIndex = 27;
             // 
             // txt_Soyad
             // 
@@ -114,16 +82,6 @@
             this.txt_MusteriNo.TabIndex = 23;
             this.txt_MusteriNo.TextChanged += new System.EventHandler(this.txt_MusteriNo_TextChanged);
             this.txt_MusteriNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_MusteriNo_KeyPress);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(115, 187);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 24);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "Şifre :";
             // 
             // label4
             // 
@@ -245,19 +203,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 301);
+            this.ClientSize = new System.Drawing.Size(400, 232);
             this.Controls.Add(this.lbl_Enter);
             this.Controls.Add(this.cmb_SilinecekHesap);
             this.Controls.Add(this.dtp_DogumTarihi);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.txt_SifreTekrar);
             this.Controls.Add(this.btn_sil);
-            this.Controls.Add(this.txt_Sifre);
             this.Controls.Add(this.txt_Soyad);
             this.Controls.Add(this.txt_Ad);
             this.Controls.Add(this.txt_MusteriNo);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -270,15 +224,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txt_SifreTekrar;
         private System.Windows.Forms.Button btn_sil;
-        private System.Windows.Forms.TextBox txt_Sifre;
         private System.Windows.Forms.TextBox txt_Soyad;
         private System.Windows.Forms.TextBox txt_Ad;
         private System.Windows.Forms.TextBox txt_MusteriNo;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;

@@ -38,7 +38,6 @@
             this.müşteriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.müşteriBilgileriniGörüntüleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.müşteriNoOgrenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.müsteriSifresiniGuncelleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_Yonetici = new System.Windows.Forms.MenuStrip();
             this.çalışanİşlemleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.çalışanlarıGörüntüleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,7 +78,7 @@
             // çıkışToolStripMenuItem
             // 
             this.çıkışToolStripMenuItem.Name = "çıkışToolStripMenuItem";
-            this.çıkışToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.çıkışToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
             this.çıkışToolStripMenuItem.Text = "Çıkış";
             this.çıkışToolStripMenuItem.Click += new System.EventHandler(this.çıkışToolStripMenuItem_Click);
             // 
@@ -118,8 +117,7 @@
             // 
             this.müşteriToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.müşteriBilgileriniGörüntüleToolStripMenuItem,
-            this.müşteriNoOgrenToolStripMenuItem,
-            this.müsteriSifresiniGuncelleToolStripMenuItem});
+            this.müşteriNoOgrenToolStripMenuItem});
             this.müşteriToolStripMenuItem.Name = "müşteriToolStripMenuItem";
             this.müşteriToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
             this.müşteriToolStripMenuItem.Text = "Müşteri İşlemleri";
@@ -137,13 +135,6 @@
             this.müşteriNoOgrenToolStripMenuItem.Size = new System.Drawing.Size(312, 22);
             this.müşteriNoOgrenToolStripMenuItem.Text = "Müşteri Numarası Öğren";
             this.müşteriNoOgrenToolStripMenuItem.Click += new System.EventHandler(this.müşteriyiBilgisiniSilToolStripMenuItem_Click);
-            // 
-            // müsteriSifresiniGuncelleToolStripMenuItem
-            // 
-            this.müsteriSifresiniGuncelleToolStripMenuItem.Name = "müsteriSifresiniGuncelleToolStripMenuItem";
-            this.müsteriSifresiniGuncelleToolStripMenuItem.Size = new System.Drawing.Size(312, 22);
-            this.müsteriSifresiniGuncelleToolStripMenuItem.Text = "Müşteri Şifresini Güncelle";
-            this.müsteriSifresiniGuncelleToolStripMenuItem.Click += new System.EventHandler(this.müsteriSifresiniGuncelleToolStripMenuItem_Click);
             // 
             // menu_Yonetici
             // 
@@ -209,7 +200,7 @@
             // şifreDeğiştirToolStripMenuItem
             // 
             this.şifreDeğiştirToolStripMenuItem.Name = "şifreDeğiştirToolStripMenuItem";
-            this.şifreDeğiştirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.şifreDeğiştirToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.şifreDeğiştirToolStripMenuItem.Text = "Şifremi Güncelle";
             this.şifreDeğiştirToolStripMenuItem.Click += new System.EventHandler(this.şifreDeğiştirToolStripMenuItem_Click);
             // 
@@ -224,7 +215,7 @@
             // ödemeYapToolStripMenuItem
             // 
             this.ödemeYapToolStripMenuItem.Name = "ödemeYapToolStripMenuItem";
-            this.ödemeYapToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ödemeYapToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.ödemeYapToolStripMenuItem.Text = "Ödeme Yap";
             this.ödemeYapToolStripMenuItem.Click += new System.EventHandler(this.ödemeYapToolStripMenuItem_Click);
             // 
@@ -286,7 +277,6 @@
         private System.Windows.Forms.ToolStripMenuItem müşteriToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem müşteriBilgileriniGörüntüleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem müşteriNoOgrenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem müsteriSifresiniGuncelleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dosyaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem çıkışToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kullanıcıİşlemleriToolStripMenuItem;

@@ -23,7 +23,7 @@ namespace Banka_Otomasyon_Sistemi
             if (e.KeyChar == Convert.ToChar(13))
             {
                 BankDbEntities vt = new BankDbEntities();
-                if (!MusteriIslemleri.KisiVeritabanındaVarMi(vt, txt_MusteriNo.Text, out Musteriler musteri))
+                if (!KisiIslemleri.MusteriVeritabanindaVarMi(vt, txt_MusteriNo.Text, out Musteriler musteri))
                     MessageBox.Show("Bu numarayla kayıtlı bir müşteri bulunamadı.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else
                 {
@@ -43,11 +43,10 @@ namespace Banka_Otomasyon_Sistemi
                 AlanlarıTemizle();
                 SetReadOnly(true);
             }
+
+            lbl_Enter.Visible = string.IsNullOrEmpty(txt_MusteriNo.Text) ? false : true;
         }
 
-        /// <summary>
-        /// Ad, Soyad ve Şifre texlerinin ReadOnly değerlerini değiştirir.
-        /// </summary>
         private void SetReadOnly(bool readOnly)
         {
             txt_Ad.ReadOnly = readOnly;
@@ -99,7 +98,7 @@ namespace Banka_Otomasyon_Sistemi
                     "Enter tuşuna basın.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
-                var result = MessageBox.Show("Bu müşteriyi ve açık olan tüm hesaplarını silemk istediğinizden emin misiniz?",
+                var result = MessageBox.Show("Bu müşteriyi ve açık olan tüm hesaplarını silmek istediğinizden emin misiniz?",
                     "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
@@ -152,7 +151,7 @@ namespace Banka_Otomasyon_Sistemi
                     }
                     if (borcluKkartHesaplari.Count > 0)
                     {
-                        MessageBox.Show("Borçlu olduğu kredi hesapları mevuct olduğu için müşteri sistemden silinemiyor.",
+                        MessageBox.Show("Borçlu olduğu kredi hesapları mevcut olduğu için müşteri sistemden silinemiyor.",
                             "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         MessageBox.Show("İşlem sonucunda müşterinin açık banka hesaplarından" +
                             " kredi borçlarının bir kısmı otomatik olarak ödenmiş olabilir.",

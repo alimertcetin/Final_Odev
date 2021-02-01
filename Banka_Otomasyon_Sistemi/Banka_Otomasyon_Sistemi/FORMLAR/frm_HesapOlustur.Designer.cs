@@ -44,6 +44,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbl_Enter = new System.Windows.Forms.Label();
             this.grpbx_HesapSecim.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             // 
             this.btn_olustur.BackColor = System.Drawing.Color.LightGreen;
             this.btn_olustur.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_olustur.Location = new System.Drawing.Point(286, 273);
+            this.btn_olustur.Location = new System.Drawing.Point(286, 293);
             this.btn_olustur.Name = "btn_olustur";
             this.btn_olustur.Size = new System.Drawing.Size(99, 41);
             this.btn_olustur.TabIndex = 30;
@@ -85,7 +86,7 @@
             // 
             this.grpbx_HesapSecim.Controls.Add(this.rb_Banka);
             this.grpbx_HesapSecim.Controls.Add(this.rb_Kredi);
-            this.grpbx_HesapSecim.Location = new System.Drawing.Point(12, 246);
+            this.grpbx_HesapSecim.Location = new System.Drawing.Point(12, 266);
             this.grpbx_HesapSecim.Name = "grpbx_HesapSecim";
             this.grpbx_HesapSecim.Size = new System.Drawing.Size(197, 92);
             this.grpbx_HesapSecim.TabIndex = 29;
@@ -94,7 +95,7 @@
             // dtp_DogumTarihi
             // 
             this.dtp_DogumTarihi.Enabled = false;
-            this.dtp_DogumTarihi.Location = new System.Drawing.Point(185, 131);
+            this.dtp_DogumTarihi.Location = new System.Drawing.Point(185, 151);
             this.dtp_DogumTarihi.Name = "dtp_DogumTarihi";
             this.dtp_DogumTarihi.Size = new System.Drawing.Size(200, 20);
             this.dtp_DogumTarihi.TabIndex = 28;
@@ -102,7 +103,7 @@
             // txt_Sifre
             // 
             this.txt_Sifre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txt_Sifre.Location = new System.Drawing.Point(185, 208);
+            this.txt_Sifre.Location = new System.Drawing.Point(185, 228);
             this.txt_Sifre.Name = "txt_Sifre";
             this.txt_Sifre.PasswordChar = '*';
             this.txt_Sifre.Size = new System.Drawing.Size(200, 26);
@@ -111,7 +112,7 @@
             // txt_DogumYeri
             // 
             this.txt_DogumYeri.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txt_DogumYeri.Location = new System.Drawing.Point(185, 169);
+            this.txt_DogumYeri.Location = new System.Drawing.Point(185, 189);
             this.txt_DogumYeri.Name = "txt_DogumYeri";
             this.txt_DogumYeri.ReadOnly = true;
             this.txt_DogumYeri.Size = new System.Drawing.Size(200, 26);
@@ -120,7 +121,7 @@
             // txt_Soyad
             // 
             this.txt_Soyad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txt_Soyad.Location = new System.Drawing.Point(185, 90);
+            this.txt_Soyad.Location = new System.Drawing.Point(185, 110);
             this.txt_Soyad.Name = "txt_Soyad";
             this.txt_Soyad.ReadOnly = true;
             this.txt_Soyad.Size = new System.Drawing.Size(200, 26);
@@ -129,7 +130,7 @@
             // txt_Ad
             // 
             this.txt_Ad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txt_Ad.Location = new System.Drawing.Point(185, 50);
+            this.txt_Ad.Location = new System.Drawing.Point(185, 70);
             this.txt_Ad.Name = "txt_Ad";
             this.txt_Ad.ReadOnly = true;
             this.txt_Ad.Size = new System.Drawing.Size(200, 26);
@@ -138,18 +139,19 @@
             // txt_MusteriNo
             // 
             this.txt_MusteriNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txt_MusteriNo.Location = new System.Drawing.Point(185, 9);
+            this.txt_MusteriNo.Location = new System.Drawing.Point(185, 29);
             this.txt_MusteriNo.MaxLength = 11;
             this.txt_MusteriNo.Name = "txt_MusteriNo";
             this.txt_MusteriNo.Size = new System.Drawing.Size(200, 26);
             this.txt_MusteriNo.TabIndex = 23;
             this.txt_MusteriNo.TextChanged += new System.EventHandler(this.txt_MusteriNo_TextChanged);
+            this.txt_MusteriNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_MusteriNo_KeyPress);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(96, 208);
+            this.label6.Location = new System.Drawing.Point(96, 228);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 24);
             this.label6.TabIndex = 22;
@@ -159,7 +161,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(28, 169);
+            this.label5.Location = new System.Drawing.Point(28, 189);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(132, 24);
             this.label5.TabIndex = 21;
@@ -169,7 +171,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(12, 129);
+            this.label4.Location = new System.Drawing.Point(12, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(148, 24);
             this.label4.TabIndex = 20;
@@ -179,7 +181,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(60, 90);
+            this.label3.Location = new System.Drawing.Point(60, 110);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 24);
             this.label3.TabIndex = 19;
@@ -189,7 +191,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(101, 50);
+            this.label2.Location = new System.Drawing.Point(101, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 24);
             this.label2.TabIndex = 18;
@@ -199,17 +201,30 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(37, 9);
+            this.label1.Location = new System.Drawing.Point(37, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 24);
             this.label1.TabIndex = 17;
             this.label1.Text = "Müşteri No :";
             // 
+            // lbl_Enter
+            // 
+            this.lbl_Enter.AutoSize = true;
+            this.lbl_Enter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_Enter.ForeColor = System.Drawing.Color.Firebrick;
+            this.lbl_Enter.Location = new System.Drawing.Point(338, 9);
+            this.lbl_Enter.Name = "lbl_Enter";
+            this.lbl_Enter.Size = new System.Drawing.Size(47, 17);
+            this.lbl_Enter.TabIndex = 76;
+            this.lbl_Enter.Text = "Enter";
+            this.lbl_Enter.Visible = false;
+            // 
             // frm_HesapOlustur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 337);
+            this.ClientSize = new System.Drawing.Size(399, 360);
+            this.Controls.Add(this.lbl_Enter);
             this.Controls.Add(this.btn_olustur);
             this.Controls.Add(this.grpbx_HesapSecim);
             this.Controls.Add(this.dtp_DogumTarihi);
@@ -250,5 +265,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_Enter;
     }
 }

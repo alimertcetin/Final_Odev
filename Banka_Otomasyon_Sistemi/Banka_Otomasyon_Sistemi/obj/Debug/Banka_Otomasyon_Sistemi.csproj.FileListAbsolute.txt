@@ -137,3 +137,12 @@ C:\Users\mrtme\Desktop\Dersler\Görsel Programlama II\Final_Odev\Banka_Otomasyon
 C:\Users\mrtme\Desktop\Dersler\Görsel Programlama II\Final_Odev\Banka_Otomasyon_Sistemi\Banka_Otomasyon_Sistemi\obj\Debug\Banka_Otomasyon_Sistemi.frm_MusteriBilgileriniGoruntuleDuzenle.resources
 C:\Users\mrtme\Desktop\Dersler\Görsel Programlama II\Final_Odev\Banka_Otomasyon_Sistemi\Banka_Otomasyon_Sistemi\obj\Debug\Banka_Otomasyon_Sistemi.frm_MusteriNoOgren.resources
 C:\Users\mrtme\Desktop\Dersler\Görsel Programlama II\Final_Odev\Banka_Otomasyon_Sistemi\Banka_Otomasyon_Sistemi\obj\Debug\Banka_Otomasyon_Sistemi.frm_HesapRaporuAl.resources
+C:\Users\mrtme\Desktop\Dersler\Görsel Programlama II\Final_Odev\Banka_Otomasyon_Sistemi\Banka_Otomasyon_Sistemi\obj\Debug\Banka_Otomasyon_Sistemi.frm_CalisanlariGoruntule.resources
+C:\Users\mrtme\Desktop\Dersler\Görsel Programlama II\Final_Odev\Banka_Otomasyon_Sistemi\Banka_Otomasyon_Sistemi\obj\Debug\Banka_Otomasyon_Sistemi.frm_CalisanEkle.resources
+C:\Users\mrtme\Desktop\Dersler\Görsel Programlama II\Final_Odev\Banka_Otomasyon_Sistemi\Banka_Otomasyon_Sistemi\obj\Debug\Banka_Otomasyon_Sistemi.frm_CalisanGuncelle.resources
+C:\Users\mrtme\Desktop\Dersler\Görsel Programlama II\Final_Odev\Banka_Otomasyon_Sistemi\Banka_Otomasyon_Sistemi\obj\Debug\Banka_Otomasyon_Sistemi.frm_MusteriSifreGuncelle.resources
+C:\Users\mrtme\Desktop\Dersler\Görsel Programlama II\Final_Odev\Banka_Otomasyon_Sistemi\Banka_Otomasyon_Sistemi\obj\Debug\Banka_Otomasyon_Sistemi.frm_OdemeYap.resources
+C:\Users\mrtme\Desktop\Dersler\Görsel Programlama II\Final_Odev\Banka_Otomasyon_Sistemi\Banka_Otomasyon_Sistemi\obj\Debug\RdlCompile.cache
+C:\Users\mrtme\Desktop\Dersler\Görsel Programlama II\Final_Odev\Banka_Otomasyon_Sistemi\Banka_Otomasyon_Sistemi\obj\Debug\RdlCompile.compiled
+C:\Users\mrtme\Desktop\Dersler\Görsel Programlama II\Final_Odev\Banka_Otomasyon_Sistemi\Banka_Otomasyon_Sistemi\obj\Debug\Banka_Otomasyon_Sistemi.frm_KategorilereGoreRapor.resources
+C:\Users\mrtme\Desktop\Dersler\Görsel Programlama II\Final_Odev\Banka_Otomasyon_Sistemi\Banka_Otomasyon_Sistemi\obj\Debug\Banka_Otomasyon_Sistemi.frm_KrediEkstre.resources

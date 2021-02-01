@@ -12,11 +12,23 @@ namespace Banka_Otomasyon_Sistemi
     using System;
     using System.Collections.Generic;
     
-    public partial class Vislemler_Banka
+    public partial class v_Ekstre
     {
+        public long KkartID { get; set; }
+        public string KkartHesapNo { get; set; }
+        public string KkartIban { get; set; }
+        public decimal Kkart_Limit { get; set; }
+        public decimal Kkart_Borc { get; set; }
+        public int HesapKesimGunu { get; set; }
+        public int SonOdemeGunu { get; set; }
+        public string HesapSahipTcno { get; set; }
+        public int KategoriID { get; set; }
+        public string KategoriAd { get; set; }
+        public int islemID { get; set; }
+        public string HesapNo { get; set; }
         public decimal islemTutari { get; set; }
         public string islemAciklama { get; set; }
+        public int islemKategori_id { get; set; }
         public System.DateTime islemTarihi { get; set; }
-        public string KategoriAd { get; set; }
     }
 }

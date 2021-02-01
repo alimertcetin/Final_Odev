@@ -80,6 +80,9 @@
     <Compile Include="Banka_Hesaplari.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="BankHesap_Harcama_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Calisanlar.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -89,6 +92,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="CUSTOM_CLASSES\FormYonetimi.cs" />
+    <Compile Include="FORMLAR\frm_CalisanlariGoruntule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMLAR\frm_CalisanlariGoruntule.Designer.cs">
+      <DependentUpon>frm_CalisanlariGoruntule.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORMLAR\frm_HesapGoruntule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +183,42 @@
       <DependentUpon>frm_YeniHesapOlustur.cs</DependentUpon>
     </Compile>
     <Compile Include="CUSTOM_CLASSES\HesapIslemleri.cs" />
+    <Compile Include="FORMLAR\frm_CalisanGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMLAR\frm_CalisanGuncelle.Designer.cs">
+      <DependentUpon>frm_CalisanGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMLAR\frm_CalisanEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMLAR\frm_CalisanEkle.Designer.cs">
+      <DependentUpon>frm_CalisanEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMLAR\frm_MusteriSifreGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMLAR\frm_MusteriSifreGuncelle.Designer.cs">
+      <DependentUpon>frm_MusteriSifreGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMLAR\frm_OdemeYap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMLAR\frm_OdemeYap.Designer.cs">
+      <DependentUpon>frm_OdemeYap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMLAR\frm_KategorilereGoreRapor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMLAR\frm_KategorilereGoreRapor.Designer.cs">
+      <DependentUpon>frm_KategorilereGoreRapor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMLAR\frm_KrediEkstreRaporu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMLAR\frm_KrediEkstreRaporu.Designer.cs">
+      <DependentUpon>frm_KrediEkstreRaporu.cs</DependentUpon>
+    </Compile>
     <Compile Include="islemler_BankaHesaplari.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -202,7 +247,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="CUSTOM_CLASSES\MusteriIslemleri.cs" />
+    <Compile Include="CUSTOM_CLASSES\KisiIslemleri.cs" />
     <Compile Include="Musteriler.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -211,19 +256,37 @@
     <Compile Include="Roller.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_BankHesap_Harcama_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_KkartHesap_Harcama_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Vislemler_Banka.cs">
+    <Compile Include="v_BankaHesabiLog.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="v_Ekstre.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_KkartHesapHarcama.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_KrediHesaplari_ve_islemler_kredi.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FORMLAR\frm_CalisanlariGoruntule.resx">
+      <DependentUpon>frm_CalisanlariGoruntule.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FORMLAR\frm_HesapGoruntule.resx">
       <DependentUpon>frm_HesapGoruntule.cs</DependentUpon>
     </EmbeddedResource>
@@ -266,6 +329,26 @@
     <EmbeddedResource Include="FORMLAR\frm_YeniHesapOlustur.resx">
       <DependentUpon>frm_YeniHesapOlustur.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FORMLAR\frm_CalisanGuncelle.resx">
+      <DependentUpon>frm_CalisanGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMLAR\frm_CalisanEkle.resx">
+      <DependentUpon>frm_CalisanEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMLAR\frm_MusteriSifreGuncelle.resx">
+      <DependentUpon>frm_MusteriSifreGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMLAR\frm_OdemeYap.resx">
+      <DependentUpon>frm_OdemeYap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMLAR\frm_KategorilereGoreRapor.resx">
+      <DependentUpon>frm_KategorilereGoreRapor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMLAR\frm_KrediEkstreRaporu.resx">
+      <DependentUpon>frm_KrediEkstreRaporu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KrediEkstreRaporu.rdlc" />
+    <EmbeddedResource Include="MusteriHarcamaRaporu.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -283,19 +366,18 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="islemler_KrediHesaplari.datasource" />
+    <None Include="Kkart_Hesaplari.datasource" />
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
-    </None>
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="sp_KkartHesap_Harcama_Result.datasource" />
+    <None Include="v_Ekstre.datasource" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

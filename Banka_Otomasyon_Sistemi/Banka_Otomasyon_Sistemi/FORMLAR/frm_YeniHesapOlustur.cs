@@ -10,14 +10,6 @@ namespace Banka_Otomasyon_Sistemi
         public frm_YeniHesapOlustur()
         {
             InitializeComponent();
-            //-----------------------Debug---------------------\\
-            txt_TcNo.Text = "57559386086";
-            txt_Ad.Text = "Ali";
-            txt_Soyad.Text = "Çetin";
-            txt_DogumYeri.Text = "Sakarya";
-            txt_Sifre.Text = "123456";
-            txt_SifreTekrar.Text = "123456";
-            dateTimePicker1.Value = new DateTime(1998, 11, 20);
         }
 
         private void btn_olustur_Click(object sender, EventArgs e)
@@ -43,7 +35,7 @@ namespace Banka_Otomasyon_Sistemi
             else if (!long.TryParse(tcNo, out long ltcNo) || tcNo.Length != 11)
                 MessageBox.Show("Tc No geçerli değil.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-            else if (MusteriIslemleri.KisiVeritabanındaVarMi(vt, tcNo))
+            else if (KisiIslemleri.MusteriVeritabanindaVarMi(vt, tcNo))
                 MessageBox.Show("Daha önce böyle bir müşteri kayıt edilmiş! " +
                     "Lütfen daha önce hesap oluşturdum seçeneğini seçin " +
                     "ve hesap oluşturma işleminize oradan devam edin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -56,7 +48,7 @@ namespace Banka_Otomasyon_Sistemi
                         MessageBox.Show("Kimlik Bilgileri geçersiz. Lütfen bilgileri tekrar kontrol edin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
                     {
-                        Musteriler musteri = HesapIslemleri.MusteriOlustur(tcNo, ad, soyad, dogumYeri, sifre, dogumTarihi);
+                        Musteriler musteri = KisiIslemleri.MusteriOlustur(vt, tcNo, ad, soyad, dogumYeri, sifre, dogumTarihi);
 
                         if (rb_Banka.Checked)
                         {
@@ -65,7 +57,7 @@ namespace Banka_Otomasyon_Sistemi
                         }
                         else
                         {
-                            FormYonetimi.FormBul("frm_KkartConfig", out List<Form> KkartConfigs);
+                            FormYonetimi.FormlariBul("frm_KkartConfig", out List<Form> KkartConfigs);
                             if (KkartConfigs.Count == 0)
                             {
                                 frm_KkartConfig frm_Kkart = new frm_KkartConfig(vt, musteri, true);

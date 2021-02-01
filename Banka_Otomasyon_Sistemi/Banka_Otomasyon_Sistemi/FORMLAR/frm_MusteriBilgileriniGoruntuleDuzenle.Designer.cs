@@ -41,6 +41,7 @@
             this.txt_DogumYeri = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dtp_DogumTarihi = new System.Windows.Forms.DateTimePicker();
+            this.lbl_Enter = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txt_MusteriNo
@@ -178,12 +179,25 @@
             this.dtp_DogumTarihi.Size = new System.Drawing.Size(200, 26);
             this.dtp_DogumTarihi.TabIndex = 68;
             // 
+            // lbl_Enter
+            // 
+            this.lbl_Enter.AutoSize = true;
+            this.lbl_Enter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_Enter.ForeColor = System.Drawing.Color.Firebrick;
+            this.lbl_Enter.Location = new System.Drawing.Point(169, 15);
+            this.lbl_Enter.Name = "lbl_Enter";
+            this.lbl_Enter.Size = new System.Drawing.Size(47, 17);
+            this.lbl_Enter.TabIndex = 73;
+            this.lbl_Enter.Text = "Enter";
+            this.lbl_Enter.Visible = false;
+            // 
             // frm_MusteriBilgileriniGoruntuleDuzenle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_iptalEt;
             this.ClientSize = new System.Drawing.Size(349, 312);
+            this.Controls.Add(this.lbl_Enter);
             this.Controls.Add(this.dtp_DogumTarihi);
             this.Controls.Add(this.txt_DogumYeri);
             this.Controls.Add(this.label6);
@@ -198,7 +212,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frm_MusteriBilgileriniGoruntuleDuzenle";
-            this.Text = "frm_MusteriBilgileriniGoruntuleDuzenle";
+            this.Text = "Müşteri Bilgilerini Düzenle";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,5 +232,6 @@
         private System.Windows.Forms.TextBox txt_DogumYeri;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtp_DogumTarihi;
+        private System.Windows.Forms.Label lbl_Enter;
     }
 }

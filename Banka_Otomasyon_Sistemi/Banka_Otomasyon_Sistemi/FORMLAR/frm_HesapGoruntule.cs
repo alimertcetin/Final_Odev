@@ -133,10 +133,10 @@ namespace Banka_Otomasyon_Sistemi
             }
         }
 
-        private void HesapRaporuAltoolStripMenuItem_Click(object sender, EventArgs e)
+        private void hesapHareketleriniGörüntüleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (musteri == null)
-                MessageBox.Show("Geçerli bir Müşteri Numarası girin ve Giriş(Enter) tuşuna basın.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bir sorun oluştu. Tekrar giriş yapmayı deneyin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else if (dtg_HesapGoruntule.CurrentCell == null || dtg_HesapGoruntule.CurrentCell.ColumnIndex != 0)
                 MessageBox.Show("Lütfen rapor almak istediğiniz hesap numarasını seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
@@ -145,6 +145,142 @@ namespace Banka_Otomasyon_Sistemi
                 form.MdiParent = this.MdiParent;
                 form.Show();
             }
+        }
+
+        private void hesapRaporuAlToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (musteri == null)
+                MessageBox.Show("Geçerli bir Müşteri Numarası girin ve Giriş(Enter) tuşuna basın.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (dtg_HesapGoruntule.CurrentCell == null || dtg_HesapGoruntule.CurrentCell.ColumnIndex != 0)
+                MessageBox.Show("Lütfen rapor almak istediğiniz hesap numarasını seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if(FormYonetimi.FormlariBul(nameof(frm_HesapRaporuAl), out List<Form> hesapRaporFormlari))
+            {
+                bool formAc = false;
+                foreach (frm_HesapRaporuAl item in hesapRaporFormlari)
+                {
+                    if (item.HesapNumarasi != dtg_HesapGoruntule.CurrentCell.Value.ToString())
+                    {
+                        formAc = true;
+                    }
+                    else
+                    {
+                        formAc = false;
+                        item.Activate();
+                        break;
+                    }
+                }
+                if (formAc)
+                {
+                    frm_HesapRaporuAl form = new frm_HesapRaporuAl (dtg_HesapGoruntule.CurrentCell.Value.ToString());
+                    form.MdiParent = this.MdiParent;
+                    form.Show();
+                }
+            }
+            else
+            {
+                frm_HesapRaporuAl form = new frm_HesapRaporuAl(dtg_HesapGoruntule.CurrentCell.Value.ToString());
+                form.MdiParent = this.MdiParent;
+                form.Show();
+            }
+        }
+
+        private void kategorilereGöreHarcamayıGörToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (musteri == null)
+                MessageBox.Show("Geçerli bir Müşteri Numarası girin ve Giriş(Enter) tuşuna basın.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (dtg_HesapGoruntule.CurrentCell == null || dtg_HesapGoruntule.CurrentCell.ColumnIndex != 0)
+                MessageBox.Show("Lütfen rapor almak istediğiniz hesap numarasını seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (FormYonetimi.FormlariBul(nameof(frm_KategorilereGoreRapor), out List<Form> KategorilerRaporFormlari))
+            {
+                bool formAc = false;
+                foreach (frm_KategorilereGoreRapor item in KategorilerRaporFormlari)
+                {
+                    if (item.HesapNumarasi != dtg_HesapGoruntule.CurrentCell.Value.ToString())
+                    {
+                        formAc = true;
+                    }
+                    else
+                    {
+                        formAc = false;
+                        item.Activate();
+                        break;
+                    }
+                }
+                if (formAc)
+                {
+                    frm_KategorilereGoreRapor form = new frm_KategorilereGoreRapor
+                        (dtg_HesapGoruntule.CurrentCell.Value.ToString(), cmb_HesapListesi.SelectedIndex);
+                    form.MdiParent = this.MdiParent;
+                    form.Show();
+                }
+            }
+            else
+            {
+                frm_KategorilereGoreRapor form = new frm_KategorilereGoreRapor
+                    (dtg_HesapGoruntule.CurrentCell.Value.ToString(), cmb_HesapListesi.SelectedIndex);
+                form.MdiParent = this.MdiParent;
+                form.Show();
+            }
+        }
+
+        private void krediEkstreRaporuAlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (musteri == null)
+                MessageBox.Show("Geçerli bir Müşteri Numarası girin ve Giriş(Enter) tuşuna basın.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (dtg_HesapGoruntule.CurrentCell == null || dtg_HesapGoruntule.CurrentCell.ColumnIndex != 0)
+                MessageBox.Show("Lütfen rapor almak istediğiniz hesap numarasını seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (cmb_HesapListesi.SelectedIndex != 1)
+                MessageBox.Show("Bir Kredi hesabı seçmeniz gerek.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (FormYonetimi.FormlariBul(nameof(frm_KrediEkstre), out List<Form> krediEkstreFormlari))
+            {
+                bool formAc = false;
+                foreach (frm_KrediEkstre item in krediEkstreFormlari)
+                {
+                    if (item.HesapNumarasi != dtg_HesapGoruntule.CurrentCell.Value.ToString())
+                    {
+                        formAc = true;
+                    }
+                    else
+                    {
+                        formAc = false;
+                        item.Activate();
+                        break;
+                    }
+                }
+                if (formAc)
+                {
+                    frm_KrediEkstre form = new frm_KrediEkstre
+                        (dtg_HesapGoruntule.CurrentCell.Value.ToString(), cmb_HesapListesi.SelectedIndex);
+                    form.MdiParent = this.MdiParent;
+                    form.Show();
+                }
+            }
+            else
+            {
+                frm_KrediEkstre form = new frm_KrediEkstre
+                    (dtg_HesapGoruntule.CurrentCell.Value.ToString(), cmb_HesapListesi.SelectedIndex);
+                form.MdiParent = this.MdiParent;
+                form.Show();
+            }
+        }
+
+        private void txt_MusteriNo_TextChanged(object sender, EventArgs e)
+        {
+            lbl_Enter.Visible = string.IsNullOrEmpty(txt_MusteriNo.Text) ? false : true;
+            dtg_HesapGoruntule.DataSource = null;
+            txt_Ad.Text = string.Empty;
+            txt_Soyad.Text = string.Empty;
+            txt_TcNo.Text = string.Empty;
+        }
+
+        private void işlemleriGrafikteGörüntüleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            kategorilereGöreHarcamayıGörToolStripMenuItem_Click(sender, e);
+        }
+
+        private void krediEkstreRaporuAlToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            krediEkstreRaporuAlToolStripMenuItem_Click(sender, e);
         }
     }
 }

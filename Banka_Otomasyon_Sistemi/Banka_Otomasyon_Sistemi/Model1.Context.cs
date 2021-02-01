@@ -36,7 +36,10 @@ namespace Banka_Otomasyon_Sistemi
         public virtual DbSet<Musteriler> Musteriler { get; set; }
         public virtual DbSet<Roller> Roller { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Vislemler_Banka> Vislemler_Banka { get; set; }
+        public virtual DbSet<v_BankaHesabiLog> v_BankaHesabiLog { get; set; }
+        public virtual DbSet<v_KkartHesapHarcama> v_KkartHesapHarcama { get; set; }
+        public virtual DbSet<v_KrediHesaplari_ve_islemler_kredi> v_KrediHesaplari_ve_islemler_kredi { get; set; }
+        public virtual DbSet<v_Ekstre> v_Ekstre { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -139,6 +142,57 @@ namespace Banka_Otomasyon_Sistemi
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<BankHesap_Harcama_Result> BankHesap_Harcama(Nullable<System.DateTime> baslangic, Nullable<System.DateTime> bitis, string hesapNo)
+        {
+            var baslangicParameter = baslangic.HasValue ?
+                new ObjectParameter("baslangic", baslangic) :
+                new ObjectParameter("baslangic", typeof(System.DateTime));
+    
+            var bitisParameter = bitis.HasValue ?
+                new ObjectParameter("bitis", bitis) :
+                new ObjectParameter("bitis", typeof(System.DateTime));
+    
+            var hesapNoParameter = hesapNo != null ?
+                new ObjectParameter("hesapNo", hesapNo) :
+                new ObjectParameter("hesapNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BankHesap_Harcama_Result>("BankHesap_Harcama", baslangicParameter, bitisParameter, hesapNoParameter);
+        }
+    
+        public virtual ObjectResult<sp_BankHesap_Harcama_Result> sp_BankHesap_Harcama(Nullable<System.DateTime> baslangic, Nullable<System.DateTime> bitis, string hesapNo)
+        {
+            var baslangicParameter = baslangic.HasValue ?
+                new ObjectParameter("baslangic", baslangic) :
+                new ObjectParameter("baslangic", typeof(System.DateTime));
+    
+            var bitisParameter = bitis.HasValue ?
+                new ObjectParameter("bitis", bitis) :
+                new ObjectParameter("bitis", typeof(System.DateTime));
+    
+            var hesapNoParameter = hesapNo != null ?
+                new ObjectParameter("hesapNo", hesapNo) :
+                new ObjectParameter("hesapNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_BankHesap_Harcama_Result>("sp_BankHesap_Harcama", baslangicParameter, bitisParameter, hesapNoParameter);
+        }
+    
+        public virtual ObjectResult<sp_KkartHesap_Harcama_Result> sp_KkartHesap_Harcama(Nullable<System.DateTime> baslangic, Nullable<System.DateTime> bitis, string hesapNo)
+        {
+            var baslangicParameter = baslangic.HasValue ?
+                new ObjectParameter("baslangic", baslangic) :
+                new ObjectParameter("baslangic", typeof(System.DateTime));
+    
+            var bitisParameter = bitis.HasValue ?
+                new ObjectParameter("bitis", bitis) :
+                new ObjectParameter("bitis", typeof(System.DateTime));
+    
+            var hesapNoParameter = hesapNo != null ?
+                new ObjectParameter("hesapNo", hesapNo) :
+                new ObjectParameter("hesapNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_KkartHesap_Harcama_Result>("sp_KkartHesap_Harcama", baslangicParameter, bitisParameter, hesapNoParameter);
         }
     }
 }

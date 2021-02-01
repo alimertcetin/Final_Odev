@@ -110,7 +110,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frm_MusteriGiris";
-            this.Text = "frm_MusteriGiris";
+            this.Text = "Giriş";
             this.ResumeLayout(false);
             this.PerformLayout();
 

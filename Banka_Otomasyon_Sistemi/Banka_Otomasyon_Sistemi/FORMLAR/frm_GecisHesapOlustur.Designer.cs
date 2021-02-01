@@ -64,6 +64,7 @@
             this.Controls.Add(this.btn_kGiris);
             this.Controls.Add(this.btn_pGiris);
             this.Name = "frm_GecisHesapOlustur";
+            this.ShowIcon = false;
             this.ResumeLayout(false);
 
         }

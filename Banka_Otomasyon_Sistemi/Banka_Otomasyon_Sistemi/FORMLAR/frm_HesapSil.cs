@@ -18,15 +18,7 @@ namespace Banka_Otomasyon_Sistemi
 
         private void HesapGoruntuleyeHaberVer()
         {
-            //foreach (Form itm in Application.OpenForms)
-            //{
-            //    if (item.Name == "frm_HesapGoruntule")
-            //    {
-            //        frm_HesapGoruntule hesapGoruntule = (frm_HesapGoruntule)item;
-            //        hesapGoruntule.GridYenile();
-            //    }
-            //}
-            if(FormYonetimi.FormBul("frm_HesapGoruntule",out List<Form> HesapGoruntuleFormlari))
+            if(FormYonetimi.FormlariBul("frm_HesapGoruntule",out List<Form> HesapGoruntuleFormlari))
             {
                 frm_HesapGoruntule hesapGoruntule = (frm_HesapGoruntule)HesapGoruntuleFormlari.ElementAt(0);
                 hesapGoruntule.GridYenile();
@@ -45,28 +37,18 @@ namespace Banka_Otomasyon_Sistemi
 
         private void txt_MusteriNo_TextChanged(object sender, EventArgs e)
         {
-            string m_No = txt_MusteriNo.Text;
-            musteri = vt.Musteriler.FirstOrDefault(p => p.MusteriNo == m_No);
-            if (musteri != null)
-            {
-                cmb_SilinecekHesap.DataSource = HesapListesi();
+            lbl_Enter.Visible = string.IsNullOrEmpty(txt_MusteriNo.Text) ? false : true;
+            FormuTemizle();
 
-                txt_Ad.Text = musteri.m_Ad;
-                txt_Soyad.Text = musteri.m_Soyad;
-                dtp_DogumTarihi.Value = musteri.m_DogumTarihi;
-            }
-            else
-            {
-                txt_Ad.Text = string.Empty;
-                txt_Soyad.Text = string.Empty;
-                dtp_DogumTarihi.Value = DateTime.Now;
-            }
         }
 
         private void btn_sil_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Bu hesabı silmek istediğinize emin misiniz? " +
-                "Hesap kalıcı olarak silinecektir.", "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+            if (string.IsNullOrEmpty(cmb_SilinecekHesap.SelectedItem.ToString()))
+                MessageBox.Show("Geçerli bir Müşteri Numarası girin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (MessageBox.Show("Bu hesabı silmek istediğinize emin misiniz? " +
+                "Hesap kalıcı olarak silinecektir.", "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Error)
+                == DialogResult.Yes)
                 HesabiSil();
         }
 
@@ -80,15 +62,14 @@ namespace Banka_Otomasyon_Sistemi
                     MessageBox.Show("Şifreler uyuşmuyor.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else if (txt_Sifre.Text != musteri.m_Sifre)
                     MessageBox.Show("Geçersiz şifre.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                else if (string.IsNullOrEmpty(cmb_SilinecekHesap.SelectedItem.ToString()))
-                    MessageBox.Show("Silinecek hesap bulunamadı.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else
                 {
-                    var hesapNo = cmb_SilinecekHesap.SelectedItem.ToString();
-                    var silinecek_Bh = vt.Banka_Hesaplari.FirstOrDefault(p => p.BankaHesapNo == hesapNo);
-                    var silinecek_Kkh = vt.Kkart_Hesaplari.FirstOrDefault(p => p.KkartHesapNo == hesapNo);
+                    string hesapNo = cmb_SilinecekHesap.SelectedItem.ToString();
+                    Banka_Hesaplari silinecek_Bh = vt.Banka_Hesaplari.FirstOrDefault(p => p.BankaHesapNo == hesapNo);
+                    Kkart_Hesaplari silinecek_Kkh = vt.Kkart_Hesaplari.FirstOrDefault(p => p.KkartHesapNo == hesapNo);
                     if (silinecek_Bh != null)
                     {
+                        LogIslemleri.BankHesap_TumLoglariSil(vt, silinecek_Bh);
                         vt.Banka_Hesaplari.Remove(silinecek_Bh);
                         if (vt.SaveChanges() > 0)
                         {
@@ -102,6 +83,7 @@ namespace Banka_Otomasyon_Sistemi
                     else if (silinecek_Kkh != null)
                     {
                         vt.Kkart_Hesaplari.Remove(silinecek_Kkh);
+                        LogIslemleri.KkartHesap_TumLoglariSil(vt, silinecek_Kkh);
                         if (vt.SaveChanges() > 0)
                         {
                             cmb_SilinecekHesap.DataSource = HesapListesi();
@@ -113,8 +95,40 @@ namespace Banka_Otomasyon_Sistemi
                     }
                     else MessageBox.Show("Hesap bulunamadı!", "HATA!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            } //musteri null ise
-            else MessageBox.Show("Geçerli bir Müşteri Numarası girin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            } //musteri null ise 
+            else MessageBox.Show("Silinecek hesap bulunamadı.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            txt_Sifre.Text = string.Empty;
+            txt_SifreTekrar.Text = string.Empty;
+        }
+
+        private void txt_MusteriNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == Convert.ToChar(13))
+            {
+                string m_No = txt_MusteriNo.Text;
+                musteri = vt.Musteriler.FirstOrDefault(p => p.MusteriNo == m_No);
+                if (musteri != null)
+                {
+                    cmb_SilinecekHesap.DataSource = HesapListesi();
+
+                    txt_Ad.Text = musteri.m_Ad;
+                    txt_Soyad.Text = musteri.m_Soyad;
+                    dtp_DogumTarihi.Value = musteri.m_DogumTarihi;
+                }
+                else
+                    FormuTemizle();
+            }
+        }
+
+        private void FormuTemizle()
+        {
+            txt_Ad.Text = string.Empty;
+            txt_Soyad.Text = string.Empty;
+            dtp_DogumTarihi.Value = DateTime.Now;
+            txt_Sifre.Text = string.Empty;
+            txt_SifreTekrar.Text = string.Empty;
+            cmb_SilinecekHesap.DataSource = null;
         }
     }
 }

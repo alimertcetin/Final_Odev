@@ -25,7 +25,7 @@
           <Property Name="c_Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="c_Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="c_DogumTarihi" Type="datetime" Nullable="false" />
-          <Property Name="c_DıgumYeri" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="c_DogumYeri" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="c_Maas" Type="money" Nullable="false" />
           <Property Name="c_Prim" Type="money" />
           <Property Name="c_Rolid" Type="int" Nullable="false" />
@@ -105,17 +105,116 @@
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BankDb.dbo.Vislemler_Banka' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Vislemler_Banka">
+warning 6002: The table/view 'BankDb.dbo.v_BankaHesabiLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_BankaHesabiLog">
           <Key>
-            <PropertyRef Name="islemTutari" />
-            <PropertyRef Name="islemTarihi" />
+            <PropertyRef Name="KategoriID" />
             <PropertyRef Name="KategoriAd" />
+            <PropertyRef Name="islemID" />
+            <PropertyRef Name="HesapNo" />
+            <PropertyRef Name="islemTutari" />
+            <PropertyRef Name="islemKategori_id" />
+            <PropertyRef Name="islemTarihi" />
           </Key>
+          <Property Name="KategoriID" Type="int" Nullable="false" />
+          <Property Name="KategoriAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="islemID" Type="int" Nullable="false" />
+          <Property Name="HesapNo" Type="nchar" MaxLength="15" Nullable="false" />
           <Property Name="islemTutari" Type="money" Nullable="false" />
           <Property Name="islemAciklama" Type="nvarchar" MaxLength="100" />
+          <Property Name="islemKategori_id" Type="int" Nullable="false" />
           <Property Name="islemTarihi" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BankDb.dbo.v_Ekstre' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Ekstre">
+          <Key>
+            <PropertyRef Name="KkartID" />
+            <PropertyRef Name="KkartHesapNo" />
+            <PropertyRef Name="KkartIban" />
+            <PropertyRef Name="Kkart_Limit" />
+            <PropertyRef Name="Kkart_Borc" />
+            <PropertyRef Name="HesapKesimGunu" />
+            <PropertyRef Name="SonOdemeGunu" />
+            <PropertyRef Name="HesapSahipTcno" />
+            <PropertyRef Name="KategoriID" />
+            <PropertyRef Name="KategoriAd" />
+            <PropertyRef Name="islemID" />
+            <PropertyRef Name="HesapNo" />
+            <PropertyRef Name="islemTutari" />
+            <PropertyRef Name="islemKategori_id" />
+            <PropertyRef Name="islemTarihi" />
+          </Key>
+          <Property Name="KkartID" Type="bigint" Nullable="false" />
+          <Property Name="KkartHesapNo" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="KkartIban" Type="nchar" MaxLength="26" Nullable="false" />
+          <Property Name="Kkart_Limit" Type="money" Nullable="false" />
+          <Property Name="Kkart_Borc" Type="money" Nullable="false" />
+          <Property Name="HesapKesimGunu" Type="int" Nullable="false" />
+          <Property Name="SonOdemeGunu" Type="int" Nullable="false" />
+          <Property Name="HesapSahipTcno" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="KategoriID" Type="int" Nullable="false" />
           <Property Name="KategoriAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="islemID" Type="int" Nullable="false" />
+          <Property Name="HesapNo" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="islemTutari" Type="money" Nullable="false" />
+          <Property Name="islemAciklama" Type="nvarchar" MaxLength="100" />
+          <Property Name="islemKategori_id" Type="int" Nullable="false" />
+          <Property Name="islemTarihi" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BankDb.dbo.v_KkartHesapHarcama' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_KkartHesapHarcama">
+          <Key>
+            <PropertyRef Name="KategoriID" />
+            <PropertyRef Name="KategoriAd" />
+            <PropertyRef Name="islemID" />
+            <PropertyRef Name="HesapNo" />
+            <PropertyRef Name="islemTutari" />
+            <PropertyRef Name="islemKategori_id" />
+            <PropertyRef Name="islemTarihi" />
+          </Key>
+          <Property Name="KategoriID" Type="int" Nullable="false" />
+          <Property Name="KategoriAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="islemID" Type="int" Nullable="false" />
+          <Property Name="HesapNo" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="islemTutari" Type="money" Nullable="false" />
+          <Property Name="islemAciklama" Type="nvarchar" MaxLength="100" />
+          <Property Name="islemKategori_id" Type="int" Nullable="false" />
+          <Property Name="islemTarihi" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BankDb.dbo.v_KrediHesaplari_ve_islemler_kredi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_KrediHesaplari_ve_islemler_kredi">
+          <Key>
+            <PropertyRef Name="KkartID" />
+            <PropertyRef Name="KkartHesapNo" />
+            <PropertyRef Name="KkartIban" />
+            <PropertyRef Name="Kkart_Limit" />
+            <PropertyRef Name="Kkart_Borc" />
+            <PropertyRef Name="HesapKesimGunu" />
+            <PropertyRef Name="SonOdemeGunu" />
+            <PropertyRef Name="HesapSahipTcno" />
+            <PropertyRef Name="islemID" />
+            <PropertyRef Name="HesapNo" />
+            <PropertyRef Name="islemTutari" />
+            <PropertyRef Name="islemKategori_id" />
+            <PropertyRef Name="islemTarihi" />
+          </Key>
+          <Property Name="KkartID" Type="bigint" Nullable="false" />
+          <Property Name="KkartHesapNo" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="KkartIban" Type="nchar" MaxLength="26" Nullable="false" />
+          <Property Name="Kkart_Limit" Type="money" Nullable="false" />
+          <Property Name="Kkart_Borc" Type="money" Nullable="false" />
+          <Property Name="HesapKesimGunu" Type="int" Nullable="false" />
+          <Property Name="SonOdemeGunu" Type="int" Nullable="false" />
+          <Property Name="HesapSahipTcno" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="islemID" Type="int" Nullable="false" />
+          <Property Name="HesapNo" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="islemTutari" Type="money" Nullable="false" />
+          <Property Name="islemAciklama" Type="nvarchar" MaxLength="100" />
+          <Property Name="islemKategori_id" Type="int" Nullable="false" />
+          <Property Name="islemTarihi" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK_Banka_Hesap_Musteriler">
           <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="1" />
@@ -208,6 +307,11 @@ warning 6002: The table/view 'BankDb.dbo.Vislemler_Banka' does not have a primar
           <Parameter Name="version" Type="int" Mode="In" />
           <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
         </Function>
+        <Function Name="sp_BankHesap_Harcama" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="baslangic" Type="datetime" Mode="In" />
+          <Parameter Name="bitis" Type="datetime" Mode="In" />
+          <Parameter Name="hesapNo" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -226,6 +330,11 @@ warning 6002: The table/view 'BankDb.dbo.Vislemler_Banka' does not have a primar
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_KkartHesap_Harcama" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="baslangic" Type="datetime" Mode="In" />
+          <Parameter Name="bitis" Type="datetime" Mode="In" />
+          <Parameter Name="hesapNo" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -242,13 +351,67 @@ warning 6002: The table/view 'BankDb.dbo.Vislemler_Banka' does not have a primar
           <EntitySet Name="Musteriler" EntityType="Self.Musteriler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roller" EntityType="Self.Roller" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Vislemler_Banka" EntityType="Self.Vislemler_Banka" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="v_BankaHesabiLog" EntityType="Self.v_BankaHesabiLog" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [Vislemler_Banka].[islemTutari] AS [islemTutari], 
-    [Vislemler_Banka].[islemAciklama] AS [islemAciklama], 
-    [Vislemler_Banka].[islemTarihi] AS [islemTarihi], 
-    [Vislemler_Banka].[KategoriAd] AS [KategoriAd]
-    FROM [dbo].[Vislemler_Banka] AS [Vislemler_Banka]</DefiningQuery>
+    [v_BankaHesabiLog].[KategoriID] AS [KategoriID], 
+    [v_BankaHesabiLog].[KategoriAd] AS [KategoriAd], 
+    [v_BankaHesabiLog].[islemID] AS [islemID], 
+    [v_BankaHesabiLog].[HesapNo] AS [HesapNo], 
+    [v_BankaHesabiLog].[islemTutari] AS [islemTutari], 
+    [v_BankaHesabiLog].[islemAciklama] AS [islemAciklama], 
+    [v_BankaHesabiLog].[islemKategori_id] AS [islemKategori_id], 
+    [v_BankaHesabiLog].[islemTarihi] AS [islemTarihi]
+    FROM [dbo].[v_BankaHesabiLog] AS [v_BankaHesabiLog]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Ekstre" EntityType="Self.v_Ekstre" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Ekstre].[KkartID] AS [KkartID], 
+    [v_Ekstre].[KkartHesapNo] AS [KkartHesapNo], 
+    [v_Ekstre].[KkartIban] AS [KkartIban], 
+    [v_Ekstre].[Kkart_Limit] AS [Kkart_Limit], 
+    [v_Ekstre].[Kkart_Borc] AS [Kkart_Borc], 
+    [v_Ekstre].[HesapKesimGunu] AS [HesapKesimGunu], 
+    [v_Ekstre].[SonOdemeGunu] AS [SonOdemeGunu], 
+    [v_Ekstre].[HesapSahipTcno] AS [HesapSahipTcno], 
+    [v_Ekstre].[KategoriID] AS [KategoriID], 
+    [v_Ekstre].[KategoriAd] AS [KategoriAd], 
+    [v_Ekstre].[islemID] AS [islemID], 
+    [v_Ekstre].[HesapNo] AS [HesapNo], 
+    [v_Ekstre].[islemTutari] AS [islemTutari], 
+    [v_Ekstre].[islemAciklama] AS [islemAciklama], 
+    [v_Ekstre].[islemKategori_id] AS [islemKategori_id], 
+    [v_Ekstre].[islemTarihi] AS [islemTarihi]
+    FROM [dbo].[v_Ekstre] AS [v_Ekstre]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_KkartHesapHarcama" EntityType="Self.v_KkartHesapHarcama" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_KkartHesapHarcama].[KategoriID] AS [KategoriID], 
+    [v_KkartHesapHarcama].[KategoriAd] AS [KategoriAd], 
+    [v_KkartHesapHarcama].[islemID] AS [islemID], 
+    [v_KkartHesapHarcama].[HesapNo] AS [HesapNo], 
+    [v_KkartHesapHarcama].[islemTutari] AS [islemTutari], 
+    [v_KkartHesapHarcama].[islemAciklama] AS [islemAciklama], 
+    [v_KkartHesapHarcama].[islemKategori_id] AS [islemKategori_id], 
+    [v_KkartHesapHarcama].[islemTarihi] AS [islemTarihi]
+    FROM [dbo].[v_KkartHesapHarcama] AS [v_KkartHesapHarcama]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_KrediHesaplari_ve_islemler_kredi" EntityType="Self.v_KrediHesaplari_ve_islemler_kredi" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_KrediHesaplari_ve_islemler_kredi].[KkartID] AS [KkartID], 
+    [v_KrediHesaplari_ve_islemler_kredi].[KkartHesapNo] AS [KkartHesapNo], 
+    [v_KrediHesaplari_ve_islemler_kredi].[KkartIban] AS [KkartIban], 
+    [v_KrediHesaplari_ve_islemler_kredi].[Kkart_Limit] AS [Kkart_Limit], 
+    [v_KrediHesaplari_ve_islemler_kredi].[Kkart_Borc] AS [Kkart_Borc], 
+    [v_KrediHesaplari_ve_islemler_kredi].[HesapKesimGunu] AS [HesapKesimGunu], 
+    [v_KrediHesaplari_ve_islemler_kredi].[SonOdemeGunu] AS [SonOdemeGunu], 
+    [v_KrediHesaplari_ve_islemler_kredi].[HesapSahipTcno] AS [HesapSahipTcno], 
+    [v_KrediHesaplari_ve_islemler_kredi].[islemID] AS [islemID], 
+    [v_KrediHesaplari_ve_islemler_kredi].[HesapNo] AS [HesapNo], 
+    [v_KrediHesaplari_ve_islemler_kredi].[islemTutari] AS [islemTutari], 
+    [v_KrediHesaplari_ve_islemler_kredi].[islemAciklama] AS [islemAciklama], 
+    [v_KrediHesaplari_ve_islemler_kredi].[islemKategori_id] AS [islemKategori_id], 
+    [v_KrediHesaplari_ve_islemler_kredi].[islemTarihi] AS [islemTarihi]
+    FROM [dbo].[v_KrediHesaplari_ve_islemler_kredi] AS [v_KrediHesaplari_ve_islemler_kredi]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Banka_Hesap_Musteriler" Association="Self.FK_Banka_Hesap_Musteriler">
             <End Role="Musteriler" EntitySet="Musteriler" />
@@ -283,129 +446,7 @@ warning 6002: The table/view 'BankDb.dbo.Vislemler_Banka' does not have a primar
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BankDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Banka_Hesaplari">
-          <Key>
-            <PropertyRef Name="BankaHesapNo" />
-          </Key>
-          <Property Name="HesapID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BankaHesapNo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="BankIban" Type="String" MaxLength="26" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Hesap_Bakiye" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="HesapSahipTcno" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Musteriler" Relationship="BankDbModel.FK_Banka_Hesap_Musteriler" FromRole="Banka_Hesaplari" ToRole="Musteriler" />
-          <NavigationProperty Name="islemler_BankaHesaplari" Relationship="BankDbModel.FK_islemler_BankaHesap_Banka_Hesap" FromRole="Banka_Hesaplari" ToRole="islemler_BankaHesaplari" />
-        </EntityType>
-        <EntityType Name="Calisanlar">
-          <Key>
-            <PropertyRef Name="c_TcNo" />
-          </Key>
-          <Property Name="calisanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="c_TcNo" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="c_SicilNo" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="c_Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="c_Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="c_DogumTarihi" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="c_DıgumYeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="c_Maas" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="c_Prim" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="c_Rolid" Type="Int32" Nullable="false" />
-          <Property Name="c_Sifre" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Roller" Relationship="BankDbModel.FK_Calisanlar_Roller" FromRole="Calisanlar" ToRole="Roller" />
-        </EntityType>
-        <EntityType Name="islemler_BankaHesaplari">
-          <Key>
-            <PropertyRef Name="islemID" />
-          </Key>
-          <Property Name="islemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HesapNo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="islemTutari" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
-          <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Banka_Hesaplari" Relationship="BankDbModel.FK_islemler_BankaHesap_Banka_Hesap" FromRole="islemler_BankaHesaplari" ToRole="Banka_Hesaplari" />
-          <NavigationProperty Name="Kategoriler" Relationship="BankDbModel.FK_islemler_BankaHesaplari_Kategoriler" FromRole="islemler_BankaHesaplari" ToRole="Kategoriler" />
-        </EntityType>
-        <EntityType Name="islemler_KrediHesaplari">
-          <Key>
-            <PropertyRef Name="islemID" />
-          </Key>
-          <Property Name="islemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HesapNo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="islemTutari" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
-          <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Kkart_Hesaplari" Relationship="BankDbModel.FK_islemler_KrediHesap_Kkredi_Hesap" FromRole="islemler_KrediHesaplari" ToRole="Kkart_Hesaplari" />
-          <NavigationProperty Name="Kategoriler" Relationship="BankDbModel.FK_islemler_KrediHesaplari_Kategoriler" FromRole="islemler_KrediHesaplari" ToRole="Kategoriler" />
-        </EntityType>
-        <EntityType Name="Kategoriler">
-          <Key>
-            <PropertyRef Name="KategoriID" />
-          </Key>
-          <Property Name="KategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="KategoriAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="islemler_BankaHesaplari" Relationship="BankDbModel.FK_islemler_BankaHesaplari_Kategoriler" FromRole="Kategoriler" ToRole="islemler_BankaHesaplari" />
-          <NavigationProperty Name="islemler_KrediHesaplari" Relationship="BankDbModel.FK_islemler_KrediHesaplari_Kategoriler" FromRole="Kategoriler" ToRole="islemler_KrediHesaplari" />
-        </EntityType>
-        <EntityType Name="Kkart_Hesaplari">
-          <Key>
-            <PropertyRef Name="KkartHesapNo" />
-          </Key>
-          <Property Name="KkartID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="KkartHesapNo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="KkartIban" Type="String" MaxLength="26" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Kkart_Limit" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Kkart_Borc" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="HesapKesimGunu" Type="Int32" Nullable="false" />
-          <Property Name="SonOdemeGunu" Type="Int32" Nullable="false" />
-          <Property Name="HesapSahipTcno" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="islemler_KrediHesaplari" Relationship="BankDbModel.FK_islemler_KrediHesap_Kkredi_Hesap" FromRole="Kkart_Hesaplari" ToRole="islemler_KrediHesaplari" />
-        </EntityType>
-        <EntityType Name="Musteriler">
-          <Key>
-            <PropertyRef Name="m_TcNo" />
-          </Key>
-          <Property Name="müsteriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MusteriNo" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="m_TcNo" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="m_Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="m_Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="m_DogumTarihi" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="m_DogumYeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="m_Rolid" Type="Int32" Nullable="false" />
-          <Property Name="m_Sifre" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Banka_Hesaplari" Relationship="BankDbModel.FK_Banka_Hesap_Musteriler" FromRole="Musteriler" ToRole="Banka_Hesaplari" />
-          <NavigationProperty Name="Roller" Relationship="BankDbModel.FK_Musteriler_Roller" FromRole="Musteriler" ToRole="Roller" />
-        </EntityType>
-        <EntityType Name="Roller">
-          <Key>
-            <PropertyRef Name="RolID" />
-          </Key>
-          <Property Name="RolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RolAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Calisanlar" Relationship="BankDbModel.FK_Calisanlar_Roller" FromRole="Roller" ToRole="Calisanlar" />
-          <NavigationProperty Name="Musteriler" Relationship="BankDbModel.FK_Musteriler_Roller" FromRole="Roller" ToRole="Musteriler" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityContainer Name="BankDbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Banka_Hesaplari" EntityType="Self.Banka_Hesaplari" />
-          <EntitySet Name="Calisanlar" EntityType="Self.Calisanlar" />
-          <EntitySet Name="islemler_BankaHesaplari" EntityType="Self.islemler_BankaHesaplari" />
-          <EntitySet Name="islemler_KrediHesaplari" EntityType="Self.islemler_KrediHesaplari" />
-          <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" />
-          <EntitySet Name="Kkart_Hesaplari" EntityType="Self.Kkart_Hesaplari" />
-          <EntitySet Name="Musteriler" EntityType="Self.Musteriler" />
-          <EntitySet Name="Roller" EntityType="Self.Roller" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -436,7 +477,15 @@ warning 6002: The table/view 'BankDb.dbo.Vislemler_Banka' does not have a primar
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="Vislemler_Banka" EntityType="BankDbModel.Vislemler_Banka" />
+          <EntitySet Name="Banka_Hesaplari" EntityType="BankDbModel.Banka_Hesaplari" />
+          <EntitySet Name="Calisanlar" EntityType="BankDbModel.Calisanlar" />
+          <EntitySet Name="islemler_BankaHesaplari" EntityType="BankDbModel.islemler_BankaHesaplari" />
+          <EntitySet Name="islemler_KrediHesaplari" EntityType="BankDbModel.islemler_KrediHesaplari" />
+          <EntitySet Name="Kategoriler" EntityType="BankDbModel.Kategoriler" />
+          <EntitySet Name="Kkart_Hesaplari" EntityType="BankDbModel.Kkart_Hesaplari" />
+          <EntitySet Name="Musteriler" EntityType="BankDbModel.Musteriler" />
+          <EntitySet Name="Roller" EntityType="BankDbModel.Roller" />
+          <EntitySet Name="sysdiagrams" EntityType="BankDbModel.sysdiagrams" />
           <AssociationSet Name="FK_Banka_Hesap_Musteriler" Association="BankDbModel.FK_Banka_Hesap_Musteriler">
             <End Role="Musteriler" EntitySet="Musteriler" />
             <End Role="Banka_Hesaplari" EntitySet="Banka_Hesaplari" />
@@ -465,7 +514,26 @@ warning 6002: The table/view 'BankDb.dbo.Vislemler_Banka' does not have a primar
             <End Role="Roller" EntitySet="Roller" />
             <End Role="Musteriler" EntitySet="Musteriler" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="v_BankaHesabiLog" EntityType="BankDbModel.v_BankaHesabiLog" />
+          <FunctionImport Name="BankHesap_Harcama" ReturnType="Collection(BankDbModel.BankHesap_Harcama_Result)">
+            <Parameter Name="baslangic" Mode="In" Type="DateTime" />
+            <Parameter Name="bitis" Mode="In" Type="DateTime" />
+            <Parameter Name="hesapNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="v_KkartHesapHarcama" EntityType="BankDbModel.v_KkartHesapHarcama" />
+          <FunctionImport Name="sp_BankHesap_Harcama" ReturnType="Collection(BankDbModel.sp_BankHesap_Harcama_Result)">
+            <Parameter Name="baslangic" Mode="In" Type="DateTime" />
+            <Parameter Name="bitis" Mode="In" Type="DateTime" />
+            <Parameter Name="hesapNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_KkartHesap_Harcama" ReturnType="Collection(BankDbModel.sp_KkartHesap_Harcama_Result)">
+            <Parameter Name="baslangic" Mode="In" Type="DateTime" />
+            <Parameter Name="bitis" Mode="In" Type="DateTime" />
+            <Parameter Name="hesapNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="v_KrediHesaplari_ve_islemler_kredi" EntityType="BankDbModel.v_KrediHesaplari_ve_islemler_kredi" />
+          <EntitySet Name="v_Ekstre" EntityType="BankDbModel.v_Ekstre" />
+          </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -477,16 +545,118 @@ warning 6002: The table/view 'BankDb.dbo.Vislemler_Banka' does not have a primar
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="Vislemler_Banka">
+        <EntityType Name="Banka_Hesaplari">
           <Key>
-            <PropertyRef Name="islemTutari" />
-            <PropertyRef Name="islemTarihi" />
-            <PropertyRef Name="KategoriAd" />
+            <PropertyRef Name="BankaHesapNo" />
           </Key>
+          <Property Name="HesapID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankaHesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="BankIban" Type="String" Nullable="false" MaxLength="26" FixedLength="true" Unicode="true" />
+          <Property Name="Hesap_Bakiye" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="HesapSahipTcno" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Musteriler" Relationship="BankDbModel.FK_Banka_Hesap_Musteriler" FromRole="Banka_Hesaplari" ToRole="Musteriler" />
+          <NavigationProperty Name="islemler_BankaHesaplari" Relationship="BankDbModel.FK_islemler_BankaHesap_Banka_Hesap" FromRole="Banka_Hesaplari" ToRole="islemler_BankaHesaplari" />
+        </EntityType>
+        <EntityType Name="Calisanlar">
+          <Key>
+            <PropertyRef Name="c_TcNo" />
+          </Key>
+          <Property Name="calisanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_TcNo" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="c_SicilNo" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="c_Ad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="c_Soyad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="c_DogumTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="c_DogumYeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="c_Maas" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="c_Prim" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="c_Rolid" Type="Int32" Nullable="false" />
+          <Property Name="c_Sifre" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Roller" Relationship="BankDbModel.FK_Calisanlar_Roller" FromRole="Calisanlar" ToRole="Roller" />
+        </EntityType>
+        <EntityType Name="islemler_BankaHesaplari">
+          <Key>
+            <PropertyRef Name="islemID" />
+          </Key>
+          <Property Name="islemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
           <Property Name="islemTutari" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
           <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Banka_Hesaplari" Relationship="BankDbModel.FK_islemler_BankaHesap_Banka_Hesap" FromRole="islemler_BankaHesaplari" ToRole="Banka_Hesaplari" />
+          <NavigationProperty Name="Kategoriler" Relationship="BankDbModel.FK_islemler_BankaHesaplari_Kategoriler" FromRole="islemler_BankaHesaplari" ToRole="Kategoriler" />
+        </EntityType>
+        <EntityType Name="islemler_KrediHesaplari">
+          <Key>
+            <PropertyRef Name="islemID" />
+          </Key>
+          <Property Name="islemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="islemTutari" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
+          <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Kkart_Hesaplari" Relationship="BankDbModel.FK_islemler_KrediHesap_Kkredi_Hesap" FromRole="islemler_KrediHesaplari" ToRole="Kkart_Hesaplari" />
+          <NavigationProperty Name="Kategoriler" Relationship="BankDbModel.FK_islemler_KrediHesaplari_Kategoriler" FromRole="islemler_KrediHesaplari" ToRole="Kategoriler" />
+        </EntityType>
+        <EntityType Name="Kategoriler">
+          <Key>
+            <PropertyRef Name="KategoriID" />
+          </Key>
+          <Property Name="KategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="KategoriAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="islemler_BankaHesaplari" Relationship="BankDbModel.FK_islemler_BankaHesaplari_Kategoriler" FromRole="Kategoriler" ToRole="islemler_BankaHesaplari" />
+          <NavigationProperty Name="islemler_KrediHesaplari" Relationship="BankDbModel.FK_islemler_KrediHesaplari_Kategoriler" FromRole="Kategoriler" ToRole="islemler_KrediHesaplari" />
+        </EntityType>
+        <EntityType Name="Kkart_Hesaplari">
+          <Key>
+            <PropertyRef Name="KkartHesapNo" />
+          </Key>
+          <Property Name="KkartID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KkartHesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="KkartIban" Type="String" Nullable="false" MaxLength="26" FixedLength="true" Unicode="true" />
+          <Property Name="Kkart_Limit" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Kkart_Borc" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="HesapKesimGunu" Type="Int32" Nullable="false" />
+          <Property Name="SonOdemeGunu" Type="Int32" Nullable="false" />
+          <Property Name="HesapSahipTcno" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="islemler_KrediHesaplari" Relationship="BankDbModel.FK_islemler_KrediHesap_Kkredi_Hesap" FromRole="Kkart_Hesaplari" ToRole="islemler_KrediHesaplari" />
+        </EntityType>
+        <EntityType Name="Musteriler">
+          <Key>
+            <PropertyRef Name="m_TcNo" />
+          </Key>
+          <Property Name="müsteriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MusteriNo" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="m_TcNo" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="m_Ad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="m_Soyad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="m_DogumTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="m_DogumYeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="m_Rolid" Type="Int32" Nullable="false" />
+          <Property Name="m_Sifre" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Banka_Hesaplari" Relationship="BankDbModel.FK_Banka_Hesap_Musteriler" FromRole="Musteriler" ToRole="Banka_Hesaplari" />
+          <NavigationProperty Name="Roller" Relationship="BankDbModel.FK_Musteriler_Roller" FromRole="Musteriler" ToRole="Roller" />
+        </EntityType>
+        <EntityType Name="Roller">
+          <Key>
+            <PropertyRef Name="RolID" />
+          </Key>
+          <Property Name="RolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Calisanlar" Relationship="BankDbModel.FK_Calisanlar_Roller" FromRole="Roller" ToRole="Calisanlar" />
+          <NavigationProperty Name="Musteriler" Relationship="BankDbModel.FK_Musteriler_Roller" FromRole="Roller" ToRole="Musteriler" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Banka_Hesap_Musteriler">
           <End Type="BankDbModel.Musteriler" Role="Musteriler" Multiplicity="1" />
@@ -572,120 +742,146 @@ warning 6002: The table/view 'BankDb.dbo.Vislemler_Banka' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="v_BankaHesabiLog">
+          <Key>
+            <PropertyRef Name="KategoriID" />
+            <PropertyRef Name="KategoriAd" />
+            <PropertyRef Name="islemID" />
+            <PropertyRef Name="HesapNo" />
+            <PropertyRef Name="islemTutari" />
+            <PropertyRef Name="islemKategori_id" />
+            <PropertyRef Name="islemTarihi" />
+          </Key>
+          <Property Name="KategoriID" Type="Int32" Nullable="false" />
+          <Property Name="KategoriAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="islemID" Type="Int32" Nullable="false" />
+          <Property Name="HesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="islemTutari" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
+          <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <ComplexType Name="BankHesap_Harcama_Result">
+          <Property Type="Int32" Name="KategoriID" Nullable="false" />
+          <Property Type="String" Name="KategoriAd" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="islemID" Nullable="false" />
+          <Property Type="String" Name="HesapNo" Nullable="false" MaxLength="15" />
+          <Property Type="Decimal" Name="islemTutari" Nullable="false" Precision="19" />
+          <Property Type="String" Name="islemAciklama" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="islemKategori_id" Nullable="false" />
+          <Property Type="DateTime" Name="islemTarihi" Nullable="false" Precision="23" />
+        </ComplexType>
+        <EntityType Name="v_KkartHesapHarcama">
+          <Key>
+            <PropertyRef Name="KategoriID" />
+            <PropertyRef Name="KategoriAd" />
+            <PropertyRef Name="islemID" />
+            <PropertyRef Name="HesapNo" />
+            <PropertyRef Name="islemTutari" />
+            <PropertyRef Name="islemKategori_id" />
+            <PropertyRef Name="islemTarihi" />
+          </Key>
+          <Property Name="KategoriID" Type="Int32" Nullable="false" />
+          <Property Name="KategoriAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="islemID" Type="Int32" Nullable="false" />
+          <Property Name="HesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="islemTutari" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
+          <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <ComplexType Name="sp_BankHesap_Harcama_Result">
+          <Property Type="Int32" Name="KategoriID" Nullable="false" />
+          <Property Type="String" Name="KategoriAd" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="islemID" Nullable="false" />
+          <Property Type="String" Name="HesapNo" Nullable="false" MaxLength="15" />
+          <Property Type="Decimal" Name="islemTutari" Nullable="false" Precision="19" />
+          <Property Type="String" Name="islemAciklama" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="islemKategori_id" Nullable="false" />
+          <Property Type="DateTime" Name="islemTarihi" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_KkartHesap_Harcama_Result">
+          <Property Type="Int32" Name="KategoriID" Nullable="false" />
+          <Property Type="String" Name="KategoriAd" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="islemID" Nullable="false" />
+          <Property Type="String" Name="HesapNo" Nullable="false" MaxLength="15" />
+          <Property Type="Decimal" Name="islemTutari" Nullable="false" Precision="19" />
+          <Property Type="String" Name="islemAciklama" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="islemKategori_id" Nullable="false" />
+          <Property Type="DateTime" Name="islemTarihi" Nullable="false" Precision="23" />
+        </ComplexType>
+        <EntityType Name="v_KrediHesaplari_ve_islemler_kredi">
+          <Key>
+            <PropertyRef Name="KkartID" />
+            <PropertyRef Name="KkartHesapNo" />
+            <PropertyRef Name="KkartIban" />
+            <PropertyRef Name="Kkart_Limit" />
+            <PropertyRef Name="Kkart_Borc" />
+            <PropertyRef Name="HesapKesimGunu" />
+            <PropertyRef Name="SonOdemeGunu" />
+            <PropertyRef Name="HesapSahipTcno" />
+            <PropertyRef Name="islemID" />
+            <PropertyRef Name="HesapNo" />
+            <PropertyRef Name="islemTutari" />
+            <PropertyRef Name="islemKategori_id" />
+            <PropertyRef Name="islemTarihi" />
+          </Key>
+          <Property Name="KkartID" Type="Int64" Nullable="false" />
+          <Property Name="KkartHesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="KkartIban" Type="String" Nullable="false" MaxLength="26" FixedLength="true" Unicode="true" />
+          <Property Name="Kkart_Limit" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Kkart_Borc" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="HesapKesimGunu" Type="Int32" Nullable="false" />
+          <Property Name="SonOdemeGunu" Type="Int32" Nullable="false" />
+          <Property Name="HesapSahipTcno" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="islemID" Type="Int32" Nullable="false" />
+          <Property Name="HesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="islemTutari" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
+          <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="v_Ekstre">
+          <Key>
+            <PropertyRef Name="KkartID" />
+            <PropertyRef Name="KkartHesapNo" />
+            <PropertyRef Name="KkartIban" />
+            <PropertyRef Name="Kkart_Limit" />
+            <PropertyRef Name="Kkart_Borc" />
+            <PropertyRef Name="HesapKesimGunu" />
+            <PropertyRef Name="SonOdemeGunu" />
+            <PropertyRef Name="HesapSahipTcno" />
+            <PropertyRef Name="KategoriID" />
+            <PropertyRef Name="KategoriAd" />
+            <PropertyRef Name="islemID" />
+            <PropertyRef Name="HesapNo" />
+            <PropertyRef Name="islemTutari" />
+            <PropertyRef Name="islemKategori_id" />
+            <PropertyRef Name="islemTarihi" />
+          </Key>
+          <Property Name="KkartID" Type="Int64" Nullable="false" />
+          <Property Name="KkartHesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="KkartIban" Type="String" Nullable="false" MaxLength="26" FixedLength="true" Unicode="true" />
+          <Property Name="Kkart_Limit" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Kkart_Borc" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="HesapKesimGunu" Type="Int32" Nullable="false" />
+          <Property Name="SonOdemeGunu" Type="Int32" Nullable="false" />
+          <Property Name="HesapSahipTcno" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="KategoriID" Type="Int32" Nullable="false" />
+          <Property Name="KategoriAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="islemID" Type="Int32" Nullable="false" />
+          <Property Name="HesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="islemTutari" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
+          <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BankDbModelStoreContainer" CdmEntityContainer="BankDbEntities">
-          <EntitySetMapping Name="Banka_Hesaplari">
-            <EntityTypeMapping TypeName="BankDbModel.Banka_Hesaplari">
-              <MappingFragment StoreEntitySet="Banka_Hesaplari">
-                <ScalarProperty Name="HesapID" ColumnName="HesapID" />
-                <ScalarProperty Name="BankaHesapNo" ColumnName="BankaHesapNo" />
-                <ScalarProperty Name="BankIban" ColumnName="BankIban" />
-                <ScalarProperty Name="Hesap_Bakiye" ColumnName="Hesap_Bakiye" />
-                <ScalarProperty Name="HesapSahipTcno" ColumnName="HesapSahipTcno" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Calisanlar">
-            <EntityTypeMapping TypeName="BankDbModel.Calisanlar">
-              <MappingFragment StoreEntitySet="Calisanlar">
-                <ScalarProperty Name="calisanID" ColumnName="calisanID" />
-                <ScalarProperty Name="c_TcNo" ColumnName="c_TcNo" />
-                <ScalarProperty Name="c_SicilNo" ColumnName="c_SicilNo" />
-                <ScalarProperty Name="c_Ad" ColumnName="c_Ad" />
-                <ScalarProperty Name="c_Soyad" ColumnName="c_Soyad" />
-                <ScalarProperty Name="c_DogumTarihi" ColumnName="c_DogumTarihi" />
-                <ScalarProperty Name="c_DıgumYeri" ColumnName="c_DıgumYeri" />
-                <ScalarProperty Name="c_Maas" ColumnName="c_Maas" />
-                <ScalarProperty Name="c_Prim" ColumnName="c_Prim" />
-                <ScalarProperty Name="c_Rolid" ColumnName="c_Rolid" />
-                <ScalarProperty Name="c_Sifre" ColumnName="c_Sifre" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="islemler_BankaHesaplari">
-            <EntityTypeMapping TypeName="BankDbModel.islemler_BankaHesaplari">
-              <MappingFragment StoreEntitySet="islemler_BankaHesaplari">
-                <ScalarProperty Name="islemID" ColumnName="islemID" />
-                <ScalarProperty Name="HesapNo" ColumnName="HesapNo" />
-                <ScalarProperty Name="islemTutari" ColumnName="islemTutari" />
-                <ScalarProperty Name="islemAciklama" ColumnName="islemAciklama" />
-                <ScalarProperty Name="islemKategori_id" ColumnName="islemKategori_id" />
-                <ScalarProperty Name="islemTarihi" ColumnName="islemTarihi" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="islemler_KrediHesaplari">
-            <EntityTypeMapping TypeName="BankDbModel.islemler_KrediHesaplari">
-              <MappingFragment StoreEntitySet="islemler_KrediHesaplari">
-                <ScalarProperty Name="islemID" ColumnName="islemID" />
-                <ScalarProperty Name="HesapNo" ColumnName="HesapNo" />
-                <ScalarProperty Name="islemTutari" ColumnName="islemTutari" />
-                <ScalarProperty Name="islemAciklama" ColumnName="islemAciklama" />
-                <ScalarProperty Name="islemKategori_id" ColumnName="islemKategori_id" />
-                <ScalarProperty Name="islemTarihi" ColumnName="islemTarihi" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Kategoriler">
-            <EntityTypeMapping TypeName="BankDbModel.Kategoriler">
-              <MappingFragment StoreEntitySet="Kategoriler">
-                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
-                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Kkart_Hesaplari">
-            <EntityTypeMapping TypeName="BankDbModel.Kkart_Hesaplari">
-              <MappingFragment StoreEntitySet="Kkart_Hesaplari">
-                <ScalarProperty Name="KkartID" ColumnName="KkartID" />
-                <ScalarProperty Name="KkartHesapNo" ColumnName="KkartHesapNo" />
-                <ScalarProperty Name="KkartIban" ColumnName="KkartIban" />
-                <ScalarProperty Name="Kkart_Limit" ColumnName="Kkart_Limit" />
-                <ScalarProperty Name="Kkart_Borc" ColumnName="Kkart_Borc" />
-                <ScalarProperty Name="HesapKesimGunu" ColumnName="HesapKesimGunu" />
-                <ScalarProperty Name="SonOdemeGunu" ColumnName="SonOdemeGunu" />
-                <ScalarProperty Name="HesapSahipTcno" ColumnName="HesapSahipTcno" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Musteriler">
-            <EntityTypeMapping TypeName="BankDbModel.Musteriler">
-              <MappingFragment StoreEntitySet="Musteriler">
-                <ScalarProperty Name="müsteriID" ColumnName="müsteriID" />
-                <ScalarProperty Name="MusteriNo" ColumnName="MusteriNo" />
-                <ScalarProperty Name="m_TcNo" ColumnName="m_TcNo" />
-                <ScalarProperty Name="m_Ad" ColumnName="m_Ad" />
-                <ScalarProperty Name="m_Soyad" ColumnName="m_Soyad" />
-                <ScalarProperty Name="m_DogumTarihi" ColumnName="m_DogumTarihi" />
-                <ScalarProperty Name="m_DogumYeri" ColumnName="m_DogumYeri" />
-                <ScalarProperty Name="m_Rolid" ColumnName="m_Rolid" />
-                <ScalarProperty Name="m_Sifre" ColumnName="m_Sifre" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Roller">
-            <EntityTypeMapping TypeName="BankDbModel.Roller">
-              <MappingFragment StoreEntitySet="Roller">
-                <ScalarProperty Name="RolID" ColumnName="RolID" />
-                <ScalarProperty Name="RolAd" ColumnName="RolAd" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="BankDbModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="BankDbModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="BankDbModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="BankDbModel.Store.sp_dropdiagram" />
@@ -710,13 +906,209 @@ warning 6002: The table/view 'BankDb.dbo.Vislemler_Banka' does not have a primar
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BankDbModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BankDbModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="Vislemler_Banka">
-            <EntityTypeMapping TypeName="BankDbModel.Vislemler_Banka">
-              <MappingFragment StoreEntitySet="Vislemler_Banka">
-                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+          <EntitySetMapping Name="Banka_Hesaplari">
+            <EntityTypeMapping TypeName="BankDbModel.Banka_Hesaplari">
+              <MappingFragment StoreEntitySet="Banka_Hesaplari">
+                <ScalarProperty Name="HesapSahipTcno" ColumnName="HesapSahipTcno" />
+                <ScalarProperty Name="Hesap_Bakiye" ColumnName="Hesap_Bakiye" />
+                <ScalarProperty Name="BankIban" ColumnName="BankIban" />
+                <ScalarProperty Name="BankaHesapNo" ColumnName="BankaHesapNo" />
+                <ScalarProperty Name="HesapID" ColumnName="HesapID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calisanlar">
+            <EntityTypeMapping TypeName="BankDbModel.Calisanlar">
+              <MappingFragment StoreEntitySet="Calisanlar">
+                <ScalarProperty Name="c_Sifre" ColumnName="c_Sifre" />
+                <ScalarProperty Name="c_Rolid" ColumnName="c_Rolid" />
+                <ScalarProperty Name="c_Prim" ColumnName="c_Prim" />
+                <ScalarProperty Name="c_Maas" ColumnName="c_Maas" />
+                <ScalarProperty Name="c_DogumYeri" ColumnName="c_DogumYeri" />
+                <ScalarProperty Name="c_DogumTarihi" ColumnName="c_DogumTarihi" />
+                <ScalarProperty Name="c_Soyad" ColumnName="c_Soyad" />
+                <ScalarProperty Name="c_Ad" ColumnName="c_Ad" />
+                <ScalarProperty Name="c_SicilNo" ColumnName="c_SicilNo" />
+                <ScalarProperty Name="c_TcNo" ColumnName="c_TcNo" />
+                <ScalarProperty Name="calisanID" ColumnName="calisanID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="islemler_BankaHesaplari">
+            <EntityTypeMapping TypeName="BankDbModel.islemler_BankaHesaplari">
+              <MappingFragment StoreEntitySet="islemler_BankaHesaplari">
                 <ScalarProperty Name="islemTarihi" ColumnName="islemTarihi" />
+                <ScalarProperty Name="islemKategori_id" ColumnName="islemKategori_id" />
                 <ScalarProperty Name="islemAciklama" ColumnName="islemAciklama" />
                 <ScalarProperty Name="islemTutari" ColumnName="islemTutari" />
+                <ScalarProperty Name="HesapNo" ColumnName="HesapNo" />
+                <ScalarProperty Name="islemID" ColumnName="islemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="islemler_KrediHesaplari">
+            <EntityTypeMapping TypeName="BankDbModel.islemler_KrediHesaplari">
+              <MappingFragment StoreEntitySet="islemler_KrediHesaplari">
+                <ScalarProperty Name="islemTarihi" ColumnName="islemTarihi" />
+                <ScalarProperty Name="islemKategori_id" ColumnName="islemKategori_id" />
+                <ScalarProperty Name="islemAciklama" ColumnName="islemAciklama" />
+                <ScalarProperty Name="islemTutari" ColumnName="islemTutari" />
+                <ScalarProperty Name="HesapNo" ColumnName="HesapNo" />
+                <ScalarProperty Name="islemID" ColumnName="islemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategoriler">
+            <EntityTypeMapping TypeName="BankDbModel.Kategoriler">
+              <MappingFragment StoreEntitySet="Kategoriler">
+                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kkart_Hesaplari">
+            <EntityTypeMapping TypeName="BankDbModel.Kkart_Hesaplari">
+              <MappingFragment StoreEntitySet="Kkart_Hesaplari">
+                <ScalarProperty Name="HesapSahipTcno" ColumnName="HesapSahipTcno" />
+                <ScalarProperty Name="SonOdemeGunu" ColumnName="SonOdemeGunu" />
+                <ScalarProperty Name="HesapKesimGunu" ColumnName="HesapKesimGunu" />
+                <ScalarProperty Name="Kkart_Borc" ColumnName="Kkart_Borc" />
+                <ScalarProperty Name="Kkart_Limit" ColumnName="Kkart_Limit" />
+                <ScalarProperty Name="KkartIban" ColumnName="KkartIban" />
+                <ScalarProperty Name="KkartHesapNo" ColumnName="KkartHesapNo" />
+                <ScalarProperty Name="KkartID" ColumnName="KkartID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musteriler">
+            <EntityTypeMapping TypeName="BankDbModel.Musteriler">
+              <MappingFragment StoreEntitySet="Musteriler">
+                <ScalarProperty Name="m_Sifre" ColumnName="m_Sifre" />
+                <ScalarProperty Name="m_Rolid" ColumnName="m_Rolid" />
+                <ScalarProperty Name="m_DogumYeri" ColumnName="m_DogumYeri" />
+                <ScalarProperty Name="m_DogumTarihi" ColumnName="m_DogumTarihi" />
+                <ScalarProperty Name="m_Soyad" ColumnName="m_Soyad" />
+                <ScalarProperty Name="m_Ad" ColumnName="m_Ad" />
+                <ScalarProperty Name="m_TcNo" ColumnName="m_TcNo" />
+                <ScalarProperty Name="MusteriNo" ColumnName="MusteriNo" />
+                <ScalarProperty Name="müsteriID" ColumnName="müsteriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roller">
+            <EntityTypeMapping TypeName="BankDbModel.Roller">
+              <MappingFragment StoreEntitySet="Roller">
+                <ScalarProperty Name="RolAd" ColumnName="RolAd" />
+                <ScalarProperty Name="RolID" ColumnName="RolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BankDbModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_BankaHesabiLog">
+            <EntityTypeMapping TypeName="BankDbModel.v_BankaHesabiLog">
+              <MappingFragment StoreEntitySet="v_BankaHesabiLog">
+                <ScalarProperty Name="islemTarihi" ColumnName="islemTarihi" />
+                <ScalarProperty Name="islemKategori_id" ColumnName="islemKategori_id" />
+                <ScalarProperty Name="islemAciklama" ColumnName="islemAciklama" />
+                <ScalarProperty Name="islemTutari" ColumnName="islemTutari" />
+                <ScalarProperty Name="HesapNo" ColumnName="HesapNo" />
+                <ScalarProperty Name="islemID" ColumnName="islemID" />
+                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_KkartHesapHarcama">
+            <EntityTypeMapping TypeName="BankDbModel.v_KkartHesapHarcama">
+              <MappingFragment StoreEntitySet="v_KkartHesapHarcama">
+                <ScalarProperty Name="islemTarihi" ColumnName="islemTarihi" />
+                <ScalarProperty Name="islemKategori_id" ColumnName="islemKategori_id" />
+                <ScalarProperty Name="islemAciklama" ColumnName="islemAciklama" />
+                <ScalarProperty Name="islemTutari" ColumnName="islemTutari" />
+                <ScalarProperty Name="HesapNo" ColumnName="HesapNo" />
+                <ScalarProperty Name="islemID" ColumnName="islemID" />
+                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_BankHesap_Harcama" FunctionName="BankDbModel.Store.sp_BankHesap_Harcama">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BankDbModel.sp_BankHesap_Harcama_Result">
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+                <ScalarProperty Name="islemID" ColumnName="islemID" />
+                <ScalarProperty Name="HesapNo" ColumnName="HesapNo" />
+                <ScalarProperty Name="islemTutari" ColumnName="islemTutari" />
+                <ScalarProperty Name="islemAciklama" ColumnName="islemAciklama" />
+                <ScalarProperty Name="islemKategori_id" ColumnName="islemKategori_id" />
+                <ScalarProperty Name="islemTarihi" ColumnName="islemTarihi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_KkartHesap_Harcama" FunctionName="BankDbModel.Store.sp_KkartHesap_Harcama">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BankDbModel.sp_KkartHesap_Harcama_Result">
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+                <ScalarProperty Name="islemID" ColumnName="islemID" />
+                <ScalarProperty Name="HesapNo" ColumnName="HesapNo" />
+                <ScalarProperty Name="islemTutari" ColumnName="islemTutari" />
+                <ScalarProperty Name="islemAciklama" ColumnName="islemAciklama" />
+                <ScalarProperty Name="islemKategori_id" ColumnName="islemKategori_id" />
+                <ScalarProperty Name="islemTarihi" ColumnName="islemTarihi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="v_KrediHesaplari_ve_islemler_kredi">
+            <EntityTypeMapping TypeName="BankDbModel.v_KrediHesaplari_ve_islemler_kredi">
+              <MappingFragment StoreEntitySet="v_KrediHesaplari_ve_islemler_kredi">
+                <ScalarProperty Name="islemTarihi" ColumnName="islemTarihi" />
+                <ScalarProperty Name="islemKategori_id" ColumnName="islemKategori_id" />
+                <ScalarProperty Name="islemAciklama" ColumnName="islemAciklama" />
+                <ScalarProperty Name="islemTutari" ColumnName="islemTutari" />
+                <ScalarProperty Name="HesapNo" ColumnName="HesapNo" />
+                <ScalarProperty Name="islemID" ColumnName="islemID" />
+                <ScalarProperty Name="HesapSahipTcno" ColumnName="HesapSahipTcno" />
+                <ScalarProperty Name="SonOdemeGunu" ColumnName="SonOdemeGunu" />
+                <ScalarProperty Name="HesapKesimGunu" ColumnName="HesapKesimGunu" />
+                <ScalarProperty Name="Kkart_Borc" ColumnName="Kkart_Borc" />
+                <ScalarProperty Name="Kkart_Limit" ColumnName="Kkart_Limit" />
+                <ScalarProperty Name="KkartIban" ColumnName="KkartIban" />
+                <ScalarProperty Name="KkartHesapNo" ColumnName="KkartHesapNo" />
+                <ScalarProperty Name="KkartID" ColumnName="KkartID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Ekstre">
+            <EntityTypeMapping TypeName="BankDbModel.v_Ekstre">
+              <MappingFragment StoreEntitySet="v_Ekstre">
+                <ScalarProperty Name="islemTarihi" ColumnName="islemTarihi" />
+                <ScalarProperty Name="islemKategori_id" ColumnName="islemKategori_id" />
+                <ScalarProperty Name="islemAciklama" ColumnName="islemAciklama" />
+                <ScalarProperty Name="islemTutari" ColumnName="islemTutari" />
+                <ScalarProperty Name="HesapNo" ColumnName="HesapNo" />
+                <ScalarProperty Name="islemID" ColumnName="islemID" />
+                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+                <ScalarProperty Name="HesapSahipTcno" ColumnName="HesapSahipTcno" />
+                <ScalarProperty Name="SonOdemeGunu" ColumnName="SonOdemeGunu" />
+                <ScalarProperty Name="HesapKesimGunu" ColumnName="HesapKesimGunu" />
+                <ScalarProperty Name="Kkart_Borc" ColumnName="Kkart_Borc" />
+                <ScalarProperty Name="Kkart_Limit" ColumnName="Kkart_Limit" />
+                <ScalarProperty Name="KkartIban" ColumnName="KkartIban" />
+                <ScalarProperty Name="KkartHesapNo" ColumnName="KkartHesapNo" />
+                <ScalarProperty Name="KkartID" ColumnName="KkartID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

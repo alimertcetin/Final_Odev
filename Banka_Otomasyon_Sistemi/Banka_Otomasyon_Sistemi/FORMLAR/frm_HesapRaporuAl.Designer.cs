@@ -205,7 +205,7 @@
             this.Controls.Add(this.txt_HesapNo);
             this.Controls.Add(this.label1);
             this.Name = "frm_HesapRaporuAl";
-            this.Text = "frm_HesapRaporuAl";
+            this.Text = "Hesap Hareketleri";
             this.Load += new System.EventHandler(this.frm_HesapRaporuAl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtg_HesapGoruntule)).EndInit();
             this.ResumeLayout(false);

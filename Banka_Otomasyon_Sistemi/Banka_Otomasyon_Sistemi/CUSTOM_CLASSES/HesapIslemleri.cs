@@ -6,6 +6,7 @@ namespace Banka_Otomasyon_Sistemi
 {
     public static class HesapIslemleri
     {
+
         private static string Generate_HesapNo()
         {
             string hesapNo = string.Empty;
@@ -84,20 +85,6 @@ namespace Banka_Otomasyon_Sistemi
             return hesapNo;
         }
 
-        public static Musteriler MusteriOlustur(string tcNo, string ad, string soyad, string dogumYeri, string sifre, DateTime dogumTarihi)
-        {
-            Musteriler musteri = new Musteriler();
-            var mNo = Generate_HesapNo();
-            musteri.MusteriNo = mNo.Substring(7, mNo.Length - 7);
-            musteri.m_TcNo = tcNo;
-            musteri.m_Ad = ad;
-            musteri.m_Soyad = soyad;
-            musteri.m_DogumTarihi = dogumTarihi;
-            musteri.m_DogumYeri = dogumYeri;
-            musteri.m_Rolid = 2;
-            musteri.m_Sifre = sifre; //Şifre rastgele olarak da verilebilir.
-            return musteri;
-        }
         public static Banka_Hesaplari BankaHesabiOlustur(string tcNo, BankDbEntities vt)
         {
             Banka_Hesaplari bh = new Banka_Hesaplari();
@@ -107,7 +94,7 @@ namespace Banka_Otomasyon_Sistemi
             bh.BankIban = IbanOlustur(vt);
             return bh;
         }
-        public static Kkart_Hesaplari KkartHesabiOlustur(string tcNo, BankDbEntities vt, decimal _limit,int _hesapKesimGunu, int _SonOdemeGunu)
+        public static Kkart_Hesaplari KkartHesabiOlustur(string tcNo, BankDbEntities vt, decimal _limit, int _hesapKesimGunu, int _SonOdemeGunu)
         {
             Kkart_Hesaplari kh = new Kkart_Hesaplari();
             kh.KkartHesapNo = HesapNoOlustur(vt);
@@ -200,6 +187,156 @@ namespace Banka_Otomasyon_Sistemi
             else
                 return null;
         }
+
+        /// <summary>
+        /// Para Çekme işlemi başarılıysa true döndürür.
+        /// </summary>
+        public static bool hesaptanParaCek(BankDbEntities vt, int cekilecekMiktar, string HesapNo, string Aciklama, int KategoriID, out string Mesaj)
+        {
+            bool sonuc = false;
+            var Bh = vt.Banka_Hesaplari.FirstOrDefault(p => p.BankaHesapNo == HesapNo);
+            if (Bh != null)
+            {
+                if (Bh.Hesap_Bakiye - cekilecekMiktar >= 0)
+                {
+                    var log = LogIslemleri.BankHesapLogOlustur(Bh.BankaHesapNo, -cekilecekMiktar, Aciklama, KategoriID);
+                    vt.islemler_BankaHesaplari.Add(log);
+                    Bh.Hesap_Bakiye -= cekilecekMiktar;
+                    if (vt.SaveChanges() > 0)
+                    {
+                        Mesaj = "İşlem başarılı! Şu anki bakiye : " + Bh.Hesap_Bakiye;
+                        sonuc = true;
+                    }
+                    else
+                    {
+                        Mesaj = "İşlemi gerçekleştirirken bir hata oluştu!";
+                        sonuc = false;
+                    }
+                }
+                else
+                {
+                    Mesaj = "Yetersiz Bakiye!";
+                    sonuc = false;
+                }
+            }
+            else
+            {
+                var Kkh = vt.Kkart_Hesaplari.FirstOrDefault(p => p.KkartHesapNo == HesapNo);
+                if (Kkh != null)
+                {
+                    if (Kkh.Kkart_Borc + cekilecekMiktar <= Kkh.Kkart_Limit)
+                    {
+                        var log = LogIslemleri.KrediHesapLogOlustur(Kkh.KkartHesapNo, -cekilecekMiktar, Aciklama, KategoriID);
+                        vt.islemler_KrediHesaplari.Add(log);
+                        Kkh.Kkart_Borc += cekilecekMiktar;
+                        if (vt.SaveChanges() > 0)
+                        {
+                            Mesaj = "İşlem başarılı! Şu anki borç : " + Kkh.Kkart_Borc;
+                            sonuc = true;
+                        }
+                        else
+                        {
+                            Mesaj = "İşlemi gerçekleştirirken bir hata oluştu!";
+                            sonuc = false;
+                        }
+                    }
+                    else
+                    {
+                        Mesaj = "Yetersiz Bakiye!";
+                        sonuc = false;
+                    }
+                }
+                else
+                {
+                    Mesaj = "Hesap Bulunamadı!";
+                    sonuc = false;
+                }
+            }
+
+            return sonuc;
+        }
+
+        /// <summary>
+        /// Para Yatırma işlemi başarılıysa true döndürür.
+        /// </summary>
+        public static bool HesabaParaYatir(BankDbEntities vt, int yatirilacakMiktar, string HesapNo, string Aciklama, int KategoriID, out string Mesaj)
+        {
+            Mesaj = string.Empty;
+            bool sonuc = false;
+            var Bh = vt.Banka_Hesaplari.FirstOrDefault(p => p.BankaHesapNo == HesapNo);
+            if (Bh != null)
+            {
+                var log = LogIslemleri.BankHesapLogOlustur(Bh.BankaHesapNo, yatirilacakMiktar, Aciklama, KategoriID);
+                vt.islemler_BankaHesaplari.Add(log);
+
+                Bh.Hesap_Bakiye += yatirilacakMiktar;
+                if (vt.SaveChanges() > 0)
+                {
+                    Mesaj = "Para Yatırma işlemi Başarılı!";
+                    sonuc = true;
+                }
+                else
+                {
+                    Mesaj = "İşlemi gerçekleştirirken bir hata oluştu!";
+                    sonuc = false;
+                }
+            }
+            else
+            {
+                var Kkh = vt.Kkart_Hesaplari.FirstOrDefault(p => p.KkartHesapNo == HesapNo);
+
+                if (Kkh != null)
+                {
+                    if (Kkh.Kkart_Borc - yatirilacakMiktar >= 0)
+                    {
+                        var log = LogIslemleri.KrediHesapLogOlustur(Kkh.KkartHesapNo, yatirilacakMiktar, Aciklama, KategoriID);
+                        vt.islemler_KrediHesaplari.Add(log);
+                        Kkh.Kkart_Borc -= yatirilacakMiktar;
+
+                        if (vt.SaveChanges() > 0)
+                        {
+                            Mesaj = "Para Yatırma işlemi Başarılı!";
+                            sonuc = true;
+                        }
+                        else
+                        {
+                            Mesaj = "İşlemi gerçekleştirirken bir hata oluştu!";
+                            sonuc = false;
+                        }
+                    }
+                    else if (Kkh.Kkart_Borc - yatirilacakMiktar < 0) //Yatırılmak istenen para borçtan fazla ise
+                    {
+                        decimal borc = Convert.ToDecimal(Kkh.Kkart_Borc);
+                        decimal fazlaPara = yatirilacakMiktar - borc;
+
+                        var log = LogIslemleri.KrediHesapLogOlustur(Kkh.KkartHesapNo, borc, Aciklama, KategoriID);
+                        vt.islemler_KrediHesaplari.Add(log);
+                        Kkh.Kkart_Borc = 0;
+
+                        if (vt.SaveChanges() > 0)
+                        {
+                            Mesaj = "Para Yatırma işlemi Başarılı!" + Environment.NewLine +
+                                "Hesaptaki borçtan fazla para yatırıldığı için " +
+                                fazlaPara + "TL geri iade edilecek.";
+                            sonuc = true;
+                        }
+                        else
+                        {
+                            Mesaj = "İşlemi gerçekleştirirken bir hata oluştu!";
+                            sonuc = false;
+                        }
+                    }
+                }
+                else
+                {
+                    Mesaj = "Hesap Bulunamadı!";
+                    sonuc = false;
+                }
+            }
+
+            return sonuc;
+        }
+
 
     }
 }

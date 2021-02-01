@@ -43,13 +43,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dtp_DogumTarihi = new System.Windows.Forms.DateTimePicker();
             this.cmb_SilinecekHesap = new System.Windows.Forms.ComboBox();
+            this.lbl_Enter = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label7.Location = new System.Drawing.Point(45, 204);
+            this.label7.Location = new System.Drawing.Point(49, 219);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(130, 24);
             this.label7.TabIndex = 31;
@@ -58,7 +59,7 @@
             // txt_SifreTekrar
             // 
             this.txt_SifreTekrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txt_SifreTekrar.Location = new System.Drawing.Point(186, 204);
+            this.txt_SifreTekrar.Location = new System.Drawing.Point(190, 219);
             this.txt_SifreTekrar.Name = "txt_SifreTekrar";
             this.txt_SifreTekrar.PasswordChar = '*';
             this.txt_SifreTekrar.Size = new System.Drawing.Size(200, 26);
@@ -79,7 +80,7 @@
             // txt_Sifre
             // 
             this.txt_Sifre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txt_Sifre.Location = new System.Drawing.Point(186, 172);
+            this.txt_Sifre.Location = new System.Drawing.Point(190, 187);
             this.txt_Sifre.Name = "txt_Sifre";
             this.txt_Sifre.PasswordChar = '*';
             this.txt_Sifre.Size = new System.Drawing.Size(200, 26);
@@ -88,7 +89,7 @@
             // txt_Soyad
             // 
             this.txt_Soyad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txt_Soyad.Location = new System.Drawing.Point(186, 108);
+            this.txt_Soyad.Location = new System.Drawing.Point(190, 123);
             this.txt_Soyad.Name = "txt_Soyad";
             this.txt_Soyad.ReadOnly = true;
             this.txt_Soyad.Size = new System.Drawing.Size(200, 26);
@@ -97,7 +98,7 @@
             // txt_Ad
             // 
             this.txt_Ad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txt_Ad.Location = new System.Drawing.Point(186, 76);
+            this.txt_Ad.Location = new System.Drawing.Point(190, 91);
             this.txt_Ad.Name = "txt_Ad";
             this.txt_Ad.ReadOnly = true;
             this.txt_Ad.Size = new System.Drawing.Size(200, 26);
@@ -106,18 +107,19 @@
             // txt_MusteriNo
             // 
             this.txt_MusteriNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txt_MusteriNo.Location = new System.Drawing.Point(186, 12);
+            this.txt_MusteriNo.Location = new System.Drawing.Point(190, 27);
             this.txt_MusteriNo.MaxLength = 11;
             this.txt_MusteriNo.Name = "txt_MusteriNo";
             this.txt_MusteriNo.Size = new System.Drawing.Size(200, 26);
             this.txt_MusteriNo.TabIndex = 23;
             this.txt_MusteriNo.TextChanged += new System.EventHandler(this.txt_MusteriNo_TextChanged);
+            this.txt_MusteriNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_MusteriNo_KeyPress);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(111, 172);
+            this.label6.Location = new System.Drawing.Point(115, 187);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 24);
             this.label6.TabIndex = 22;
@@ -127,7 +129,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(33, 142);
+            this.label4.Location = new System.Drawing.Point(37, 157);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(142, 22);
             this.label4.TabIndex = 20;
@@ -137,7 +139,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(75, 108);
+            this.label3.Location = new System.Drawing.Point(79, 123);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 24);
             this.label3.TabIndex = 19;
@@ -147,7 +149,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(116, 76);
+            this.label2.Location = new System.Drawing.Point(120, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 24);
             this.label2.TabIndex = 18;
@@ -157,7 +159,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(52, 12);
+            this.label1.Location = new System.Drawing.Point(56, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 24);
             this.label1.TabIndex = 17;
@@ -167,7 +169,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(7, 46);
+            this.label5.Location = new System.Drawing.Point(11, 61);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(168, 24);
             this.label5.TabIndex = 33;
@@ -177,7 +179,7 @@
             // dtp_DogumTarihi
             // 
             this.dtp_DogumTarihi.Enabled = false;
-            this.dtp_DogumTarihi.Location = new System.Drawing.Point(186, 142);
+            this.dtp_DogumTarihi.Location = new System.Drawing.Point(190, 157);
             this.dtp_DogumTarihi.Name = "dtp_DogumTarihi";
             this.dtp_DogumTarihi.Size = new System.Drawing.Size(200, 20);
             this.dtp_DogumTarihi.TabIndex = 35;
@@ -222,16 +224,29 @@
             "850000",
             "900000",
             "1000000"});
-            this.cmb_SilinecekHesap.Location = new System.Drawing.Point(186, 42);
+            this.cmb_SilinecekHesap.Location = new System.Drawing.Point(190, 57);
             this.cmb_SilinecekHesap.Name = "cmb_SilinecekHesap";
             this.cmb_SilinecekHesap.Size = new System.Drawing.Size(200, 28);
             this.cmb_SilinecekHesap.TabIndex = 37;
+            // 
+            // lbl_Enter
+            // 
+            this.lbl_Enter.AutoSize = true;
+            this.lbl_Enter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_Enter.ForeColor = System.Drawing.Color.Firebrick;
+            this.lbl_Enter.Location = new System.Drawing.Point(343, 7);
+            this.lbl_Enter.Name = "lbl_Enter";
+            this.lbl_Enter.Size = new System.Drawing.Size(47, 17);
+            this.lbl_Enter.TabIndex = 74;
+            this.lbl_Enter.Text = "Enter";
+            this.lbl_Enter.Visible = false;
             // 
             // frm_HesapSil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 301);
+            this.ClientSize = new System.Drawing.Size(400, 301);
+            this.Controls.Add(this.lbl_Enter);
             this.Controls.Add(this.cmb_SilinecekHesap);
             this.Controls.Add(this.dtp_DogumTarihi);
             this.Controls.Add(this.label5);
@@ -271,5 +286,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtp_DogumTarihi;
         private System.Windows.Forms.ComboBox cmb_SilinecekHesap;
+        private System.Windows.Forms.Label lbl_Enter;
     }
 }

@@ -38,7 +38,7 @@ namespace Banka_Otomasyon_Sistemi
             InitializeComponent();
 
 
-            Musteri = musteri;
+            this.Musteri = musteri;
             menu_GiseGorevlisi.Hide();
             menu_Yonetici.Hide();
 
@@ -56,59 +56,87 @@ namespace Banka_Otomasyon_Sistemi
 
         private void yeniBankaHesabıOluşturToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_GecisHesapOlustur frm_GecisHesap = new frm_GecisHesapOlustur();
-            frm_GecisHesap.MdiParent = this;
-            frm_GecisHesap.Show();
+            FormYonetimi.TekliFormOlustur(typeof(frm_GecisHesapOlustur));
         }
 
         private void hesapSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (FormYonetimi.FormBul("frm_HesapSil", out List<Form> hesapSilFormlari))
-            {
-                hesapSilFormlari.ElementAt(0).Activate();
-                return;
-            }
-            else
-            {
-                frm_HesapSil hesapSil = new frm_HesapSil();
-                hesapSil.MdiParent = this;
-                hesapSil.Show();
-            }
+            FormYonetimi.TekliFormOlustur(typeof(frm_HesapSil));
         }
         
         private void calisan_BankHesapGoruntule_Click(object sender, EventArgs e)
         {
-            frm_HesapGoruntule bankHesap = new frm_HesapGoruntule(Calisan);
-            bankHesap.MdiParent = this;
-            bankHesap.Show();
+            if (!FormYonetimi.CloseAllInstance(nameof(frm_HesapGoruntule)))
+            {
+                frm_HesapGoruntule bankHesap = new frm_HesapGoruntule(Calisan);
+                bankHesap.MdiParent = this;
+                bankHesap.Show();
+            }
+        }
+
+        private void çıkışToolStripMenuItem_Click(object sender, EventArgs e) => AnasayfadakiCikisTiklandi();
+        private void toolStripMenuItem2_Click(object sender, EventArgs e) => AnasayfadakiCikisTiklandi();
+
+        private void AnasayfadakiCikisTiklandi()
+        {
+            if (MessageBox.Show("Çıkış yapmak istediğinizden emin misiniz?", "Uyarı",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                CikisTiklandi = true;
+                FormYonetimi.GirisEkraninaDon();
+            }
         }
 
         //müşteri
         private void musteri_hesaplarımıGörüntüleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_HesapGoruntule bankHesap = new frm_HesapGoruntule(Musteri);
-            bankHesap.MdiParent = this;
-            bankHesap.Show();
-        }
-
-        private void çıkışToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CikisTiklandi = true;
-            FormYonetimi.GirisEkraninaDon();
+            if (!FormYonetimi.CloseAllInstance(nameof(frm_HesapGoruntule)))
+            {
+                frm_HesapGoruntule bankHesap = new frm_HesapGoruntule(Musteri);
+                bankHesap.MdiParent = this;
+                bankHesap.Show();
+            }
         }
 
         private void müşteriBilgileriniGörüntüleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_MusteriBilgileriniGoruntuleDuzenle form = new frm_MusteriBilgileriniGoruntuleDuzenle();
-            form.MdiParent = this;
-            form.Show();
+            FormYonetimi.TekliFormOlustur(typeof(frm_MusteriBilgileriniGoruntuleDuzenle));
         }
 
         private void müşteriyiBilgisiniSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_MusteriNoOgren form = new frm_MusteriNoOgren();
-            form.MdiParent = this;
-            form.Show();
+            FormYonetimi.TekliFormOlustur(typeof(frm_MusteriNoOgren));
+        }
+
+        private void çalışanlarıGörüntüleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormYonetimi.TekliFormOlustur(typeof(frm_CalisanlariGoruntule));
+        }
+
+        private void şifreDeğiştirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!FormYonetimi.CloseAllInstance(nameof(frm_MusteriSifreGuncelle)))
+            {
+                frm_MusteriSifreGuncelle form = new frm_MusteriSifreGuncelle(Musteri.MusteriNo);
+                form.MdiParent = this;
+                form.Show();
+            }
+        }
+
+        private void ödemeYapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!FormYonetimi.CloseAllInstance(nameof(frm_OdemeYap)))
+            {
+                frm_OdemeYap form = new frm_OdemeYap(Musteri);
+                form.MdiParent = this;
+                form.Show();
+            }
+        }
+
+
+        private void müsteriSifresiniGuncelleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

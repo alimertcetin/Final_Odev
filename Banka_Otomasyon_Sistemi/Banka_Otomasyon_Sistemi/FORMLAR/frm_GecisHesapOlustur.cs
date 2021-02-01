@@ -19,17 +19,13 @@ namespace Banka_Otomasyon_Sistemi
 
         private void btn_kGiris_Click(object sender, EventArgs e)
         {
-            frm_YeniHesapOlustur yeniHesapOlustur = new frm_YeniHesapOlustur();
-            yeniHesapOlustur.MdiParent = this.MdiParent;
-            yeniHesapOlustur.Show();
+            FormYonetimi.TekliFormOlustur(typeof(frm_YeniHesapOlustur));
             this.Close();
         }
 
         private void btn_pGiris_Click(object sender, EventArgs e)
         {
-            frm_HesapOlustur HesapOlustur = new frm_HesapOlustur();
-            HesapOlustur.MdiParent = this.MdiParent;
-            HesapOlustur.Show();
+            FormYonetimi.TekliFormOlustur(typeof(frm_HesapOlustur));
             this.Close();
         }
     }

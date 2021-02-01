@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,7 @@ namespace Banka_Otomasyon_Sistemi
 {
     public partial class frm_HesapRaporuAl : Form, IWin32Window
     {
+        public string HesapNumarasi { get => txt_HesapNo.Text; }
         public frm_HesapRaporuAl(string HesapNo)
         {
             InitializeComponent();
@@ -22,7 +25,7 @@ namespace Banka_Otomasyon_Sistemi
         {
             dtg_HesapGoruntule.AutoGenerateColumns = false;
 
-            FormYonetimi.FormBul("frm_HesapRaporuAl", out List<Form> form);
+            FormYonetimi.FormlariBul("frm_HesapRaporuAl", out List<Form> form);
             if (form.Count != 1)
             {
                 for (int i = 0; i < form.Count - 1; i++)
@@ -40,7 +43,7 @@ namespace Banka_Otomasyon_Sistemi
             public string islemTutari { get; set; }
             public string islemAciklama { get; set; }
             public string KategoriAd { get; set; }
-            public DateTime islemTarihi { get; set; }
+            public string islemTarihi { get; set; }
         }
 
         private List<DataHolder> ListeyiDoldur(BankDbEntities vt, bool islemler_BankaHesabi, string hesapNo)
@@ -67,10 +70,10 @@ namespace Banka_Otomasyon_Sistemi
                     dh.islemTutari = item.islemTutari.ToString();
                     dh.islemAciklama = item.islemAciklama;
                     dh.KategoriAd = item.KategoriAd;
-                    dh.islemTarihi = item.islemTarihi;
+                    dh.islemTarihi = item.islemTarihi.ToShortDateString();
                     if (Convert.ToDecimal(dh.islemTutari) > 0)
                         dh.islemTutari = "+" + dh.islemTutari;
-                    if (dh.islemTarihi < dtp_Bitis.Value && dh.islemTarihi > dtp_Baslangic.Value)
+                    if (item.islemTarihi < dtp_Bitis.Value && item.islemTarihi > dtp_Baslangic.Value)
                         sorguListesi.Add(dh);
                 }
                 return sorguListesi;
@@ -97,10 +100,10 @@ namespace Banka_Otomasyon_Sistemi
                     dh.islemTutari = item.islemTutari.ToString();
                     dh.islemAciklama = item.islemAciklama;
                     dh.KategoriAd = item.KategoriAd;
-                    dh.islemTarihi = item.islemTarihi;
+                    dh.islemTarihi = item.islemTarihi.ToShortDateString();
                     if (Convert.ToDecimal(dh.islemTutari) > 0)
                         dh.islemTutari = "+" + dh.islemTutari;
-                    if (dh.islemTarihi < dtp_Bitis.Value && dh.islemTarihi > dtp_Baslangic.Value)
+                    if (item.islemTarihi < dtp_Bitis.Value && item.islemTarihi > dtp_Baslangic.Value)
                         sorguListesi.Add(dh);
                 }
                 return sorguListesi;
@@ -162,7 +165,8 @@ namespace Banka_Otomasyon_Sistemi
         {
             try
             {
-                printPreviewDialog1.Show(this);
+                printPreviewDialog1.ShowDialog(this);
+
             }
             catch (Exception ex)
             {
@@ -173,33 +177,157 @@ namespace Banka_Otomasyon_Sistemi
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            //Gösterilecekler : 
+            //Müşterinin adı,Soyadı
+            //Hesap Numarası
+            //IBAN
+            string MUSTERIADSOYAD = string.Empty;
+            string IBAN = string.Empty;
+            BankDbEntities vt = new BankDbEntities();
+            var BankHesabi = HesapIslemleri.Hesap_HesapGetirBank(vt, txt_HesapNo.Text);
+            if (BankHesabi != null)
+            {
+                KisiIslemleri.MusteriVeritabanindaVarMi(vt, out Musteriler musteri, BankHesabi.HesapSahipTcno);
+                MUSTERIADSOYAD = musteri.m_Ad +" "+ musteri.m_Soyad.ToUpper();
+                IBAN = BankHesabi.BankIban;
+            }
+            else
+            {
+                var KkartHesabi = HesapIslemleri.Hesap_HesapGetirKkart(vt, txt_HesapNo.Text);
+                if(KkartHesabi != null)
+                {
+                    KisiIslemleri.MusteriVeritabanindaVarMi(vt, out Musteriler musteri, KkartHesabi.HesapSahipTcno);
+                    MUSTERIADSOYAD = musteri.m_Ad + " " + musteri.m_Soyad.ToUpper();
+                    IBAN = KkartHesabi.KkartIban;
+                }
+            }
+
             //sıralama : tarih, açıklama, tutar, kategori
             var liste = dtg_HesapGoruntule.DataSource as List<DataHolder>;
+            foreach (var item in liste)
+            {
+                int BaslangicIndex = 0;
+                const int maxCharPerLine = 19;
+                if (item.islemAciklama.Length >= 90) //Açıklama veritabanı üzerinde maksimum 100 karakter olacak şekilde sınırlandırıldı.
+                {
+                    BaslangicIndex = 0;
+                    var Satir1 = item.islemAciklama.Substring(BaslangicIndex, maxCharPerLine); //19
+                    BaslangicIndex += maxCharPerLine;
+                    var Satir2 = Environment.NewLine + item.islemAciklama.Substring(BaslangicIndex, maxCharPerLine); //38
+                    BaslangicIndex += maxCharPerLine;
+                    var Satir3 = Environment.NewLine + item.islemAciklama.Substring(BaslangicIndex, maxCharPerLine); //57
+                    BaslangicIndex += maxCharPerLine;
+                    var Satir4 = Environment.NewLine + item.islemAciklama.Substring(BaslangicIndex, maxCharPerLine); //76
+                    BaslangicIndex += maxCharPerLine;
+                    var Satir5 = Environment.NewLine + item.islemAciklama.Substring(BaslangicIndex, maxCharPerLine); //85
+                    BaslangicIndex += maxCharPerLine;
+                    var Satir6 = Environment.NewLine + item.islemAciklama.Substring(BaslangicIndex, item.islemAciklama.Length - BaslangicIndex); //104
+                    item.islemAciklama = 
+                        Satir1 + 
+                        Satir2 + 
+                        Satir3 + 
+                        Satir4 + 
+                        Satir5 + 
+                        Satir6;
+                }
+                else if (item.islemAciklama.Length >= 70)
+                {
+                    BaslangicIndex = 0;
+                    var Satir1 = item.islemAciklama.Substring(BaslangicIndex, maxCharPerLine); //19
+                    BaslangicIndex += maxCharPerLine;
+                    var Satir2 = Environment.NewLine + item.islemAciklama.Substring(BaslangicIndex, maxCharPerLine); //38
+                    BaslangicIndex += maxCharPerLine;
+                    var Satir3 = Environment.NewLine + item.islemAciklama.Substring(BaslangicIndex, maxCharPerLine - 6); //57
+                    BaslangicIndex += maxCharPerLine;
+                    var Satir4 = Environment.NewLine + item.islemAciklama.Substring(BaslangicIndex, item.islemAciklama.Length - BaslangicIndex);
+                    item.islemAciklama =
+                        Satir1 +
+                        Satir2 +
+                        Satir3 +
+                        Satir4;
+                }
+                else if(item.islemAciklama.Length >= 60)
+                {
+                    BaslangicIndex = 0;
+                    var Satir1 = item.islemAciklama.Substring(BaslangicIndex, maxCharPerLine); //19
+                    BaslangicIndex += maxCharPerLine;
+                    var Satir2 = Environment.NewLine + item.islemAciklama.Substring(BaslangicIndex, maxCharPerLine); //38
+                    BaslangicIndex += maxCharPerLine;
+                    var Satir3 = Environment.NewLine + item.islemAciklama.Substring(BaslangicIndex, maxCharPerLine); //57
+                    BaslangicIndex += maxCharPerLine;
+                    var Satir4 = Environment.NewLine + item.islemAciklama.Substring(BaslangicIndex, item.islemAciklama.Length - BaslangicIndex);
+                    item.islemAciklama =
+                        Satir1 +
+                        Satir2 +
+                        Satir3 +
+                        Satir4;
+                }
+                else if(item.islemAciklama.Length >= 40)
+                {
+                    BaslangicIndex = 0;
+                    var Satir1 = item.islemAciklama.Substring(BaslangicIndex, maxCharPerLine + 1);
+                    BaslangicIndex += maxCharPerLine + 1;
+                    var Satir2 = Environment.NewLine + item.islemAciklama.Substring(BaslangicIndex, maxCharPerLine + 1);
+                    BaslangicIndex += maxCharPerLine + 1;
+                    var Satir3 = Environment.NewLine + item.islemAciklama.Substring(BaslangicIndex, item.islemAciklama.Length - BaslangicIndex);
+                    item.islemAciklama =
+                        Satir1 +
+                        Satir2 +
+                        Satir3;
+                }
+                else if (item.islemAciklama.Length >= 19)
+                {
+                    BaslangicIndex = 0;
+                    var Satir1 = item.islemAciklama.Substring(0, maxCharPerLine);
+                    BaslangicIndex += maxCharPerLine;
+                    var Satir2 = Environment.NewLine + item.islemAciklama.Substring(BaslangicIndex, item.islemAciklama.Length - BaslangicIndex);
+                    item.islemAciklama =
+                        Satir1 +
+                        Satir2;
+                }
+            }
 
             Graphics cizim = e.Graphics;
-            Font BaslikTipi = new Font("Arial", 12, FontStyle.Bold);
-            Font yaziTipi = new Font("Arial", 12, FontStyle.Regular);
-
+            Font BaslikTipi = new Font("Arial", 11, FontStyle.Bold);
+            Font yaziTipi = new Font("Arial", 8, FontStyle.Regular);
+            Font infoTipi = new Font("Arial", 11, FontStyle.Italic);
             SolidBrush firca = new SolidBrush(Color.Black);
-            cizim.DrawString("Tarih", BaslikTipi, firca, new PointF(10, 10));
-            cizim.DrawString("Açıklama", BaslikTipi, firca, new PointF(170, 10));
-            cizim.DrawString("İşlem Tutarı", BaslikTipi, firca, new PointF(420, 10));
-            cizim.DrawString("Kategori", BaslikTipi, firca, new PointF(600, 10));
+
+            const int BaslikYukseklik = 100; //Tarih, işlem tutarı gibi alanların yüksekliği
+            const int BaslikBoslukMiktari = 30; //Tarih, işlem tutarı gibi alanların Boşluk değeri
+            int satirYukseklik = BaslikYukseklik + 70; //Logların yüksekliği
+
+            cizim.DrawString("Sayın " + MUSTERIADSOYAD + Environment.NewLine + " hesabınıza ait " 
+                + dtp_Baslangic.Value.ToShortDateString() + " - " + dtp_Bitis.Value.ToShortDateString()
+                + " tarihleri arasında yapılan harcamalar" + Environment.NewLine 
+                +"aşağıdaki gibidir." + Environment.NewLine
+                + "Hesap Numarası : " + txt_HesapNo.Text + Environment.NewLine //Hesap No 16 karakter
+                + "IBAN : " + IBAN, infoTipi, firca, new PointF(30, BaslikYukseklik - 90)); //IBAN 26 karakter
+
+            cizim.DrawString("Tarih", BaslikTipi, firca, new PointF(20, BaslikYukseklik));
+            cizim.DrawString("Açıklama", BaslikTipi, firca, new PointF(85 + BaslikBoslukMiktari, BaslikYukseklik));
+            cizim.DrawString("İşlem Tutarı", BaslikTipi, firca, new PointF(185 + BaslikBoslukMiktari, BaslikYukseklik));
+            cizim.DrawString("Kategori", BaslikTipi, firca, new PointF(300 + BaslikBoslukMiktari, BaslikYukseklik));
 
             Pen kalem = new Pen(Color.Black, 3);
-            Point baslangic = new Point(30, 15);
-            Point bitis = new Point(30, 800);
+            Point baslangic = new Point(30, BaslikYukseklik + 40);
+            Point bitis = new Point(370, BaslikYukseklik + 40);
             cizim.DrawLine(kalem, baslangic, bitis);
 
-            int satirYukseklik = 40;
+
             foreach (var item in liste)
             {
                 cizim.DrawString(item.islemTarihi.ToString(), yaziTipi, firca, new PointF(10, satirYukseklik));
-                cizim.DrawString(item.islemAciklama, yaziTipi, firca, new PointF(170, satirYukseklik));
-                cizim.DrawString(item.islemTutari, yaziTipi, firca, new PointF(420, satirYukseklik));
-                cizim.DrawString(item.KategoriAd, yaziTipi, firca, new PointF(600, satirYukseklik));
-                satirYukseklik += 15;
+                cizim.DrawString(item.islemAciklama, yaziTipi, firca, new PointF(90 + BaslikBoslukMiktari / 2, satirYukseklik));
+                cizim.DrawString(item.islemTutari, yaziTipi, firca, new PointF(210 + BaslikBoslukMiktari / 2, satirYukseklik));
+                cizim.DrawString(item.KategoriAd, yaziTipi, firca, new PointF(325 + BaslikBoslukMiktari / 2, satirYukseklik));
+                satirYukseklik += 85;
             }
+
+            printDocument1.PrinterSettings.PrinterName = "Microsoft Print to PDF";
+            printDocument1.PrinterSettings.PrintToFile = true;
+            printDocument1.PrinterSettings.PrintFileName = Path.Combine(Application.LocalUserAppDataPath, "1715010059 - BankaOtomasyonSistemi_Rapor" + ".pdf");
+            MessageBox.Show("Dosya " + Application.LocalUserAppDataPath + " lokasyonuna pdf olarak kayıt edilecektir.");
         }
     }
 }

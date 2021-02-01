@@ -19,25 +19,6 @@ namespace Banka_Otomasyon_Sistemi
             InitializeComponent();
         }
 
-        private void txt_MusteriNo_TextChanged(object sender, EventArgs e)
-        {
-            musteri = vt.Musteriler.FirstOrDefault(p => p.MusteriNo == txt_MusteriNo.Text);
-            if (musteri != null)
-            {
-                txt_Ad.Text = musteri.m_Ad;
-                txt_Soyad.Text = musteri.m_Soyad;
-                dtp_DogumTarihi.Value = musteri.m_DogumTarihi;
-                txt_DogumYeri.Text = musteri.m_DogumYeri;
-            }
-            else
-            {
-                txt_Ad.Text = string.Empty;
-                txt_Soyad.Text = string.Empty;
-                dtp_DogumTarihi.Value = DateTime.Now;
-                txt_DogumYeri.Text = string.Empty;
-            }
-        }
-
         private void btn_olustur_Click(object sender, EventArgs e)
         {
             if(musteri == null)
@@ -58,7 +39,7 @@ namespace Banka_Otomasyon_Sistemi
                 }
                 else
                 {
-                    if (FormYonetimi.FormBul("frm_KkartConfig", out List<Form> KkartConfigs))
+                    if (FormYonetimi.FormlariBul("frm_KkartConfig", out List<Form> KkartConfigs))
                     {
                         MessageBox.Show("Zaten şu anda devam eden bir işleminiz var. " +
                                 "Önce devam eden kredi hesabı oluşturma işlemini sonlandırın.",
@@ -72,6 +53,33 @@ namespace Banka_Otomasyon_Sistemi
                         frm_Kkart.MdiParent = this.MdiParent;
                         frm_Kkart.Show();
                     }
+                }
+            }
+        }
+
+        private void txt_MusteriNo_TextChanged(object sender, EventArgs e)
+        {
+            lbl_Enter.Visible = string.IsNullOrEmpty(txt_MusteriNo.Text) ? false : true;
+        }
+
+        private void txt_MusteriNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(13))
+            {
+                musteri = vt.Musteriler.FirstOrDefault(p => p.MusteriNo == txt_MusteriNo.Text);
+                if (musteri != null)
+                {
+                    txt_Ad.Text = musteri.m_Ad;
+                    txt_Soyad.Text = musteri.m_Soyad;
+                    dtp_DogumTarihi.Value = musteri.m_DogumTarihi;
+                    txt_DogumYeri.Text = musteri.m_DogumYeri;
+                }
+                else
+                {
+                    txt_Ad.Text = string.Empty;
+                    txt_Soyad.Text = string.Empty;
+                    dtp_DogumTarihi.Value = DateTime.Now;
+                    txt_DogumYeri.Text = string.Empty;
                 }
             }
         }

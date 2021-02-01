@@ -1,128 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BankDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Banka_Hesaplari">
-    <Key>
-      <PropertyRef Name="BankaHesapNo" />
-    </Key>
-    <Property Name="HesapID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="BankaHesapNo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="BankIban" Type="String" MaxLength="26" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="Hesap_Bakiye" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="HesapSahipTcno" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Musteriler" Relationship="BankDbModel.FK_Banka_Hesap_Musteriler" FromRole="Banka_Hesaplari" ToRole="Musteriler" />
-    <NavigationProperty Name="islemler_BankaHesaplari" Relationship="BankDbModel.FK_islemler_BankaHesap_Banka_Hesap" FromRole="Banka_Hesaplari" ToRole="islemler_BankaHesaplari" />
-  </EntityType>
-  <EntityType Name="Calisanlar">
-    <Key>
-      <PropertyRef Name="c_TcNo" />
-    </Key>
-    <Property Name="calisanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="c_TcNo" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="c_SicilNo" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="c_Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="c_Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="c_DogumTarihi" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="c_DıgumYeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="c_Maas" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="c_Prim" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="c_Rolid" Type="Int32" Nullable="false" />
-    <Property Name="c_Sifre" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Roller" Relationship="BankDbModel.FK_Calisanlar_Roller" FromRole="Calisanlar" ToRole="Roller" />
-  </EntityType>
-  <EntityType Name="islemler_BankaHesaplari">
-    <Key>
-      <PropertyRef Name="islemID" />
-    </Key>
-    <Property Name="islemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="HesapNo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="islemTutari" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
-    <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Banka_Hesaplari" Relationship="BankDbModel.FK_islemler_BankaHesap_Banka_Hesap" FromRole="islemler_BankaHesaplari" ToRole="Banka_Hesaplari" />
-    <NavigationProperty Name="Kategoriler" Relationship="BankDbModel.FK_islemler_BankaHesaplari_Kategoriler" FromRole="islemler_BankaHesaplari" ToRole="Kategoriler" />
-  </EntityType>
-  <EntityType Name="islemler_KrediHesaplari">
-    <Key>
-      <PropertyRef Name="islemID" />
-    </Key>
-    <Property Name="islemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="HesapNo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="islemTutari" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
-    <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Kkart_Hesaplari" Relationship="BankDbModel.FK_islemler_KrediHesap_Kkredi_Hesap" FromRole="islemler_KrediHesaplari" ToRole="Kkart_Hesaplari" />
-    <NavigationProperty Name="Kategoriler" Relationship="BankDbModel.FK_islemler_KrediHesaplari_Kategoriler" FromRole="islemler_KrediHesaplari" ToRole="Kategoriler" />
-  </EntityType>
-  <EntityType Name="Kategoriler">
-    <Key>
-      <PropertyRef Name="KategoriID" />
-    </Key>
-    <Property Name="KategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="KategoriAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="islemler_BankaHesaplari" Relationship="BankDbModel.FK_islemler_BankaHesaplari_Kategoriler" FromRole="Kategoriler" ToRole="islemler_BankaHesaplari" />
-    <NavigationProperty Name="islemler_KrediHesaplari" Relationship="BankDbModel.FK_islemler_KrediHesaplari_Kategoriler" FromRole="Kategoriler" ToRole="islemler_KrediHesaplari" />
-  </EntityType>
-  <EntityType Name="Kkart_Hesaplari">
-    <Key>
-      <PropertyRef Name="KkartHesapNo" />
-    </Key>
-    <Property Name="KkartID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="KkartHesapNo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="KkartIban" Type="String" MaxLength="26" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="Kkart_Limit" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="Kkart_Borc" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="HesapKesimGunu" Type="Int32" Nullable="false" />
-    <Property Name="SonOdemeGunu" Type="Int32" Nullable="false" />
-    <Property Name="HesapSahipTcno" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="islemler_KrediHesaplari" Relationship="BankDbModel.FK_islemler_KrediHesap_Kkredi_Hesap" FromRole="Kkart_Hesaplari" ToRole="islemler_KrediHesaplari" />
-  </EntityType>
-  <EntityType Name="Musteriler">
-    <Key>
-      <PropertyRef Name="m_TcNo" />
-    </Key>
-    <Property Name="müsteriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MusteriNo" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="m_TcNo" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="m_Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="m_Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="m_DogumTarihi" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="m_DogumYeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="m_Rolid" Type="Int32" Nullable="false" />
-    <Property Name="m_Sifre" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Banka_Hesaplari" Relationship="BankDbModel.FK_Banka_Hesap_Musteriler" FromRole="Musteriler" ToRole="Banka_Hesaplari" />
-    <NavigationProperty Name="Roller" Relationship="BankDbModel.FK_Musteriler_Roller" FromRole="Musteriler" ToRole="Roller" />
-  </EntityType>
-  <EntityType Name="Roller">
-    <Key>
-      <PropertyRef Name="RolID" />
-    </Key>
-    <Property Name="RolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="RolAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Calisanlar" Relationship="BankDbModel.FK_Calisanlar_Roller" FromRole="Roller" ToRole="Calisanlar" />
-    <NavigationProperty Name="Musteriler" Relationship="BankDbModel.FK_Musteriler_Roller" FromRole="Roller" ToRole="Musteriler" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityContainer Name="BankDbEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Banka_Hesaplari" EntityType="Self.Banka_Hesaplari" />
-    <EntitySet Name="Calisanlar" EntityType="Self.Calisanlar" />
-    <EntitySet Name="islemler_BankaHesaplari" EntityType="Self.islemler_BankaHesaplari" />
-    <EntitySet Name="islemler_KrediHesaplari" EntityType="Self.islemler_KrediHesaplari" />
-    <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" />
-    <EntitySet Name="Kkart_Hesaplari" EntityType="Self.Kkart_Hesaplari" />
-    <EntitySet Name="Musteriler" EntityType="Self.Musteriler" />
-    <EntitySet Name="Roller" EntityType="Self.Roller" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <FunctionImport Name="sp_alterdiagram">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -153,7 +31,15 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
-    <EntitySet Name="Vislemler_Banka" EntityType="BankDbModel.Vislemler_Banka" />
+    <EntitySet Name="Banka_Hesaplari" EntityType="BankDbModel.Banka_Hesaplari" />
+    <EntitySet Name="Calisanlar" EntityType="BankDbModel.Calisanlar" />
+    <EntitySet Name="islemler_BankaHesaplari" EntityType="BankDbModel.islemler_BankaHesaplari" />
+    <EntitySet Name="islemler_KrediHesaplari" EntityType="BankDbModel.islemler_KrediHesaplari" />
+    <EntitySet Name="Kategoriler" EntityType="BankDbModel.Kategoriler" />
+    <EntitySet Name="Kkart_Hesaplari" EntityType="BankDbModel.Kkart_Hesaplari" />
+    <EntitySet Name="Musteriler" EntityType="BankDbModel.Musteriler" />
+    <EntitySet Name="Roller" EntityType="BankDbModel.Roller" />
+    <EntitySet Name="sysdiagrams" EntityType="BankDbModel.sysdiagrams" />
     <AssociationSet Name="FK_Banka_Hesap_Musteriler" Association="BankDbModel.FK_Banka_Hesap_Musteriler">
       <End Role="Musteriler" EntitySet="Musteriler" />
       <End Role="Banka_Hesaplari" EntitySet="Banka_Hesaplari" />
@@ -182,6 +68,25 @@
       <End Role="Roller" EntitySet="Roller" />
       <End Role="Musteriler" EntitySet="Musteriler" />
     </AssociationSet>
+    <EntitySet Name="v_BankaHesabiLog" EntityType="BankDbModel.v_BankaHesabiLog" />
+    <FunctionImport Name="BankHesap_Harcama" ReturnType="Collection(BankDbModel.BankHesap_Harcama_Result)">
+      <Parameter Name="baslangic" Mode="In" Type="DateTime" />
+      <Parameter Name="bitis" Mode="In" Type="DateTime" />
+      <Parameter Name="hesapNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="v_KkartHesapHarcama" EntityType="BankDbModel.v_KkartHesapHarcama" />
+    <FunctionImport Name="sp_BankHesap_Harcama" ReturnType="Collection(BankDbModel.sp_BankHesap_Harcama_Result)">
+      <Parameter Name="baslangic" Mode="In" Type="DateTime" />
+      <Parameter Name="bitis" Mode="In" Type="DateTime" />
+      <Parameter Name="hesapNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_KkartHesap_Harcama" ReturnType="Collection(BankDbModel.sp_KkartHesap_Harcama_Result)">
+      <Parameter Name="baslangic" Mode="In" Type="DateTime" />
+      <Parameter Name="bitis" Mode="In" Type="DateTime" />
+      <Parameter Name="hesapNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="v_KrediHesaplari_ve_islemler_kredi" EntityType="BankDbModel.v_KrediHesaplari_ve_islemler_kredi" />
+    <EntitySet Name="v_Ekstre" EntityType="BankDbModel.v_Ekstre" />
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -194,16 +99,118 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
-  <EntityType Name="Vislemler_Banka">
+  <EntityType Name="Banka_Hesaplari">
     <Key>
-      <PropertyRef Name="islemTutari" />
-      <PropertyRef Name="islemTarihi" />
-      <PropertyRef Name="KategoriAd" />
+      <PropertyRef Name="BankaHesapNo" />
     </Key>
+    <Property Name="HesapID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BankaHesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="BankIban" Type="String" Nullable="false" MaxLength="26" FixedLength="true" Unicode="true" />
+    <Property Name="Hesap_Bakiye" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="HesapSahipTcno" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Musteriler" Relationship="BankDbModel.FK_Banka_Hesap_Musteriler" FromRole="Banka_Hesaplari" ToRole="Musteriler" />
+    <NavigationProperty Name="islemler_BankaHesaplari" Relationship="BankDbModel.FK_islemler_BankaHesap_Banka_Hesap" FromRole="Banka_Hesaplari" ToRole="islemler_BankaHesaplari" />
+  </EntityType>
+  <EntityType Name="Calisanlar">
+    <Key>
+      <PropertyRef Name="c_TcNo" />
+    </Key>
+    <Property Name="calisanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="c_TcNo" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="c_SicilNo" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="c_Ad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="c_Soyad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="c_DogumTarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="c_DogumYeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="c_Maas" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="c_Prim" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="c_Rolid" Type="Int32" Nullable="false" />
+    <Property Name="c_Sifre" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Roller" Relationship="BankDbModel.FK_Calisanlar_Roller" FromRole="Calisanlar" ToRole="Roller" />
+  </EntityType>
+  <EntityType Name="islemler_BankaHesaplari">
+    <Key>
+      <PropertyRef Name="islemID" />
+    </Key>
+    <Property Name="islemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
     <Property Name="islemTutari" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
     <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
     <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Banka_Hesaplari" Relationship="BankDbModel.FK_islemler_BankaHesap_Banka_Hesap" FromRole="islemler_BankaHesaplari" ToRole="Banka_Hesaplari" />
+    <NavigationProperty Name="Kategoriler" Relationship="BankDbModel.FK_islemler_BankaHesaplari_Kategoriler" FromRole="islemler_BankaHesaplari" ToRole="Kategoriler" />
+  </EntityType>
+  <EntityType Name="islemler_KrediHesaplari">
+    <Key>
+      <PropertyRef Name="islemID" />
+    </Key>
+    <Property Name="islemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="islemTutari" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
+    <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Kkart_Hesaplari" Relationship="BankDbModel.FK_islemler_KrediHesap_Kkredi_Hesap" FromRole="islemler_KrediHesaplari" ToRole="Kkart_Hesaplari" />
+    <NavigationProperty Name="Kategoriler" Relationship="BankDbModel.FK_islemler_KrediHesaplari_Kategoriler" FromRole="islemler_KrediHesaplari" ToRole="Kategoriler" />
+  </EntityType>
+  <EntityType Name="Kategoriler">
+    <Key>
+      <PropertyRef Name="KategoriID" />
+    </Key>
+    <Property Name="KategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="KategoriAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="islemler_BankaHesaplari" Relationship="BankDbModel.FK_islemler_BankaHesaplari_Kategoriler" FromRole="Kategoriler" ToRole="islemler_BankaHesaplari" />
+    <NavigationProperty Name="islemler_KrediHesaplari" Relationship="BankDbModel.FK_islemler_KrediHesaplari_Kategoriler" FromRole="Kategoriler" ToRole="islemler_KrediHesaplari" />
+  </EntityType>
+  <EntityType Name="Kkart_Hesaplari">
+    <Key>
+      <PropertyRef Name="KkartHesapNo" />
+    </Key>
+    <Property Name="KkartID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KkartHesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="KkartIban" Type="String" Nullable="false" MaxLength="26" FixedLength="true" Unicode="true" />
+    <Property Name="Kkart_Limit" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Kkart_Borc" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="HesapKesimGunu" Type="Int32" Nullable="false" />
+    <Property Name="SonOdemeGunu" Type="Int32" Nullable="false" />
+    <Property Name="HesapSahipTcno" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="islemler_KrediHesaplari" Relationship="BankDbModel.FK_islemler_KrediHesap_Kkredi_Hesap" FromRole="Kkart_Hesaplari" ToRole="islemler_KrediHesaplari" />
+  </EntityType>
+  <EntityType Name="Musteriler">
+    <Key>
+      <PropertyRef Name="m_TcNo" />
+    </Key>
+    <Property Name="müsteriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MusteriNo" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Name="m_TcNo" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="m_Ad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="m_Soyad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="m_DogumTarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="m_DogumYeri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="m_Rolid" Type="Int32" Nullable="false" />
+    <Property Name="m_Sifre" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Banka_Hesaplari" Relationship="BankDbModel.FK_Banka_Hesap_Musteriler" FromRole="Musteriler" ToRole="Banka_Hesaplari" />
+    <NavigationProperty Name="Roller" Relationship="BankDbModel.FK_Musteriler_Roller" FromRole="Musteriler" ToRole="Roller" />
+  </EntityType>
+  <EntityType Name="Roller">
+    <Key>
+      <PropertyRef Name="RolID" />
+    </Key>
+    <Property Name="RolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RolAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Calisanlar" Relationship="BankDbModel.FK_Calisanlar_Roller" FromRole="Roller" ToRole="Calisanlar" />
+    <NavigationProperty Name="Musteriler" Relationship="BankDbModel.FK_Musteriler_Roller" FromRole="Roller" ToRole="Musteriler" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="FK_Banka_Hesap_Musteriler">
     <End Type="BankDbModel.Musteriler" Role="Musteriler" Multiplicity="1" />
@@ -289,4 +296,138 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="v_BankaHesabiLog">
+    <Key>
+      <PropertyRef Name="KategoriID" />
+      <PropertyRef Name="KategoriAd" />
+      <PropertyRef Name="islemID" />
+      <PropertyRef Name="HesapNo" />
+      <PropertyRef Name="islemTutari" />
+      <PropertyRef Name="islemKategori_id" />
+      <PropertyRef Name="islemTarihi" />
+    </Key>
+    <Property Name="KategoriID" Type="Int32" Nullable="false" />
+    <Property Name="KategoriAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="islemID" Type="Int32" Nullable="false" />
+    <Property Name="HesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="islemTutari" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
+    <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <ComplexType Name="BankHesap_Harcama_Result">
+    <Property Type="Int32" Name="KategoriID" Nullable="false" />
+    <Property Type="String" Name="KategoriAd" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="islemID" Nullable="false" />
+    <Property Type="String" Name="HesapNo" Nullable="false" MaxLength="15" />
+    <Property Type="Decimal" Name="islemTutari" Nullable="false" Precision="19" />
+    <Property Type="String" Name="islemAciklama" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="islemKategori_id" Nullable="false" />
+    <Property Type="DateTime" Name="islemTarihi" Nullable="false" Precision="23" />
+  </ComplexType>
+  <EntityType Name="v_KkartHesapHarcama">
+    <Key>
+      <PropertyRef Name="KategoriID" />
+      <PropertyRef Name="KategoriAd" />
+      <PropertyRef Name="islemID" />
+      <PropertyRef Name="HesapNo" />
+      <PropertyRef Name="islemTutari" />
+      <PropertyRef Name="islemKategori_id" />
+      <PropertyRef Name="islemTarihi" />
+    </Key>
+    <Property Name="KategoriID" Type="Int32" Nullable="false" />
+    <Property Name="KategoriAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="islemID" Type="Int32" Nullable="false" />
+    <Property Name="HesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="islemTutari" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
+    <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <ComplexType Name="sp_BankHesap_Harcama_Result">
+    <Property Type="Int32" Name="KategoriID" Nullable="false" />
+    <Property Type="String" Name="KategoriAd" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="islemID" Nullable="false" />
+    <Property Type="String" Name="HesapNo" Nullable="false" MaxLength="15" />
+    <Property Type="Decimal" Name="islemTutari" Nullable="false" Precision="19" />
+    <Property Type="String" Name="islemAciklama" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="islemKategori_id" Nullable="false" />
+    <Property Type="DateTime" Name="islemTarihi" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_KkartHesap_Harcama_Result">
+    <Property Type="Int32" Name="KategoriID" Nullable="false" />
+    <Property Type="String" Name="KategoriAd" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="islemID" Nullable="false" />
+    <Property Type="String" Name="HesapNo" Nullable="false" MaxLength="15" />
+    <Property Type="Decimal" Name="islemTutari" Nullable="false" Precision="19" />
+    <Property Type="String" Name="islemAciklama" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="islemKategori_id" Nullable="false" />
+    <Property Type="DateTime" Name="islemTarihi" Nullable="false" Precision="23" />
+  </ComplexType>
+  <EntityType Name="v_KrediHesaplari_ve_islemler_kredi">
+    <Key>
+      <PropertyRef Name="KkartID" />
+      <PropertyRef Name="KkartHesapNo" />
+      <PropertyRef Name="KkartIban" />
+      <PropertyRef Name="Kkart_Limit" />
+      <PropertyRef Name="Kkart_Borc" />
+      <PropertyRef Name="HesapKesimGunu" />
+      <PropertyRef Name="SonOdemeGunu" />
+      <PropertyRef Name="HesapSahipTcno" />
+      <PropertyRef Name="islemID" />
+      <PropertyRef Name="HesapNo" />
+      <PropertyRef Name="islemTutari" />
+      <PropertyRef Name="islemKategori_id" />
+      <PropertyRef Name="islemTarihi" />
+    </Key>
+    <Property Name="KkartID" Type="Int64" Nullable="false" />
+    <Property Name="KkartHesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="KkartIban" Type="String" Nullable="false" MaxLength="26" FixedLength="true" Unicode="true" />
+    <Property Name="Kkart_Limit" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Kkart_Borc" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="HesapKesimGunu" Type="Int32" Nullable="false" />
+    <Property Name="SonOdemeGunu" Type="Int32" Nullable="false" />
+    <Property Name="HesapSahipTcno" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="islemID" Type="Int32" Nullable="false" />
+    <Property Name="HesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="islemTutari" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
+    <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="v_Ekstre">
+    <Key>
+      <PropertyRef Name="KkartID" />
+      <PropertyRef Name="KkartHesapNo" />
+      <PropertyRef Name="KkartIban" />
+      <PropertyRef Name="Kkart_Limit" />
+      <PropertyRef Name="Kkart_Borc" />
+      <PropertyRef Name="HesapKesimGunu" />
+      <PropertyRef Name="SonOdemeGunu" />
+      <PropertyRef Name="HesapSahipTcno" />
+      <PropertyRef Name="KategoriID" />
+      <PropertyRef Name="KategoriAd" />
+      <PropertyRef Name="islemID" />
+      <PropertyRef Name="HesapNo" />
+      <PropertyRef Name="islemTutari" />
+      <PropertyRef Name="islemKategori_id" />
+      <PropertyRef Name="islemTarihi" />
+    </Key>
+    <Property Name="KkartID" Type="Int64" Nullable="false" />
+    <Property Name="KkartHesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="KkartIban" Type="String" Nullable="false" MaxLength="26" FixedLength="true" Unicode="true" />
+    <Property Name="Kkart_Limit" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Kkart_Borc" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="HesapKesimGunu" Type="Int32" Nullable="false" />
+    <Property Name="SonOdemeGunu" Type="Int32" Nullable="false" />
+    <Property Name="HesapSahipTcno" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="KategoriID" Type="Int32" Nullable="false" />
+    <Property Name="KategoriAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="islemID" Type="Int32" Nullable="false" />
+    <Property Name="HesapNo" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="islemTutari" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="islemAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="islemKategori_id" Type="Int32" Nullable="false" />
+    <Property Name="islemTarihi" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
 </Schema>

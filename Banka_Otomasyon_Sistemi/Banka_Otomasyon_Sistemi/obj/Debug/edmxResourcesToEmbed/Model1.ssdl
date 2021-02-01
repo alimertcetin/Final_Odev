@@ -20,7 +20,7 @@
     <Property Name="c_Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="c_Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="c_DogumTarihi" Type="datetime" Nullable="false" />
-    <Property Name="c_DıgumYeri" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="c_DogumYeri" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="c_Maas" Type="money" Nullable="false" />
     <Property Name="c_Prim" Type="money" />
     <Property Name="c_Rolid" Type="int" Nullable="false" />
@@ -100,17 +100,116 @@
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'BankDb.dbo.Vislemler_Banka' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="Vislemler_Banka">
+warning 6002: The table/view 'BankDb.dbo.v_BankaHesabiLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_BankaHesabiLog">
     <Key>
-      <PropertyRef Name="islemTutari" />
-      <PropertyRef Name="islemTarihi" />
+      <PropertyRef Name="KategoriID" />
       <PropertyRef Name="KategoriAd" />
+      <PropertyRef Name="islemID" />
+      <PropertyRef Name="HesapNo" />
+      <PropertyRef Name="islemTutari" />
+      <PropertyRef Name="islemKategori_id" />
+      <PropertyRef Name="islemTarihi" />
     </Key>
+    <Property Name="KategoriID" Type="int" Nullable="false" />
+    <Property Name="KategoriAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="islemID" Type="int" Nullable="false" />
+    <Property Name="HesapNo" Type="nchar" MaxLength="15" Nullable="false" />
     <Property Name="islemTutari" Type="money" Nullable="false" />
     <Property Name="islemAciklama" Type="nvarchar" MaxLength="100" />
+    <Property Name="islemKategori_id" Type="int" Nullable="false" />
     <Property Name="islemTarihi" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BankDb.dbo.v_Ekstre' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_Ekstre">
+    <Key>
+      <PropertyRef Name="KkartID" />
+      <PropertyRef Name="KkartHesapNo" />
+      <PropertyRef Name="KkartIban" />
+      <PropertyRef Name="Kkart_Limit" />
+      <PropertyRef Name="Kkart_Borc" />
+      <PropertyRef Name="HesapKesimGunu" />
+      <PropertyRef Name="SonOdemeGunu" />
+      <PropertyRef Name="HesapSahipTcno" />
+      <PropertyRef Name="KategoriID" />
+      <PropertyRef Name="KategoriAd" />
+      <PropertyRef Name="islemID" />
+      <PropertyRef Name="HesapNo" />
+      <PropertyRef Name="islemTutari" />
+      <PropertyRef Name="islemKategori_id" />
+      <PropertyRef Name="islemTarihi" />
+    </Key>
+    <Property Name="KkartID" Type="bigint" Nullable="false" />
+    <Property Name="KkartHesapNo" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="KkartIban" Type="nchar" MaxLength="26" Nullable="false" />
+    <Property Name="Kkart_Limit" Type="money" Nullable="false" />
+    <Property Name="Kkart_Borc" Type="money" Nullable="false" />
+    <Property Name="HesapKesimGunu" Type="int" Nullable="false" />
+    <Property Name="SonOdemeGunu" Type="int" Nullable="false" />
+    <Property Name="HesapSahipTcno" Type="char" MaxLength="11" Nullable="false" />
+    <Property Name="KategoriID" Type="int" Nullable="false" />
     <Property Name="KategoriAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="islemID" Type="int" Nullable="false" />
+    <Property Name="HesapNo" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="islemTutari" Type="money" Nullable="false" />
+    <Property Name="islemAciklama" Type="nvarchar" MaxLength="100" />
+    <Property Name="islemKategori_id" Type="int" Nullable="false" />
+    <Property Name="islemTarihi" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BankDb.dbo.v_KkartHesapHarcama' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_KkartHesapHarcama">
+    <Key>
+      <PropertyRef Name="KategoriID" />
+      <PropertyRef Name="KategoriAd" />
+      <PropertyRef Name="islemID" />
+      <PropertyRef Name="HesapNo" />
+      <PropertyRef Name="islemTutari" />
+      <PropertyRef Name="islemKategori_id" />
+      <PropertyRef Name="islemTarihi" />
+    </Key>
+    <Property Name="KategoriID" Type="int" Nullable="false" />
+    <Property Name="KategoriAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="islemID" Type="int" Nullable="false" />
+    <Property Name="HesapNo" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="islemTutari" Type="money" Nullable="false" />
+    <Property Name="islemAciklama" Type="nvarchar" MaxLength="100" />
+    <Property Name="islemKategori_id" Type="int" Nullable="false" />
+    <Property Name="islemTarihi" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BankDb.dbo.v_KrediHesaplari_ve_islemler_kredi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_KrediHesaplari_ve_islemler_kredi">
+    <Key>
+      <PropertyRef Name="KkartID" />
+      <PropertyRef Name="KkartHesapNo" />
+      <PropertyRef Name="KkartIban" />
+      <PropertyRef Name="Kkart_Limit" />
+      <PropertyRef Name="Kkart_Borc" />
+      <PropertyRef Name="HesapKesimGunu" />
+      <PropertyRef Name="SonOdemeGunu" />
+      <PropertyRef Name="HesapSahipTcno" />
+      <PropertyRef Name="islemID" />
+      <PropertyRef Name="HesapNo" />
+      <PropertyRef Name="islemTutari" />
+      <PropertyRef Name="islemKategori_id" />
+      <PropertyRef Name="islemTarihi" />
+    </Key>
+    <Property Name="KkartID" Type="bigint" Nullable="false" />
+    <Property Name="KkartHesapNo" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="KkartIban" Type="nchar" MaxLength="26" Nullable="false" />
+    <Property Name="Kkart_Limit" Type="money" Nullable="false" />
+    <Property Name="Kkart_Borc" Type="money" Nullable="false" />
+    <Property Name="HesapKesimGunu" Type="int" Nullable="false" />
+    <Property Name="SonOdemeGunu" Type="int" Nullable="false" />
+    <Property Name="HesapSahipTcno" Type="char" MaxLength="11" Nullable="false" />
+    <Property Name="islemID" Type="int" Nullable="false" />
+    <Property Name="HesapNo" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="islemTutari" Type="money" Nullable="false" />
+    <Property Name="islemAciklama" Type="nvarchar" MaxLength="100" />
+    <Property Name="islemKategori_id" Type="int" Nullable="false" />
+    <Property Name="islemTarihi" Type="datetime" Nullable="false" />
   </EntityType>
   <Association Name="FK_Banka_Hesap_Musteriler">
     <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="1" />
@@ -203,6 +302,11 @@ warning 6002: The table/view 'BankDb.dbo.Vislemler_Banka' does not have a primar
     <Parameter Name="version" Type="int" Mode="In" />
     <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
   </Function>
+  <Function Name="sp_BankHesap_Harcama" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="baslangic" Type="datetime" Mode="In" />
+    <Parameter Name="bitis" Type="datetime" Mode="In" />
+    <Parameter Name="hesapNo" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -221,6 +325,11 @@ warning 6002: The table/view 'BankDb.dbo.Vislemler_Banka' does not have a primar
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_KkartHesap_Harcama" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="baslangic" Type="datetime" Mode="In" />
+    <Parameter Name="bitis" Type="datetime" Mode="In" />
+    <Parameter Name="hesapNo" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -237,13 +346,67 @@ warning 6002: The table/view 'BankDb.dbo.Vislemler_Banka' does not have a primar
     <EntitySet Name="Musteriler" EntityType="Self.Musteriler" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roller" EntityType="Self.Roller" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Vislemler_Banka" EntityType="Self.Vislemler_Banka" store:Type="Views" store:Schema="dbo">
+    <EntitySet Name="v_BankaHesabiLog" EntityType="Self.v_BankaHesabiLog" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-    [Vislemler_Banka].[islemTutari] AS [islemTutari], 
-    [Vislemler_Banka].[islemAciklama] AS [islemAciklama], 
-    [Vislemler_Banka].[islemTarihi] AS [islemTarihi], 
-    [Vislemler_Banka].[KategoriAd] AS [KategoriAd]
-    FROM [dbo].[Vislemler_Banka] AS [Vislemler_Banka]</DefiningQuery>
+    [v_BankaHesabiLog].[KategoriID] AS [KategoriID], 
+    [v_BankaHesabiLog].[KategoriAd] AS [KategoriAd], 
+    [v_BankaHesabiLog].[islemID] AS [islemID], 
+    [v_BankaHesabiLog].[HesapNo] AS [HesapNo], 
+    [v_BankaHesabiLog].[islemTutari] AS [islemTutari], 
+    [v_BankaHesabiLog].[islemAciklama] AS [islemAciklama], 
+    [v_BankaHesabiLog].[islemKategori_id] AS [islemKategori_id], 
+    [v_BankaHesabiLog].[islemTarihi] AS [islemTarihi]
+    FROM [dbo].[v_BankaHesabiLog] AS [v_BankaHesabiLog]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_Ekstre" EntityType="Self.v_Ekstre" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [v_Ekstre].[KkartID] AS [KkartID], 
+    [v_Ekstre].[KkartHesapNo] AS [KkartHesapNo], 
+    [v_Ekstre].[KkartIban] AS [KkartIban], 
+    [v_Ekstre].[Kkart_Limit] AS [Kkart_Limit], 
+    [v_Ekstre].[Kkart_Borc] AS [Kkart_Borc], 
+    [v_Ekstre].[HesapKesimGunu] AS [HesapKesimGunu], 
+    [v_Ekstre].[SonOdemeGunu] AS [SonOdemeGunu], 
+    [v_Ekstre].[HesapSahipTcno] AS [HesapSahipTcno], 
+    [v_Ekstre].[KategoriID] AS [KategoriID], 
+    [v_Ekstre].[KategoriAd] AS [KategoriAd], 
+    [v_Ekstre].[islemID] AS [islemID], 
+    [v_Ekstre].[HesapNo] AS [HesapNo], 
+    [v_Ekstre].[islemTutari] AS [islemTutari], 
+    [v_Ekstre].[islemAciklama] AS [islemAciklama], 
+    [v_Ekstre].[islemKategori_id] AS [islemKategori_id], 
+    [v_Ekstre].[islemTarihi] AS [islemTarihi]
+    FROM [dbo].[v_Ekstre] AS [v_Ekstre]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_KkartHesapHarcama" EntityType="Self.v_KkartHesapHarcama" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [v_KkartHesapHarcama].[KategoriID] AS [KategoriID], 
+    [v_KkartHesapHarcama].[KategoriAd] AS [KategoriAd], 
+    [v_KkartHesapHarcama].[islemID] AS [islemID], 
+    [v_KkartHesapHarcama].[HesapNo] AS [HesapNo], 
+    [v_KkartHesapHarcama].[islemTutari] AS [islemTutari], 
+    [v_KkartHesapHarcama].[islemAciklama] AS [islemAciklama], 
+    [v_KkartHesapHarcama].[islemKategori_id] AS [islemKategori_id], 
+    [v_KkartHesapHarcama].[islemTarihi] AS [islemTarihi]
+    FROM [dbo].[v_KkartHesapHarcama] AS [v_KkartHesapHarcama]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_KrediHesaplari_ve_islemler_kredi" EntityType="Self.v_KrediHesaplari_ve_islemler_kredi" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [v_KrediHesaplari_ve_islemler_kredi].[KkartID] AS [KkartID], 
+    [v_KrediHesaplari_ve_islemler_kredi].[KkartHesapNo] AS [KkartHesapNo], 
+    [v_KrediHesaplari_ve_islemler_kredi].[KkartIban] AS [KkartIban], 
+    [v_KrediHesaplari_ve_islemler_kredi].[Kkart_Limit] AS [Kkart_Limit], 
+    [v_KrediHesaplari_ve_islemler_kredi].[Kkart_Borc] AS [Kkart_Borc], 
+    [v_KrediHesaplari_ve_islemler_kredi].[HesapKesimGunu] AS [HesapKesimGunu], 
+    [v_KrediHesaplari_ve_islemler_kredi].[SonOdemeGunu] AS [SonOdemeGunu], 
+    [v_KrediHesaplari_ve_islemler_kredi].[HesapSahipTcno] AS [HesapSahipTcno], 
+    [v_KrediHesaplari_ve_islemler_kredi].[islemID] AS [islemID], 
+    [v_KrediHesaplari_ve_islemler_kredi].[HesapNo] AS [HesapNo], 
+    [v_KrediHesaplari_ve_islemler_kredi].[islemTutari] AS [islemTutari], 
+    [v_KrediHesaplari_ve_islemler_kredi].[islemAciklama] AS [islemAciklama], 
+    [v_KrediHesaplari_ve_islemler_kredi].[islemKategori_id] AS [islemKategori_id], 
+    [v_KrediHesaplari_ve_islemler_kredi].[islemTarihi] AS [islemTarihi]
+    FROM [dbo].[v_KrediHesaplari_ve_islemler_kredi] AS [v_KrediHesaplari_ve_islemler_kredi]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_Banka_Hesap_Musteriler" Association="Self.FK_Banka_Hesap_Musteriler">
       <End Role="Musteriler" EntitySet="Musteriler" />

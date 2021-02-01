@@ -144,7 +144,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frm_MusteriNoOgren";
-            this.Text = "frm_MusteriNoOgren";
+            this.Text = "Müşteri Numarası Öğren";
             this.ResumeLayout(false);
             this.PerformLayout();
 

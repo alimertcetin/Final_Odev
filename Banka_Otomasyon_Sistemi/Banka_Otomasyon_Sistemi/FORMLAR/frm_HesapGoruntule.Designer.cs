@@ -48,10 +48,16 @@
             this.hesapİşlemleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paraÇekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paraYatırToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.HesapRaporuAltoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.raporlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hesapRaporuAlToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.kategorilereGöreHarcamayıGörToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_Musteri = new System.Windows.Forms.MenuStrip();
             this.hesapİşlemleriToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.hesapHareketleriniGörüntüleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.krediEkstreRaporuAlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lbl_Enter = new System.Windows.Forms.Label();
+            this.işlemleriGrafikteGörüntüleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.krediEkstreRaporuAlToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_HesapGoruntule)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.menu_Calisan.SuspendLayout();
@@ -120,6 +126,7 @@
             this.txt_MusteriNo.Name = "txt_MusteriNo";
             this.txt_MusteriNo.Size = new System.Drawing.Size(200, 26);
             this.txt_MusteriNo.TabIndex = 37;
+            this.txt_MusteriNo.TextChanged += new System.EventHandler(this.txt_MusteriNo_TextChanged);
             this.txt_MusteriNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_MusteriNo_KeyPress);
             // 
             // txt_Soyad
@@ -207,7 +214,8 @@
             // 
             this.menu_Calisan.AllowMerge = false;
             this.menu_Calisan.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hesapİşlemleriToolStripMenuItem});
+            this.hesapİşlemleriToolStripMenuItem,
+            this.raporlarToolStripMenuItem});
             this.menu_Calisan.Location = new System.Drawing.Point(0, 24);
             this.menu_Calisan.Name = "menu_Calisan";
             this.menu_Calisan.Size = new System.Drawing.Size(604, 24);
@@ -218,8 +226,7 @@
             // 
             this.hesapİşlemleriToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.paraÇekToolStripMenuItem,
-            this.paraYatırToolStripMenuItem,
-            this.HesapRaporuAltoolStripMenuItem});
+            this.paraYatırToolStripMenuItem});
             this.hesapİşlemleriToolStripMenuItem.Name = "hesapİşlemleriToolStripMenuItem";
             this.hesapİşlemleriToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
             this.hesapİşlemleriToolStripMenuItem.Text = "Hesap İşlemleri";
@@ -227,23 +234,40 @@
             // paraÇekToolStripMenuItem
             // 
             this.paraÇekToolStripMenuItem.Name = "paraÇekToolStripMenuItem";
-            this.paraÇekToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.paraÇekToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.paraÇekToolStripMenuItem.Text = "Para Çek";
             this.paraÇekToolStripMenuItem.Click += new System.EventHandler(this.paraÇekToolStripMenuItem_Click);
             // 
             // paraYatırToolStripMenuItem
             // 
             this.paraYatırToolStripMenuItem.Name = "paraYatırToolStripMenuItem";
-            this.paraYatırToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.paraYatırToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.paraYatırToolStripMenuItem.Text = "Para Yatır";
             this.paraYatırToolStripMenuItem.Click += new System.EventHandler(this.paraYatırToolStripMenuItem_Click);
             // 
-            // HesapRaporuAltoolStripMenuItem
+            // raporlarToolStripMenuItem
             // 
-            this.HesapRaporuAltoolStripMenuItem.Name = "HesapRaporuAltoolStripMenuItem";
-            this.HesapRaporuAltoolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.HesapRaporuAltoolStripMenuItem.Text = "Hesap Raporu Al";
-            this.HesapRaporuAltoolStripMenuItem.Click += new System.EventHandler(this.HesapRaporuAltoolStripMenuItem_Click);
+            this.raporlarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hesapRaporuAlToolStripMenuItem1,
+            this.kategorilereGöreHarcamayıGörToolStripMenuItem,
+            this.krediEkstreRaporuAlToolStripMenuItem});
+            this.raporlarToolStripMenuItem.Name = "raporlarToolStripMenuItem";
+            this.raporlarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.raporlarToolStripMenuItem.Text = "Raporlar";
+            // 
+            // hesapRaporuAlToolStripMenuItem1
+            // 
+            this.hesapRaporuAlToolStripMenuItem1.Name = "hesapRaporuAlToolStripMenuItem1";
+            this.hesapRaporuAlToolStripMenuItem1.Size = new System.Drawing.Size(216, 22);
+            this.hesapRaporuAlToolStripMenuItem1.Text = "Hesabın işlem raporunu Al";
+            this.hesapRaporuAlToolStripMenuItem1.Click += new System.EventHandler(this.hesapRaporuAlToolStripMenuItem1_Click);
+            // 
+            // kategorilereGöreHarcamayıGörToolStripMenuItem
+            // 
+            this.kategorilereGöreHarcamayıGörToolStripMenuItem.Name = "kategorilereGöreHarcamayıGörToolStripMenuItem";
+            this.kategorilereGöreHarcamayıGörToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.kategorilereGöreHarcamayıGörToolStripMenuItem.Text = "İşlemleri grafikte görüntüle";
+            this.kategorilereGöreHarcamayıGörToolStripMenuItem.Click += new System.EventHandler(this.kategorilereGöreHarcamayıGörToolStripMenuItem_Click);
             // 
             // menu_Musteri
             // 
@@ -259,22 +283,59 @@
             // hesapİşlemleriToolStripMenuItem1
             // 
             this.hesapİşlemleriToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hesapHareketleriniGörüntüleToolStripMenuItem});
+            this.hesapHareketleriniGörüntüleToolStripMenuItem,
+            this.işlemleriGrafikteGörüntüleToolStripMenuItem,
+            this.krediEkstreRaporuAlToolStripMenuItem1});
             this.hesapİşlemleriToolStripMenuItem1.Name = "hesapİşlemleriToolStripMenuItem1";
-            this.hesapİşlemleriToolStripMenuItem1.Size = new System.Drawing.Size(99, 20);
-            this.hesapİşlemleriToolStripMenuItem1.Text = "Hesap İşlemleri";
+            this.hesapİşlemleriToolStripMenuItem1.Size = new System.Drawing.Size(63, 20);
+            this.hesapİşlemleriToolStripMenuItem1.Text = "Raporlar";
             // 
             // hesapHareketleriniGörüntüleToolStripMenuItem
             // 
             this.hesapHareketleriniGörüntüleToolStripMenuItem.Name = "hesapHareketleriniGörüntüleToolStripMenuItem";
-            this.hesapHareketleriniGörüntüleToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
-            this.hesapHareketleriniGörüntüleToolStripMenuItem.Text = "Hesap Hareketlerini Görüntüle";
+            this.hesapHareketleriniGörüntüleToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.hesapHareketleriniGörüntüleToolStripMenuItem.Text = "Hesap Raporu Al";
+            this.hesapHareketleriniGörüntüleToolStripMenuItem.Click += new System.EventHandler(this.hesapHareketleriniGörüntüleToolStripMenuItem_Click);
+            // 
+            // krediEkstreRaporuAlToolStripMenuItem
+            // 
+            this.krediEkstreRaporuAlToolStripMenuItem.Name = "krediEkstreRaporuAlToolStripMenuItem";
+            this.krediEkstreRaporuAlToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.krediEkstreRaporuAlToolStripMenuItem.Text = "Kredi Ekstre Raporu Al";
+            this.krediEkstreRaporuAlToolStripMenuItem.Click += new System.EventHandler(this.krediEkstreRaporuAlToolStripMenuItem_Click);
+            // 
+            // lbl_Enter
+            // 
+            this.lbl_Enter.AutoSize = true;
+            this.lbl_Enter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_Enter.ForeColor = System.Drawing.Color.Firebrick;
+            this.lbl_Enter.Location = new System.Drawing.Point(545, 74);
+            this.lbl_Enter.Name = "lbl_Enter";
+            this.lbl_Enter.Size = new System.Drawing.Size(47, 17);
+            this.lbl_Enter.TabIndex = 74;
+            this.lbl_Enter.Text = "Enter";
+            this.lbl_Enter.Visible = false;
+            // 
+            // işlemleriGrafikteGörüntüleToolStripMenuItem
+            // 
+            this.işlemleriGrafikteGörüntüleToolStripMenuItem.Name = "işlemleriGrafikteGörüntüleToolStripMenuItem";
+            this.işlemleriGrafikteGörüntüleToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.işlemleriGrafikteGörüntüleToolStripMenuItem.Text = "İşlemleri grafikte görüntüle";
+            this.işlemleriGrafikteGörüntüleToolStripMenuItem.Click += new System.EventHandler(this.işlemleriGrafikteGörüntüleToolStripMenuItem_Click);
+            // 
+            // krediEkstreRaporuAlToolStripMenuItem1
+            // 
+            this.krediEkstreRaporuAlToolStripMenuItem1.Name = "krediEkstreRaporuAlToolStripMenuItem1";
+            this.krediEkstreRaporuAlToolStripMenuItem1.Size = new System.Drawing.Size(216, 22);
+            this.krediEkstreRaporuAlToolStripMenuItem1.Text = "Kredi Ekstre Raporu Al";
+            this.krediEkstreRaporuAlToolStripMenuItem1.Click += new System.EventHandler(this.krediEkstreRaporuAlToolStripMenuItem1_Click);
             // 
             // frm_HesapGoruntule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 501);
+            this.Controls.Add(this.lbl_Enter);
             this.Controls.Add(this.menu_Calisan);
             this.Controls.Add(this.menu_Musteri);
             this.Controls.Add(this.cmb_HesapListesi);
@@ -289,7 +350,7 @@
             this.Controls.Add(this.dtg_HesapGoruntule);
             this.MainMenuStrip = this.menu_Calisan;
             this.Name = "frm_HesapGoruntule";
-            this.Text = "frm_BankHesapGoruntule";
+            this.Text = "Hesapları Görüntüle";
             this.Load += new System.EventHandler(this.frm_HesapGoruntule_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtg_HesapGoruntule)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
@@ -326,6 +387,12 @@
         private System.Windows.Forms.MenuStrip menu_Musteri;
         private System.Windows.Forms.ToolStripMenuItem hesapİşlemleriToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem hesapHareketleriniGörüntüleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem HesapRaporuAltoolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem raporlarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hesapRaporuAlToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem kategorilereGöreHarcamayıGörToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem krediEkstreRaporuAlToolStripMenuItem;
+        private System.Windows.Forms.Label lbl_Enter;
+        private System.Windows.Forms.ToolStripMenuItem işlemleriGrafikteGörüntüleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem krediEkstreRaporuAlToolStripMenuItem1;
     }
 }

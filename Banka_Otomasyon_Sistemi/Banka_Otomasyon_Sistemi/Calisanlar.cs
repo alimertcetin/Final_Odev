@@ -20,7 +20,7 @@ namespace Banka_Otomasyon_Sistemi
         public string c_Ad { get; set; }
         public string c_Soyad { get; set; }
         public System.DateTime c_DogumTarihi { get; set; }
-        public string c_DıgumYeri { get; set; }
+        public string c_DogumYeri { get; set; }
         public decimal c_Maas { get; set; }
         public Nullable<decimal> c_Prim { get; set; }
         public int c_Rolid { get; set; }

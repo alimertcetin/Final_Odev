@@ -4,17 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b96f4b6bd25947f9a5304c8a8e654c18" Name="Diagram1" ZoomLevel="55">
-        <EntityTypeShape EntityType="BankDbModel.Banka_Hesaplari" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BankDbModel.Calisanlar" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BankDbModel.islemler_BankaHesaplari" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BankDbModel.islemler_KrediHesaplari" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BankDbModel.Kategoriler" Width="1.5" PointX="5.125" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BankDbModel.Kkart_Hesaplari" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BankDbModel.Musteriler" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BankDbModel.Roller" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BankDbModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BankDbModel.Vislemler_Banka" Width="1.5" PointX="0.75" PointY="9.75" />
+      <Diagram DiagramId="b96f4b6bd25947f9a5304c8a8e654c18" Name="Diagram1" ZoomLevel="108">
+        <EntityTypeShape EntityType="BankDbModel.Banka_Hesaplari" Width="1.5" PointX="5.25" PointY="1.625" />
+        <EntityTypeShape EntityType="BankDbModel.Calisanlar" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="BankDbModel.islemler_BankaHesaplari" Width="1.5" PointX="7.5" PointY="1.5" />
+        <EntityTypeShape EntityType="BankDbModel.islemler_KrediHesaplari" Width="1.5" PointX="7.5" PointY="5.5" />
+        <EntityTypeShape EntityType="BankDbModel.Kategoriler" Width="1.5" PointX="5.25" PointY="5.875" />
+        <EntityTypeShape EntityType="BankDbModel.Kkart_Hesaplari" Width="1.5" PointX="5.25" PointY="9.375" />
+        <EntityTypeShape EntityType="BankDbModel.Musteriler" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="BankDbModel.Roller" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="BankDbModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" />
         <AssociationConnector Association="BankDbModel.FK_Banka_Hesap_Musteriler" />
         <AssociationConnector Association="BankDbModel.FK_islemler_BankaHesap_Banka_Hesap" />
         <AssociationConnector Association="BankDbModel.FK_Calisanlar_Roller" />
@@ -22,6 +21,10 @@
         <AssociationConnector Association="BankDbModel.FK_islemler_KrediHesap_Kkredi_Hesap" />
         <AssociationConnector Association="BankDbModel.FK_islemler_KrediHesaplari_Kategoriler" />
         <AssociationConnector Association="BankDbModel.FK_Musteriler_Roller" />
+        <EntityTypeShape EntityType="BankDbModel.v_BankaHesabiLog" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="BankDbModel.v_KkartHesapHarcama" Width="1.5" PointX="7.375" PointY="9.75" />
+        <EntityTypeShape EntityType="BankDbModel.v_KrediHesaplari_ve_islemler_kredi" Width="1.5" PointX="9.375" PointY="9.75" />
+        <EntityTypeShape EntityType="BankDbModel.v_Ekstre" Width="1.5" PointX="10.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

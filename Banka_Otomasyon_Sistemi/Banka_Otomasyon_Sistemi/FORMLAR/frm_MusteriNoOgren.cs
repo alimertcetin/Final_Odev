@@ -37,7 +37,7 @@ namespace Banka_Otomasyon_Sistemi
             if (e.KeyChar == Convert.ToChar(13))
             {
                 BankDbEntities vt = new BankDbEntities();
-                if(!MusteriIslemleri.KisiVeritabanındaVarMi(vt, out Musteriler musteri, txt_TcNo.Text))
+                if(!KisiIslemleri.MusteriVeritabanindaVarMi(vt, out Musteriler musteri, txt_TcNo.Text))
                 {
                     AlanlariTemizle();
 

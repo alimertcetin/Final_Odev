@@ -155,13 +155,13 @@ namespace Banka_Otomasyon_Sistemi
                 MessageBox.Show("Lütfen rapor almak istediğiniz hesap numarasını seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else if(FormYonetimi.FormlariBul(nameof(frm_HesapRaporuAl), out List<Form> hesapRaporFormlari))
             {
+                // Açık olan formlar arasında aynı hesabı görüntüleyen form yoksa
+                // seçilen hesap numarasının hesap hareketlerini görüntüle
                 bool formAc = false;
                 foreach (frm_HesapRaporuAl item in hesapRaporFormlari)
                 {
                     if (item.HesapNumarasi != dtg_HesapGoruntule.CurrentCell.Value.ToString())
-                    {
                         formAc = true;
-                    }
                     else
                     {
                         formAc = false;
@@ -176,7 +176,7 @@ namespace Banka_Otomasyon_Sistemi
                     form.Show();
                 }
             }
-            else
+            else //Verilen isimde açık hiç bir form yoksa
             {
                 frm_HesapRaporuAl form = new frm_HesapRaporuAl(dtg_HesapGoruntule.CurrentCell.Value.ToString());
                 form.MdiParent = this.MdiParent;
@@ -192,6 +192,8 @@ namespace Banka_Otomasyon_Sistemi
                 MessageBox.Show("Lütfen rapor almak istediğiniz hesap numarasını seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else if (FormYonetimi.FormlariBul(nameof(frm_KategorilereGoreRapor), out List<Form> KategorilerRaporFormlari))
             {
+                // Açık olan formlar arasında aynı hesabı görüntüleyen form yoksa
+                // seçilen hesap numarasının hesap hareketlerini görüntüle
                 bool formAc = false;
                 foreach (frm_KategorilereGoreRapor item in KategorilerRaporFormlari)
                 {
@@ -214,7 +216,7 @@ namespace Banka_Otomasyon_Sistemi
                     form.Show();
                 }
             }
-            else
+            else //Verilen isimde açık hiç bir form yoksa
             {
                 frm_KategorilereGoreRapor form = new frm_KategorilereGoreRapor
                     (dtg_HesapGoruntule.CurrentCell.Value.ToString(), cmb_HesapListesi.SelectedIndex);
@@ -233,6 +235,8 @@ namespace Banka_Otomasyon_Sistemi
                 MessageBox.Show("Bir Kredi hesabı seçmeniz gerek.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else if (FormYonetimi.FormlariBul(nameof(frm_KrediEkstre), out List<Form> krediEkstreFormlari))
             {
+                // Açık olan formlar arasında aynı hesabı görüntüleyen form yoksa
+                // seçilen hesap numarasının hesap hareketlerini görüntüle
                 bool formAc = false;
                 foreach (frm_KrediEkstre item in krediEkstreFormlari)
                 {
@@ -255,7 +259,7 @@ namespace Banka_Otomasyon_Sistemi
                     form.Show();
                 }
             }
-            else
+            else //Verilen isimde açık hiç bir form yoksa
             {
                 frm_KrediEkstre form = new frm_KrediEkstre
                     (dtg_HesapGoruntule.CurrentCell.Value.ToString(), cmb_HesapListesi.SelectedIndex);

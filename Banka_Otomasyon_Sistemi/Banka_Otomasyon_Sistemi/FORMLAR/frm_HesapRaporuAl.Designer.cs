@@ -55,7 +55,7 @@
             this.btn_RaporAl.Name = "btn_RaporAl";
             this.btn_RaporAl.Size = new System.Drawing.Size(99, 41);
             this.btn_RaporAl.TabIndex = 52;
-            this.btn_RaporAl.Text = "Rapor Al";
+            this.btn_RaporAl.Text = "Çıktı Al";
             this.btn_RaporAl.UseVisualStyleBackColor = false;
             this.btn_RaporAl.Click += new System.EventHandler(this.btn_RaporAl_Click);
             // 

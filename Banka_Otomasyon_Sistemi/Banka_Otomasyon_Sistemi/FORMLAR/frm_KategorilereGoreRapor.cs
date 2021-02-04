@@ -40,24 +40,45 @@ namespace Banka_Otomasyon_Sistemi
                 using (BankDbEntities vt = new BankDbEntities())
                 {
                     var liste = vt.sp_BankHesap_Harcama(dtp_Baslangic.Value, dtp_Bitis.Value, txt_HesapNo.Text).ToList();
+                    List<sp_BankHesap_Harcama_Result> harcamalar = new List<sp_BankHesap_Harcama_Result>();
 
-                    reportViewer1.LocalReport.DataSources.Clear(); //clear report
-                    reportViewer1.LocalReport.ReportEmbeddedResource = "Banka_Otomasyon_Sistemi.MusteriHarcamaRaporu.rdlc"; // bind reportviewer with .rdlc            
-                    ReportDataSource dataset = new ReportDataSource("DataSet1", liste); // set the datasource
+                    for (int i = 0; i < liste.Count; i++)
+                    {
+                        if (liste[i].islemTutari < 0)
+                            harcamalar.Add(liste[i]);
+                    }
+                    for (int i = 0; i < harcamalar.Count; i++)
+                    {
+                        harcamalar[i].islemTutari *= -1;
+                    }
+
+                    reportViewer1.LocalReport.DataSources.Clear();
+                    reportViewer1.LocalReport.ReportEmbeddedResource = "Banka_Otomasyon_Sistemi.MusteriHarcamaRaporu.rdlc";
+                    ReportDataSource dataset = new ReportDataSource("DataSet1", harcamalar);
                     reportViewer1.LocalReport.DataSources.Add(dataset);
                     reportViewer1.LocalReport.Refresh();
-                    reportViewer1.RefreshReport(); // refresh report
+                    reportViewer1.RefreshReport();
                 }
             }
             else
             {
                 using (BankDbEntities vt = new BankDbEntities())
                 {
-                    var liste = vt.sp_KkartHesap_Harcama(dtp_Baslangic.Value, dtp_Bitis.Value, txt_HesapNo.Text).ToList();
+                    List<sp_KkartHesap_Harcama_Result> liste = vt.sp_KkartHesap_Harcama(dtp_Baslangic.Value, dtp_Bitis.Value, txt_HesapNo.Text).ToList();
+                    List<sp_KkartHesap_Harcama_Result> harcamalar = new List<sp_KkartHesap_Harcama_Result>();
+                    for (int i = 0; i < liste.Count; i++)
+                    {
+                        if (liste[i].islemTutari < 0)
+                            harcamalar.Add(liste[i]);
+                    }
+                    for (int i = 0; i < harcamalar.Count; i++)
+                    {
+                        harcamalar[i].islemTutari *= -1;
+                    }
 
                     reportViewer1.LocalReport.DataSources.Clear(); //clear report
                     reportViewer1.LocalReport.ReportEmbeddedResource = "Banka_Otomasyon_Sistemi.MusteriHarcamaRaporu.rdlc"; // bind reportviewer with .rdlc            
-                    ReportDataSource dataset = new ReportDataSource("DataSet1", liste); // set the datasource
+                    ReportDataSource dataset = new ReportDataSource("DataSet1", harcamalar); // set the datasource
                     reportViewer1.LocalReport.DataSources.Add(dataset);
                     reportViewer1.LocalReport.Refresh();
                     reportViewer1.RefreshReport(); // refresh report

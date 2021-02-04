@@ -133,11 +133,11 @@
             // 
             this.btn_RaporAl.BackColor = System.Drawing.Color.LightGreen;
             this.btn_RaporAl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_RaporAl.Location = new System.Drawing.Point(495, 63);
+            this.btn_RaporAl.Location = new System.Drawing.Point(456, 63);
             this.btn_RaporAl.Name = "btn_RaporAl";
-            this.btn_RaporAl.Size = new System.Drawing.Size(99, 41);
+            this.btn_RaporAl.Size = new System.Drawing.Size(138, 41);
             this.btn_RaporAl.TabIndex = 69;
-            this.btn_RaporAl.Text = "Rapor Al";
+            this.btn_RaporAl.Text = "Raporu Yenile";
             this.btn_RaporAl.UseVisualStyleBackColor = false;
             this.btn_RaporAl.Click += new System.EventHandler(this.btn_RaporAl_Click);
             // 

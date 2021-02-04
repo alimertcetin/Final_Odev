@@ -337,6 +337,44 @@ namespace Banka_Otomasyon_Sistemi
             return sonuc;
         }
 
+        /// <summary>
+        /// Verilen hesap numarasından yapılan harcamaları bulur
+        /// ve POZİTİF sayılar olarak geri döndürür.
+        /// </summary>
+        public static List<sp_BankHesap_Harcama_Result> HesapHarcamalariniAl_Bank(BankDbEntities vt, DateTime baslangic, DateTime bitis, string HesapNo)
+        {
+            var liste = vt.sp_BankHesap_Harcama(baslangic, bitis, HesapNo).ToList();
+            List<sp_BankHesap_Harcama_Result> harcamalar = new List<sp_BankHesap_Harcama_Result>();
+            for (int i = 0; i < liste.Count; i++)
+            {
+                if (liste[i].islemTutari < 0)
+                    harcamalar.Add(liste[i]);
+            }
+            for (int i = 0; i < harcamalar.Count; i++)
+            {
+                harcamalar[i].islemTutari *= -1;
+            }
+            return harcamalar;
+        }
+        /// <summary>
+        /// Verilen hesap numarasından yapılan harcamaları bulur
+        /// ve POZİTİF sayılar olarak geri döndürür.
+        /// </summary>
+        public static List<sp_KkartHesap_Harcama_Result> HesapHarcamalariniAl_Kredi(BankDbEntities vt, DateTime baslangic, DateTime bitis, string HesapNo)
+        {
+            var liste = vt.sp_KkartHesap_Harcama(baslangic, bitis, HesapNo).ToList();
+            List<sp_KkartHesap_Harcama_Result> harcamalar = new List<sp_KkartHesap_Harcama_Result>();
+            for (int i = 0; i < liste.Count; i++)
+            {
+                if (liste[i].islemTutari < 0)
+                    harcamalar.Add(liste[i]);
+            }
+            for (int i = 0; i < harcamalar.Count; i++)
+            {
+                harcamalar[i].islemTutari *= -1;
+            }
+            return harcamalar;
+        }
 
     }
 }

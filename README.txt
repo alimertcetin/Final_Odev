@@ -1,4 +1,4 @@
-admin olarak giriş yapmak için;
+Admin olarak giriş yapmak için;
 Sicil No : 012345678910
 Şifre : 123456
 ----
@@ -11,4 +11,4 @@ Müşteri No : 73070188
 Şifre : 123456
 ----
 Not : 
-Kredi ekstre hesaplamasında hatalar mevcut.
+- Kredi ekstre hesaplaması doğru bir şekilde yapılmıyor.

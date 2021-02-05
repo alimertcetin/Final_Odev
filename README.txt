@@ -1,3 +1,5 @@
+Aşağıdaki aşamaları uygulayabilmek için gerekli veri tabanını kendi sisteminiz üzerinde kurmanız gerekmektedir.
+
 Admin olarak giriş yapmak için;
 Sicil No : 012345678910
 Şifre : 123456
@@ -12,3 +14,5 @@ Müşteri No : 73070188
 ----
 Not : 
 - Kredi ekstre hesaplaması doğru bir şekilde yapılmıyor.
+
+Proje Github Linki : https://github.com/alimertcetin/Final_Odev

@@ -182,14 +182,6 @@ namespace Banka_Otomasyon_Sistemi
 
         private void txt_SicilNo_KeyDown(object sender, KeyEventArgs e)
         {
-            if(string.IsNullOrEmpty(txt_SicilNo.Text))
-            {
-                lbl_Enter.Visible = false;
-                return;
-            }
-            else
-                lbl_Enter.Visible = true;
-
             if (e.KeyCode == Keys.Enter)
             {
                 BankDbEntities vt = new BankDbEntities();
@@ -231,5 +223,11 @@ namespace Banka_Otomasyon_Sistemi
             else MessageBox.Show("Bir sorun oluştu.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void txt_SicilNo_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txt_SicilNo.Text))
+                lbl_Enter.Visible = false;
+            else lbl_Enter.Visible = true;
+        }
     }
 }

@@ -110,6 +110,7 @@
             this.txt_SicilNo.Name = "txt_SicilNo";
             this.txt_SicilNo.Size = new System.Drawing.Size(168, 26);
             this.txt_SicilNo.TabIndex = 56;
+            this.txt_SicilNo.TextChanged += new System.EventHandler(this.txt_SicilNo_TextChanged);
             this.txt_SicilNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_SicilNo_KeyDown);
             // 
             // label1

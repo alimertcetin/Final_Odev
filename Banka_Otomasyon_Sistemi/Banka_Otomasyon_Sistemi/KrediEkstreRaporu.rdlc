@@ -748,7 +748,7 @@
             </ChartLegends>
             <ChartTitles>
               <ChartTitle Name="Default">
-                <Caption>Kategorilere Göre Yapılan Harcamalar</Caption>
+                <Caption>Dönem İçerisinde Kategorilere Göre Yapılan Toplam Harcamalar</Caption>
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>9pt</FontSize>

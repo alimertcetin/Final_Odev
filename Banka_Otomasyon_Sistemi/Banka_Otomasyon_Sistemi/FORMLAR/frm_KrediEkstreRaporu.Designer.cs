@@ -34,7 +34,6 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txt_HesapNo
@@ -88,21 +87,11 @@
             this.reportViewer1.Size = new System.Drawing.Size(592, 406);
             this.reportViewer1.TabIndex = 76;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(345, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(253, 13);
-            this.label2.TabIndex = 77;
-            this.label2.Text = "Sadece bu ay içerisinde yapılan harcamaları gösterir.";
-            // 
             // frm_KrediEkstre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(610, 461);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_HesapNo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.reportViewer1);
@@ -121,6 +110,5 @@
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.Label label2;
     }
 }

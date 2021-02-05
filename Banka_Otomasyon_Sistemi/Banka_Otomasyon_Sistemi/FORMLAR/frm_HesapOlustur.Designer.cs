@@ -33,12 +33,10 @@
             this.rb_Kredi = new System.Windows.Forms.RadioButton();
             this.grpbx_HesapSecim = new System.Windows.Forms.GroupBox();
             this.dtp_DogumTarihi = new System.Windows.Forms.DateTimePicker();
-            this.txt_Sifre = new System.Windows.Forms.TextBox();
             this.txt_DogumYeri = new System.Windows.Forms.TextBox();
             this.txt_Soyad = new System.Windows.Forms.TextBox();
             this.txt_Ad = new System.Windows.Forms.TextBox();
             this.txt_MusteriNo = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -52,7 +50,7 @@
             // 
             this.btn_olustur.BackColor = System.Drawing.Color.LightGreen;
             this.btn_olustur.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_olustur.Location = new System.Drawing.Point(286, 293);
+            this.btn_olustur.Location = new System.Drawing.Point(286, 253);
             this.btn_olustur.Name = "btn_olustur";
             this.btn_olustur.Size = new System.Drawing.Size(99, 41);
             this.btn_olustur.TabIndex = 30;
@@ -86,7 +84,7 @@
             // 
             this.grpbx_HesapSecim.Controls.Add(this.rb_Banka);
             this.grpbx_HesapSecim.Controls.Add(this.rb_Kredi);
-            this.grpbx_HesapSecim.Location = new System.Drawing.Point(12, 266);
+            this.grpbx_HesapSecim.Location = new System.Drawing.Point(12, 226);
             this.grpbx_HesapSecim.Name = "grpbx_HesapSecim";
             this.grpbx_HesapSecim.Size = new System.Drawing.Size(197, 92);
             this.grpbx_HesapSecim.TabIndex = 29;
@@ -99,15 +97,6 @@
             this.dtp_DogumTarihi.Name = "dtp_DogumTarihi";
             this.dtp_DogumTarihi.Size = new System.Drawing.Size(200, 20);
             this.dtp_DogumTarihi.TabIndex = 28;
-            // 
-            // txt_Sifre
-            // 
-            this.txt_Sifre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txt_Sifre.Location = new System.Drawing.Point(185, 228);
-            this.txt_Sifre.Name = "txt_Sifre";
-            this.txt_Sifre.PasswordChar = '*';
-            this.txt_Sifre.Size = new System.Drawing.Size(200, 26);
-            this.txt_Sifre.TabIndex = 27;
             // 
             // txt_DogumYeri
             // 
@@ -146,16 +135,6 @@
             this.txt_MusteriNo.TabIndex = 23;
             this.txt_MusteriNo.TextChanged += new System.EventHandler(this.txt_MusteriNo_TextChanged);
             this.txt_MusteriNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_MusteriNo_KeyPress);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(96, 228);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 24);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "Şifre :";
             // 
             // label5
             // 
@@ -223,17 +202,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(399, 360);
+            this.ClientSize = new System.Drawing.Size(399, 321);
             this.Controls.Add(this.lbl_Enter);
             this.Controls.Add(this.btn_olustur);
             this.Controls.Add(this.grpbx_HesapSecim);
             this.Controls.Add(this.dtp_DogumTarihi);
-            this.Controls.Add(this.txt_Sifre);
             this.Controls.Add(this.txt_DogumYeri);
             this.Controls.Add(this.txt_Soyad);
             this.Controls.Add(this.txt_Ad);
             this.Controls.Add(this.txt_MusteriNo);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -254,12 +231,10 @@
         private System.Windows.Forms.RadioButton rb_Kredi;
         private System.Windows.Forms.GroupBox grpbx_HesapSecim;
         private System.Windows.Forms.DateTimePicker dtp_DogumTarihi;
-        private System.Windows.Forms.TextBox txt_Sifre;
         private System.Windows.Forms.TextBox txt_DogumYeri;
         private System.Windows.Forms.TextBox txt_Soyad;
         private System.Windows.Forms.TextBox txt_Ad;
         private System.Windows.Forms.TextBox txt_MusteriNo;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

@@ -16,3 +16,5 @@ Not :
 - Kredi ekstre hesaplaması doğru bir şekilde yapılmıyor.
 
 Proje Github Linki : https://github.com/alimertcetin/Final_Odev
+
+Proje Yönetim Trello Sayfası : https://trello.com/b/6BHgqMvP/g%C3%B6rsel-programlama-ii-final-%C3%B6devi
